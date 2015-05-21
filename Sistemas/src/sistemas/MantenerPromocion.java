@@ -144,45 +144,45 @@ public class MantenerPromocion extends javax.swing.JFrame {
         promnxntab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Cantidad de productos a pagar");
-        promnxntab.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 27, -1, -1));
+        promnxntab.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabel2.setText("Cantidad de productos llevados");
-        promnxntab.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 50, -1, -1));
-        promnxntab.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 24, -1, -1));
-        promnxntab.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 50, -1, -1));
+        promnxntab.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        promnxntab.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+        promnxntab.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
         jLabel3.setText("Información del producto");
-        promnxntab.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 88, -1, -1));
+        promnxntab.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
 
         jLabel4.setText("Codigo");
-        promnxntab.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        promnxntab.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jLabel5.setText("Nombre");
-        promnxntab.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        promnxntab.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel6.setText("Precio base");
-        promnxntab.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        promnxntab.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jLabel7.setText("Marca");
-        promnxntab.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
+        promnxntab.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
 
         jLabel8.setText("Stock");
-        promnxntab.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+        promnxntab.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         jLabel9.setText("Tipo de producto");
-        promnxntab.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
-        promnxntab.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 64, -1));
-        promnxntab.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 106, -1));
-        promnxntab.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 64, -1));
-        promnxntab.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 71, -1));
-        promnxntab.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 36, -1));
-        promnxntab.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 100, -1));
+        promnxntab.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+        promnxntab.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 110, -1));
+        promnxntab.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 110, -1));
+        promnxntab.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 110, -1));
+        promnxntab.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 100, -1));
+        promnxntab.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 100, -1));
+        promnxntab.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 100, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        promnxntab.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 60, -1));
+        promnxntab.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 60, -1));
 
         jTabbedPane1.addTab("NXN", promnxntab);
 
@@ -190,7 +190,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jLabel10.setText("Porcentaje de descuento");
         promdsctotab.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 42, -1, -1));
-        promdsctotab.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 39, 37, -1));
+        promdsctotab.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 39, 70, -1));
 
         jRadioButton3.setText("Producto específico");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +198,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jRadioButton3ActionPerformed(evt);
             }
         });
-        promdsctotab.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 101, -1, -1));
+        promdsctotab.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel11.setText("Aplicar a:");
         promdsctotab.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, -1, -1));
@@ -209,7 +209,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jRadioButton4ActionPerformed(evt);
             }
         });
-        promdsctotab.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 101, -1, -1));
+        promdsctotab.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
         panelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         promdsctotab.add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 590, 110));
@@ -220,7 +220,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jLabel12.setText("Monto Adicional:");
         montotab.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-        montotab.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 50, -1));
+        montotab.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 100, -1));
 
         jLabel13.setText("Por la compra del producto:");
         montotab.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
@@ -233,9 +233,9 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jLabel16.setText("Marca");
         montotab.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
-        montotab.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 60, -1));
-        montotab.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 60, -1));
-        montotab.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 70, -1));
+        montotab.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
+        montotab.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 110, -1));
+        montotab.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 110, -1));
 
         jLabel17.setText("Se lleva los productos");
         montotab.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
@@ -316,15 +316,15 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         label5.setText("Stock");
         jPanel1.add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 177, -1, -1));
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 84, 103, -1));
-        jPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 114, 103, -1));
+        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 84, 150, -1));
+        jPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 114, 150, -1));
 
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
             }
         });
-        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 177, 103, -1));
+        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 177, 150, -1));
         jPanel1.add(txtDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 207, 152, 37));
 
         jRadioButton1.setText("Activo");

@@ -216,7 +216,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Porcetaje", "Unidades", "Reales", "Dólares" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Porcentaje", "Unidades", "Reales", "Dólares" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -254,21 +254,21 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel1.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Tipo", "Objeto tipo", "Unidad medida", "Valor", "Id campaña"
+                "Id", "Tipo", "Objeto tipo", "Unidad medida", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -346,7 +346,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
               getToolkit().beep();             
               evt.consume();       
               JFrame frame = new JFrame("Error message");
-              jop.showMessageDialog(frame,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
+              jop.showMessageDialog(null,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
           }         // TODO add your handling code here:
     }//GEN-LAST:event_text_valorKeyTyped
     public void visibleItems(){
