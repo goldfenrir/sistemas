@@ -92,6 +92,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(710, 620));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,6 +121,11 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnDelete);
 
         btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer_1.png"))); // NOI18N
@@ -143,6 +149,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 47, 700, 10));
 
+        jPanel3.setPreferredSize(new java.awt.Dimension(675, 620));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Id");
@@ -286,10 +293,16 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jPanel3.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -311,7 +324,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane1);
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 590, 270));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 590, 210));
 
         jTabbedPane1.addTab("Objetivos", jPanel3);
         jPanel3.getAccessibleContext().setAccessibleName("");
@@ -333,7 +346,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
                 combo_tipo1ActionPerformed(evt);
             }
         });
-        jPanel5.add(combo_tipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 200, -1));
+        jPanel5.add(combo_tipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 190, -1));
 
         jLabel10.setText("Unidad medida");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
@@ -357,10 +370,16 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jPanel5.add(text_valor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 190, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
-        jPanel6.setLayout(new java.awt.GridLayout());
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -382,7 +401,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
 
         jPanel6.add(jScrollPane2);
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 590, 270));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 590, 210));
 
         jLabel12.setText("Valor mínimo");
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 90, -1));
@@ -465,14 +484,14 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 90, -1));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 90, -1));
 
         jTabbedPane1.addTab("Buscar", jPanel5);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 710, 570));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 710, 620));
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -548,11 +567,23 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void text_valor1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_valor1KeyTyped
-        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JFrame frame = new JFrame("Error message");
+            jop.showMessageDialog(null,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
+        }          // TODO add your handling code here:
     }//GEN-LAST:event_text_valor1KeyTyped
 
     private void text_valor2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_valor2KeyTyped
-        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JFrame frame = new JFrame("Error message");
+            jop.showMessageDialog(null,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
+        }          // TODO add your handling code here:
     }//GEN-LAST:event_text_valor2KeyTyped
 
     private void text_idCampaña1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_idCampaña1ActionPerformed
@@ -566,6 +597,12 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
     private void text_nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_nombre2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_nombre2ActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        
+        jop.showConfirmDialog(null,"¿Está seguro de que quiere eliminar "
+                + "este objetivo?","Eliminar Objetivo",JOptionPane.OK_CANCEL_OPTION);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
