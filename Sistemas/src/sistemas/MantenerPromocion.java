@@ -302,7 +302,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 580, 190));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 580, 200));
 
         jTabbedPane1.addTab("Promociones Activas", jPanel2);
 
