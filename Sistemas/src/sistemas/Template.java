@@ -33,6 +33,7 @@ public class Template extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnInfo1 = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
@@ -67,6 +68,12 @@ public class Template extends javax.swing.JFrame {
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnDelete);
+
+        btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer_1.png"))); // NOI18N
+        btnInfo1.setFocusable(false);
+        btnInfo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInfo1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnInfo1);
 
         btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help_1.png"))); // NOI18N
         btnHelp.setFocusable(false);
@@ -132,6 +139,7 @@ public class Template extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnInfo;
+    private javax.swing.JButton btnInfo1;
     private javax.swing.JButton btnSave;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
