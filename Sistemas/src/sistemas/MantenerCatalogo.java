@@ -5,12 +5,14 @@
  */
 package sistemas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alulab14
  */
 public class MantenerCatalogo extends javax.swing.JFrame {
-
+    JOptionPane jop = new JOptionPane();
     /**
      * Creates new form Template
      */
@@ -83,6 +85,11 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnDelete);
 
         btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer_1.png"))); // NOI18N
@@ -186,9 +193,9 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 580, 210));
-        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 190, 150));
+        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 210, 160));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 710, 620));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 770, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,6 +207,11 @@ public class MantenerCatalogo extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        jop.showConfirmDialog(null,"¿Está seguro de que quiere eliminar "
+                + "este objetivo?","Eliminar Objetivo",JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments

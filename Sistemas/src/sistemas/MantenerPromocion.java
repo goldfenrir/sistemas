@@ -6,13 +6,14 @@
 package sistemas;
 
 import java.util.Locale;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alulab14
  */
 public class MantenerPromocion extends javax.swing.JFrame {
-
+    JOptionPane jop = new JOptionPane();
     /**
      * Creates new form Template
      */
@@ -124,6 +125,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnDelete);
 
         btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help_1.png"))); // NOI18N
@@ -399,6 +405,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         pack();
        // nombrelabel.setLocale(Locale.UK);
     }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        jop.showConfirmDialog(null,"¿Está seguro de que quiere eliminar "
+                + "este objetivo?","Eliminar Objetivo",JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
