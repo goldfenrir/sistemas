@@ -89,11 +89,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         label4 = new java.awt.Label();
         label5 = new java.awt.Label();
         textField1 = new java.awt.TextField();
-        textField2 = new java.awt.TextField();
         txtStock = new java.awt.TextField();
         txtDescrip = new java.awt.TextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -306,32 +306,34 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 84, -1, -1));
 
         label2.setText("Fecha de creación");
-        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 114, -1, -1));
+        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
 
         label3.setText("Descripción");
         jPanel1.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 207, -1, -1));
 
         label4.setText("Estado");
-        jPanel1.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 147, -1, -1));
+        jPanel1.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         label5.setText("Stock");
-        jPanel1.add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 177, -1, -1));
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 84, 150, -1));
-        jPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 114, 150, -1));
+        jPanel1.add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        textField1.setEditable(false);
+        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 84, 50, -1));
 
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
             }
         });
-        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 177, 150, -1));
+        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 60, -1));
         jPanel1.add(txtDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 207, 152, 37));
 
         jRadioButton1.setText("Activo");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 144, -1, -1));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
         jRadioButton2.setText("Inactivo");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 144, -1, -1));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
+        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 610));
 
@@ -443,6 +445,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -497,7 +500,6 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JPanel promdsctotab;
     private javax.swing.JPanel promnxntab;
     private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
     private java.awt.TextField txtDescrip;
     private java.awt.TextField txtStock;
     // End of variables declaration//GEN-END:variables
