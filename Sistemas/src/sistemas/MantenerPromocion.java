@@ -36,6 +36,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
@@ -103,7 +104,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_1.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save-32.png"))); // NOI18N
         btnSave.setToolTipText("");
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -115,13 +116,13 @@ public class MantenerPromocion extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add_1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blank-file-32.png"))); // NOI18N
         btnAdd.setFocusable(false);
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnAdd);
 
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete_1.png"))); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x-mark-3-32.png"))); // NOI18N
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -132,13 +133,19 @@ public class MantenerPromocion extends javax.swing.JFrame {
         });
         jToolBar1.add(btnDelete);
 
-        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help_1.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer-32.png"))); // NOI18N
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton3);
+
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help-32.png"))); // NOI18N
         btnHelp.setFocusable(false);
         btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnHelp);
 
-        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info.png"))); // NOI18N
+        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-3-32.png"))); // NOI18N
         btnInfo.setFocusable(false);
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -455,6 +462,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;

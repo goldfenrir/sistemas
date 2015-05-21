@@ -86,6 +86,8 @@ public class DetallePagina extends javax.swing.JFrame {
         jSpinner6 = new javax.swing.JSpinner();
         jSpinner7 = new javax.swing.JSpinner();
         jSpinner8 = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,7 +96,7 @@ public class DetallePagina extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_1.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save-32.png"))); // NOI18N
         btnSave.setToolTipText("");
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -106,31 +108,31 @@ public class DetallePagina extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add_1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blank-file-32.png"))); // NOI18N
         btnAdd.setFocusable(false);
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnAdd);
 
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete_1.png"))); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x-mark-3-32.png"))); // NOI18N
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnDelete);
 
-        btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer_1.png"))); // NOI18N
+        btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer-32.png"))); // NOI18N
         btnInfo1.setFocusable(false);
         btnInfo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnInfo1);
 
-        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help_1.png"))); // NOI18N
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help-32.png"))); // NOI18N
         btnHelp.setFocusable(false);
         btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnHelp);
 
-        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info.png"))); // NOI18N
+        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-3-32.png"))); // NOI18N
         btnInfo.setFocusable(false);
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -193,21 +195,21 @@ public class DetallePagina extends javax.swing.JFrame {
         jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 40, -1));
 
         jLabel7.setText("Productos en la página:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jLabel8.setText("Codigo de producto");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
         jLabel9.setText("Nombre:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 70, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
+        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 70, -1));
 
         jLabel10.setText("Nivel de exposición");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         jCheckBox2.setText("Discover");
-        jPanel2.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
+        jPanel2.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
 
         jLabel3.setText("Codigo de producto");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
@@ -252,8 +254,8 @@ public class DetallePagina extends javax.swing.JFrame {
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, -1, -1));
 
         jLabel17.setText("<html>Código de <br/> promoción");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 50, 40));
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 40, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 50, 40));
+        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 40, -1));
         jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 40, -1));
 
         jLabel18.setText("<html>Código de <br/> promoción");
@@ -266,10 +268,10 @@ public class DetallePagina extends javax.swing.JFrame {
 
         jLabel20.setText("<html>Código de <br/> promoción");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, 50, 40));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 40, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 40, -1));
 
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
-        jPanel2.add(jSpinner5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+        jPanel2.add(jSpinner5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         jSpinner6.setModel(new javax.swing.SpinnerListModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
         jPanel2.add(jSpinner6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 40, -1));
@@ -279,6 +281,12 @@ public class DetallePagina extends javax.swing.JFrame {
 
         jSpinner8.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
         jPanel2.add(jSpinner8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
+
+        jLabel1.setText("<html>Porcentaje disponible <br />del total de la pagina");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+
+        jTextField15.setText("85%");
+        jPanel2.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 30, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 610));
 
@@ -348,6 +356,7 @@ public class DetallePagina extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -381,6 +390,7 @@ public class DetallePagina extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
