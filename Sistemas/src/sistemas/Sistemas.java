@@ -16,6 +16,8 @@ public class Sistemas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        MantenerPromocion mant = new MantenerPromocion();
+        mant.setVisible(true);
     }
     
 }
