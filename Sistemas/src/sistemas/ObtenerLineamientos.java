@@ -142,7 +142,7 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
         jPanel1.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lineamientos por producto"));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,7 +180,7 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Lineamientos por tipo"));
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
