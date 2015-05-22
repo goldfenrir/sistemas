@@ -100,8 +100,10 @@ public class MantenerPromocion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save-32.png"))); // NOI18N
@@ -171,7 +173,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
         promnxntab.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jLabel5.setText("Nombre");
-        promnxntab.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        promnxntab.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 165, -1, -1));
 
         jLabel6.setText("Precio base");
         promnxntab.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
@@ -180,7 +182,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
         promnxntab.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
 
         jLabel8.setText("Stock");
-        promnxntab.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
+        promnxntab.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 165, -1, -1));
 
         jLabel9.setText("Tipo de producto");
         promnxntab.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
@@ -201,9 +203,10 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jTextField6.setText("Labial");
         promnxntab.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 100, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         promnxntab.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 60, -1));
 
         jTabbedPane1.addTab("NXN", promnxntab);
@@ -285,14 +288,14 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         montotab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 250, 90));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         montotab.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         jButton4.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.interiorBackground"));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
