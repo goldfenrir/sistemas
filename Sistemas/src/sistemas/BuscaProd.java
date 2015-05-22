@@ -50,10 +50,10 @@ public class BuscaProd extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_prod = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -142,11 +142,9 @@ public class BuscaProd extends javax.swing.JFrame {
         jLabel7.setText("Resultados de búsqueda:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_prod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
+                {"15", "Labial rojo intenso", "labial", "10.0", "Si"},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -158,23 +156,30 @@ public class BuscaProd extends javax.swing.JFrame {
                 "Código", "Nombre ", "Tipo de Producto", "Precio Base", "Prom. Activa"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setResizingAllowed(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        tbl_prod.getTableHeader().setResizingAllowed(false);
+        tbl_prod.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbl_prod);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 530, 170));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Rango de Precios"));
         jPanel2.setToolTipText("");
-        jPanel2.setName("panelRango");
+        jPanel2.setName("panelRango"); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 230, 130));
 
@@ -245,9 +250,9 @@ public class BuscaProd extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable tbl_prod;
     // End of variables declaration//GEN-END:variables
 }

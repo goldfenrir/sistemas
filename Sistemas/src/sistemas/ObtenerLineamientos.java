@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package sistemas;
-
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 /**
  *
  * @author alulab14
  */
 public class ObtenerLineamientos extends javax.swing.JFrame {
-
+    JOptionPane jop = new JOptionPane();
     /**
      * Creates new form Template
      */
@@ -63,7 +64,7 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save-32.png"))); // NOI18N
-        btnSave.setToolTipText("");
+        btnSave.setToolTipText("Guardar");
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -75,30 +76,35 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
         jToolBar1.add(btnSave);
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blank-file-32.png"))); // NOI18N
+        btnAdd.setToolTipText("Nuevo");
         btnAdd.setFocusable(false);
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnAdd);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x-mark-3-32.png"))); // NOI18N
+        btnDelete.setToolTipText("Eliminar");
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnDelete);
 
         btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer-32.png"))); // NOI18N
+        btnInfo1.setToolTipText("Imprimir");
         btnInfo1.setFocusable(false);
         btnInfo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnInfo1);
 
         btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help-32.png"))); // NOI18N
+        btnHelp.setToolTipText("Ayuda");
         btnHelp.setFocusable(false);
         btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnHelp);
 
         btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-3-32.png"))); // NOI18N
+        btnInfo.setToolTipText("Información");
         btnInfo.setFocusable(false);
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -177,6 +183,12 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 430, 150));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
+        jButton1.setToolTipText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Lineamientos por tipo"));
@@ -216,6 +228,7 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 420, 150));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
+        jButton2.setToolTipText("Buscar");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
@@ -230,6 +243,12 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
     private void rbutt_cyzoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutt_cyzoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbutt_cyzoneActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrame frames = new JFrame("Error message");
+        jop.showMessageDialog(frames,"Obtienendo accesos al sistema branding","",JOptionPane.INFORMATION_MESSAGE);// TODO add your handling code here:
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

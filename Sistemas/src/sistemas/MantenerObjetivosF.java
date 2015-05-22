@@ -51,7 +51,6 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         text_nombre1 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
         lblProd = new javax.swing.JLabel();
-        cmbProd = new javax.swing.JComboBox();
         cmbMarca = new javax.swing.JComboBox();
         cmbTipoP = new javax.swing.JComboBox();
         lblCamp = new javax.swing.JLabel();
@@ -61,6 +60,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        text_prod = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         text_id1 = new javax.swing.JTextField();
@@ -213,9 +213,6 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         lblProd.setText("Producto");
         jPanel3.add(lblProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
-        cmbProd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Labial rojo intenso", "Esmalte color piel", "Risadores extra large", "Sombras negras intensas" }));
-        jPanel3.add(cmbProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
-
         cmbMarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "L'bel", "Esika", "Cy°Zone" }));
         cmbMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,6 +269,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         jPanel4.add(jScrollPane1);
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 590, 210));
+        jPanel3.add(text_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
 
         jTabbedPane1.addTab("Objetivos", jPanel3);
         jPanel3.getAccessibleContext().setAccessibleName("");
@@ -502,7 +500,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         lblCamp.setVisible(false);
         cmbCamp.setVisible(false);
         lblProd.setVisible(false);
-        cmbProd.setVisible(false);
+        
         lblTipo.setVisible(false);
         cmbTipoP.setVisible(false);
         lblMarca.setVisible(false);
@@ -513,7 +511,8 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
         }
         else if(combo_tipo.getSelectedItem().toString().compareTo("Por producto")==0){
             lblProd.setVisible(true);
-            cmbProd.setVisible(true);
+            BuscaProd appBus= new BuscaProd();
+            appBus.setVisible(true);
         }
         else if(combo_tipo.getSelectedItem().toString().compareTo("Por tipo de producto")==0){
             lblTipo.setVisible(true);
@@ -597,7 +596,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
             lblCamp.setVisible(false);
             cmbCamp.setVisible(false);
             lblProd.setVisible(false);
-            cmbProd.setVisible(false); 
+            
             lblTipo.setVisible(false);
             cmbTipoP.setVisible(false);   
             lblMarca.setVisible(false);
@@ -644,7 +643,6 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cmbCamp;
     private javax.swing.JComboBox cmbMarca;
-    private javax.swing.JComboBox cmbProd;
     private javax.swing.JComboBox cmbTipoP;
     private javax.swing.JComboBox combo_tipo;
     private javax.swing.JComboBox combo_tipo1;
@@ -691,6 +689,7 @@ public class MantenerObjetivosF extends javax.swing.JFrame {
     private javax.swing.JTextField text_idCampaña1;
     private javax.swing.JTextField text_nombre1;
     private javax.swing.JTextField text_nombre2;
+    private javax.swing.JTextField text_prod;
     private javax.swing.JTextField text_tematica;
     private javax.swing.JTextField text_tematica1;
     private javax.swing.JTextField text_valor;
