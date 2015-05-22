@@ -353,9 +353,19 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jPanel1.add(txtDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 207, 160, 50));
 
         jRadioButton1.setText("Activo");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
         jRadioButton2.setText("Inactivo");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
         jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
@@ -428,6 +438,14 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jop.showConfirmDialog(null,"¿Está seguro de que quiere eliminar "
                 + "este objetivo?","Eliminar Objetivo",JOptionPane.OK_CANCEL_OPTION);
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+            jRadioButton2.setSelected(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        jRadioButton1.setSelected(false);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
