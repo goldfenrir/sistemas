@@ -14,6 +14,7 @@ public class BuscaProd extends javax.swing.JFrame {
     /**
      * Creates new form Template
      */
+    public int prodSel;
     public BuscaProd() {
         initComponents();
     }
@@ -84,6 +85,11 @@ public class BuscaProd extends javax.swing.JFrame {
         jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         jLabel7.setText("Resultados de búsqueda:");
@@ -142,12 +148,19 @@ public class BuscaProd extends javax.swing.JFrame {
 
     private void tbl_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_prodMouseClicked
      // TODO add your handling code here:
-        tbl_prodMouseClicked2(evt);
+       if (evt.getClickCount() == 2) {
+           setVisible(false);
+           int selRow = tbl_prod.getSelectedRow();
+           int prodId = Integer.parseInt(
+						tbl_prod.getValueAt(selRow, 0).toString());
+           
+        }
     }//GEN-LAST:event_tbl_prodMouseClicked
-    private void tbl_prodMouseClicked2(java.awt.event.MouseEvent evt) {                                      
-        
-        this.dispose();        // TODO add your handling code here:
-    } 
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     /**
      * @param args the command line arguments
      */

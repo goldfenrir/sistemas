@@ -33,13 +33,27 @@ public class Proyecciones extends javax.swing.JFrame {
     private void initComponents2(){
         cmbMarca.setVisible(false);
         cmbTipoP.setVisible(false);
-        txtCodP.setVisible(false);
+        getTxtCodP().setVisible(false);
         jLabel4.setVisible(false);
          jLabel3.setVisible(false);       
          jLabel2.setVisible(false);       
                 
         MyItemListener actionListener = new MyItemListener();
         jComboBox1.addItemListener(actionListener);
+    }
+
+    /**
+     * @return the txtCodP
+     */
+    public javax.swing.JTextField getTxtCodP() {
+        return txtCodP;
+    }
+
+    /**
+     * @param txtCodP the txtCodP to set
+     */
+    public void setTxtCodP(javax.swing.JTextField txtCodP) {
+        this.txtCodP = txtCodP;
     }
     
     
@@ -53,7 +67,7 @@ public class Proyecciones extends javax.swing.JFrame {
           if (evt.getStateChange() == ItemEvent.SELECTED) {
               cmbMarca.setVisible(false);
                 cmbTipoP.setVisible(false);
-                txtCodP.setVisible(false);
+                getTxtCodP().setVisible(false);
                 jLabel4.setVisible(false);
                  jLabel3.setVisible(false);       
                  jLabel2.setVisible(false);  
@@ -65,9 +79,14 @@ public class Proyecciones extends javax.swing.JFrame {
                  cmbTipoP.setVisible(true);
             }else if(((String)item).compareTo("Proyectar por producto")==0){
                 jLabel2.setVisible(true);
-                txtCodP.setText("                                               ");
-                txtCodP.selectAll();
-                txtCodP.setVisible(true);
+                    getTxtCodP().setText("                                               ");
+                    getTxtCodP().selectAll();
+                    getTxtCodP().setVisible(true);
+                BuscaProd appBus= new BuscaProd();
+                appBus.setVisible(true);
+                 
+                
+               
             }else if(((String)item).compareTo("Proyectar todos")==0){
                
             }
@@ -223,12 +242,12 @@ public class Proyecciones extends javax.swing.JFrame {
 
     private void txtCodPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPActionPerformed
         // TODO add your handling code here:
-        txtCodP.setText("");
+        getTxtCodP().setText("");
     }//GEN-LAST:event_txtCodPActionPerformed
 
     private void txtCodPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodPMouseClicked
         // TODO add your handling code here:
-        txtCodP.setText("");
+        getTxtCodP().setText("");
     }//GEN-LAST:event_txtCodPMouseClicked
 
     /**

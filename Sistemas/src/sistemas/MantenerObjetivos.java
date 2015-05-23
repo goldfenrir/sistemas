@@ -219,6 +219,11 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel3.add(cmbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
 
         cmbTipoP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Labial", "Perfumes", "Cremas", "Sombras", "Desmaquilladoras", "Ropa", "Delineadores", "Rimel", "Desodorantes", "Shampoo", "Accesorios", "Otros" }));
+        cmbTipoP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoPActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmbTipoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, 20));
 
         lblCamp.setText("Campaña");
@@ -538,6 +543,10 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private void text_nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_nombre2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_nombre2ActionPerformed
+
+    private void cmbTipoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoPActionPerformed
 
     /**
      * @param args the command line arguments
