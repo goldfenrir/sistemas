@@ -502,8 +502,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         if(Character.isLetter(c)) {
             getToolkit().beep();
             evt.consume();
-            JFrame frame = new JFrame("Error message");
-            jop.showMessageDialog(null,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
+            jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",JOptionPane.ERROR_MESSAGE);
         }         // TODO add your handling code here:
     }//GEN-LAST:event_text_valorKeyTyped
 
@@ -584,7 +583,6 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         if(Character.isLetter(c)) {
             getToolkit().beep();
             evt.consume();
-            JFrame frame = new JFrame("Error message");
             jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",JOptionPane.ERROR_MESSAGE);
         }          // TODO add your handling code here:
     }//GEN-LAST:event_text_valor1KeyTyped
