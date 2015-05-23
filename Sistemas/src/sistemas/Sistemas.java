@@ -6,7 +6,8 @@
 package sistemas;
 
 import javax.swing.UIManager;
-
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+import com.jgoodies.looks.plastic.theme.DesertBlue;
 /**
  *
  * @author alulab14
@@ -21,8 +22,9 @@ public class Sistemas {
         //MantenerPromocion mant = new MantenerPromocion();
         //mant.setVisible(true);
         try { 
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
-           // UIManager.setLookAndFeel(new Plastic3DLookAndFeel());
+          //  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
+            PlasticLookAndFeel.setPlasticTheme(new DesertBlue());
+            UIManager.setLookAndFeel(new PlasticLookAndFeel());
         } catch (Exception ex) { 
             ex.printStackTrace(); 
         }
