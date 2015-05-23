@@ -18,7 +18,7 @@ public class Sistemas {
         // TODO code application logic here
         //MantenerPromocion mant = new MantenerPromocion();
         //mant.setVisible(true);
-        Principal prin = new Principal();
+        Login  prin = new Login();
         prin.setVisible(true);
     }
     

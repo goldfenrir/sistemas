@@ -88,12 +88,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         txtDescrip = new java.awt.TextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 47, 700, 10));
 
@@ -286,15 +285,15 @@ public class MantenerPromocion extends javax.swing.JFrame {
         textField1.setEditable(false);
         textField1.setName(""); // NOI18N
         textField1.setText("15");
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 84, 50, -1));
+        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 60, -1));
 
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
             }
         });
-        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 60, -1));
-        jPanel1.add(txtDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 207, 160, 50));
+        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
+        jPanel1.add(txtDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 160, 50));
 
         jRadioButton1.setText("Activo");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -302,7 +301,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
 
         jRadioButton2.setText("Inactivo");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -310,8 +309,8 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jRadioButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
-        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 130, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 610));
 
@@ -426,7 +425,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
