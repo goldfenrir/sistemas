@@ -307,7 +307,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 84, -1, -1));
 
         label2.setText("Fecha de creación");
-        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
+        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
         label3.setText("Descripción");
         jPanel1.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 207, -1, -1));

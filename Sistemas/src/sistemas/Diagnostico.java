@@ -56,16 +56,18 @@ public javax.swing.JPanel getPanel(){
         jLabel2.setText("Código de Diagnóstico");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
+        jTextField1.setEditable(false);
         jTextField1.setText("20");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 40, -1));
 
+        jTextField2.setEditable(false);
         jTextField2.setText("60");
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 40, -1));
 
         jLabel3.setText("Conclusión");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        jTextField3.setText("LLama al buscar campaña");
+        jTextField3.setText("Se necesitaron refuerzos por web para mejores ventas");
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 320, 100));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
