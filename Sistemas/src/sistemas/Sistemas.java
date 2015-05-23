@@ -22,6 +22,7 @@ public class Sistemas {
         //mant.setVisible(true);
         try { 
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
+           // UIManager.setLookAndFeel(new Plastic3DLookAndFeel());
         } catch (Exception ex) { 
             ex.printStackTrace(); 
         }
