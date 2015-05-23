@@ -55,15 +55,21 @@ public class DetallePagina extends javax.swing.JFrame {
 
         jLabel6.setText("Número de página:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        jTextField4.setEditable(false);
+        jTextField4.setText("3");
         jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 40, -1));
 
         jLabel7.setText("<html>Cantidad de productos<br /> en la página:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        jTextField1.setText("4");
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 40, -1));
 
         jLabel1.setText("<html>Porcentaje disponible <br />del total de la pagina");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
+        jTextField15.setEditable(false);
         jTextField15.setText("85%");
         jPanel2.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 30, -1));
 
@@ -80,10 +86,10 @@ public class DetallePagina extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {"101", "Labial rojo intenso", "2", "0", "103"},
+                {"102", "Labial rojo carmesí", "3", "0", "-"},
+                {"201", "Polvos compactos coral", "1", "0", "-"},
+                {"203", "Rímel Volumanía", "4", "0", "101"}
             },
             new String [] {
                 "Codigo", "Nombre", "Nivel Exp.", "Discover", "Cod. Prom"
