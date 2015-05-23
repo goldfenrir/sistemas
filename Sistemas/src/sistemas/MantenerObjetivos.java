@@ -66,7 +66,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         lblTipo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        objetivos = new javax.swing.JTable();
+        table_objetivos = new javax.swing.JTable();
         text_prod = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -253,7 +253,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        objetivos.setModel(new javax.swing.table.DefaultTableModel(
+        table_objetivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Incremento respecto a campaña", "Campaña 2", "Porcentaje", "10"},
                 {"2", "Por producto", "Labial rojo intenso", "Unidades", "500"},
@@ -275,7 +275,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(objetivos);
+        jScrollPane1.setViewportView(table_objetivos);
 
         jPanel4.add(jScrollPane1);
 
@@ -751,8 +751,8 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private javax.swing.JLabel lblProd1;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblTipo1;
-    private javax.swing.JTable objetivos;
     private javax.swing.JTable objetivos_b;
+    private javax.swing.JTable table_objetivos;
     private javax.swing.JTextField text_id;
     private javax.swing.JTextField text_id1;
     private javax.swing.JTextField text_idCampaña;

@@ -244,14 +244,46 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable2">
+                        <Component class="javax.swing.JTable" name="table_objetivos">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
-                                <Column editable="false" title="Tipo" type="java.lang.Object"/>
-                                <Column editable="false" title="Objeto tipo" type="java.lang.Object"/>
-                                <Column editable="false" title="Valor" type="java.lang.Object"/>
-                                <Column editable="false" title="Unidad" type="java.lang.Object"/>
+                              <Table columnCount="4" rowCount="7">
+                                <Column editable="false" title="Tipo" type="java.lang.Object">
+                                  <Data value="Incremento respecto a campa&#xf1;a"/>
+                                  <Data value="Por producto"/>
+                                  <Data value="Por producto"/>
+                                  <Data value=" Por marca"/>
+                                  <Data value="Incremento respecto a campa&#xf1;a"/>
+                                  <Data value="Por tipo de producto"/>
+                                  <Data value=" Por marca"/>
+                                </Column>
+                                <Column editable="false" title="Objeto tipo" type="java.lang.Object">
+                                  <Data value="Campa&#xf1;a 2"/>
+                                  <Data value="Labial rojo intenso"/>
+                                  <Data value="Desodorante limon"/>
+                                  <Data value="Esika"/>
+                                  <Data value="Campa&#xf1;a 3"/>
+                                  <Data value="Labiales"/>
+                                  <Data value="L&apos;bel"/>
+                                </Column>
+                                <Column editable="false" title="Valor" type="java.lang.Object">
+                                  <Data value="10"/>
+                                  <Data value="500"/>
+                                  <Data value="3000"/>
+                                  <Data value="1200"/>
+                                  <Data value="2000"/>
+                                  <Data value="350"/>
+                                  <Data value="1200"/>
+                                </Column>
+                                <Column editable="false" title="Unidad " type="java.lang.Object">
+                                  <Data value="Porcentaje"/>
+                                  <Data value="Unidades"/>
+                                  <Data value="D&#xf3;lares"/>
+                                  <Data value="Unidades"/>
+                                  <Data value="D&#xf3;lares"/>
+                                  <Data value="Unidades"/>
+                                  <Data value="D&#xf3;lares"/>
+                                </Column>
                               </Table>
                             </Property>
                           </Properties>
@@ -286,9 +318,17 @@
                         <Component class="javax.swing.JTable" name="jTable3">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="2" rowCount="4">
-                                <Column editable="false" title="Id" type="java.lang.Object"/>
-                                <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object"/>
+                              <Table columnCount="2" rowCount="3">
+                                <Column editable="false" title="Id" type="java.lang.Object">
+                                  <Data value="1"/>
+                                  <Data value="2"/>
+                                  <Data value="3"/>
+                                </Column>
+                                <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object">
+                                  <Data value="Obtener el 95% de tareas a tiempo"/>
+                                  <Data value="Incrementar la fidelidad de nuestros clientes"/>
+                                  <Data value="Mantener el primer puesto en productos de belleza"/>
+                                </Column>
                               </Table>
                             </Property>
                           </Properties>

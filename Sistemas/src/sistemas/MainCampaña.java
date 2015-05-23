@@ -135,7 +135,7 @@ public class MainCampaña extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table_objetivos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -241,15 +241,18 @@ public class MainCampaña extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos de la campaña"));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table_objetivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"Incremento respecto a campaña", "Campaña 2", "10", "Porcentaje"},
+                {"Por producto", "Labial rojo intenso", "500", "Unidades"},
+                {"Por producto", "Desodorante limon", "3000", "Dólares"},
+                {" Por marca", "Esika", "1200", "Unidades"},
+                {"Incremento respecto a campaña", "Campaña 3", "2000", "Dólares"},
+                {"Por tipo de producto", "Labiales", "350", "Unidades"},
+                {" Por marca", "L'bel", "1200", "Dólares"}
             },
             new String [] {
-                "Tipo", "Objeto tipo", "Valor", "Unidad"
+                "Tipo", "Objeto tipo", "Valor", "Unidad "
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -260,7 +263,7 @@ public class MainCampaña extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable2);
+        jScrollPane1.setViewportView(table_objetivos);
 
         jPanel4.add(jScrollPane1);
 
@@ -271,10 +274,9 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"1", "Obtener el 95% de tareas a tiempo"},
+                {"2", "Incrementar la fidelidad de nuestros clientes"},
+                {"3", "Mantener el primer puesto en productos de belleza"}
             },
             new String [] {
                 "Id", "Descripción"
@@ -852,7 +854,6 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
@@ -872,6 +873,7 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar5;
     private javax.swing.JToolBar jToolBar6;
     private javax.swing.JToolBar jToolBar8;
+    private javax.swing.JTable table_objetivos;
     // End of variables declaration//GEN-END:variables
      private javax.swing.JButton regresar;
     private Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();
@@ -883,7 +885,7 @@ public class MainCampaña extends javax.swing.JFrame {
     private Diagnostico diagnostico=new Diagnostico();
     private GenerarAcuerdos acuerdos=new GenerarAcuerdos();
     private ObtenerLineamientos lineamientos=new ObtenerLineamientos();
-     private MantenerObjetivos objetivos=new MantenerObjetivos();
+    private MantenerObjetivos objetivos=new MantenerObjetivos();
     
     private javax.swing.JToolBar jToolBar99;
     private javax.swing.JButton btnSave;
