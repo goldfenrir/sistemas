@@ -102,10 +102,10 @@ public class MantenerCatalogo extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"10", "Amarillo"},
+                {"11", "Naranja"},
+                {"13", "Violeta"},
+                {"14", "Turquesa"}
             },
             new String [] {
                 "Codigo", "Nombre"
@@ -131,22 +131,22 @@ public class MantenerCatalogo extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"1", "1", "21/03/2014"},
+                {"2", "3", "21/03/2014"},
+                {"3", "4", "22/03/2014"},
+                {"4", "5", "23/03/2014"},
+                {"5", "2", "21/03/2014"},
+                {"6", "3", "22/03/2014"},
+                {"7", "4", "21/03/2014"},
+                {"8", "1", "21/03/2014"},
+                {"9", "1", "23/03/2014"},
+                {"10", "2", "23/03/2014"},
+                {"11", "2", "24/03/2014"},
+                {"12", "3", "24/03/2014"},
+                {"13", "4", "25/03/2014"},
+                {"14", "4", "22/03/2014"},
+                {"15", "4", "24/03/2014"},
+                {"16", "2", "22/03/2014"}
             },
             new String [] {
                 "Nº pag", "Cantidad de Productos", "Fecha última modificacion"
