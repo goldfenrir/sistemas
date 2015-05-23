@@ -140,16 +140,12 @@ public class MainCampaña extends javax.swing.JFrame {
         jToolBar5 = new javax.swing.JToolBar();
         jButton6 = new javax.swing.JButton();
         jToolBar6 = new javax.swing.JToolBar();
-        jToolBar7 = new javax.swing.JToolBar();
         jButton9 = new javax.swing.JButton();
         jToolBar8 = new javax.swing.JToolBar();
-        jToolBar9 = new javax.swing.JToolBar();
         jButton7 = new javax.swing.JButton();
         jToolBar10 = new javax.swing.JToolBar();
-        jToolBar11 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jToolBar12 = new javax.swing.JToolBar();
-        jToolBar13 = new javax.swing.JToolBar();
         jButton11 = new javax.swing.JButton();
         jToolBar17 = new javax.swing.JToolBar();
         jButton8 = new javax.swing.JButton();
@@ -396,9 +392,6 @@ public class MainCampaña extends javax.swing.JFrame {
         jToolBar6.setFloatable(false);
         jToolBar6.setRollover(true);
 
-        jToolBar7.setRollover(true);
-        jToolBar6.add(jToolBar7);
-
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/direction.png"))); // NOI18N
         jButton9.setText("Lineamientos");
         jButton9.setFocusable(false);
@@ -413,9 +406,6 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jToolBar8.setFloatable(false);
         jToolBar8.setRollover(true);
-
-        jToolBar9.setRollover(true);
-        jToolBar8.add(jToolBar9);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/combo.png"))); // NOI18N
         jButton7.setText("Combos");
@@ -432,9 +422,6 @@ public class MainCampaña extends javax.swing.JFrame {
         jToolBar10.setFloatable(false);
         jToolBar10.setRollover(true);
 
-        jToolBar11.setRollover(true);
-        jToolBar10.add(jToolBar11);
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guarantee.png"))); // NOI18N
         jButton1.setText("Acuerdos");
         jButton1.setFocusable(false);
@@ -449,9 +436,6 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jToolBar12.setFloatable(false);
         jToolBar12.setRollover(true);
-
-        jToolBar13.setRollover(true);
-        jToolBar12.add(jToolBar13);
 
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/report.png"))); // NOI18N
         jButton11.setText("Reporte Venta");
@@ -542,7 +526,7 @@ public class MainCampaña extends javax.swing.JFrame {
                             .addComponent(jToolBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jToolBar10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jToolBar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -836,9 +820,7 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar10;
-    private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar12;
-    private javax.swing.JToolBar jToolBar13;
     private javax.swing.JToolBar jToolBar17;
     private javax.swing.JToolBar jToolBar18;
     private javax.swing.JToolBar jToolBar19;
@@ -847,9 +829,7 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar4;
     private javax.swing.JToolBar jToolBar5;
     private javax.swing.JToolBar jToolBar6;
-    private javax.swing.JToolBar jToolBar7;
     private javax.swing.JToolBar jToolBar8;
-    private javax.swing.JToolBar jToolBar9;
     // End of variables declaration//GEN-END:variables
      private javax.swing.JButton regresar;
     private Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();

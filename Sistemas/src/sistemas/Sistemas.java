@@ -5,6 +5,8 @@
  */
 package sistemas;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author alulab14
@@ -18,6 +20,11 @@ public class Sistemas {
         // TODO code application logic here
         //MantenerPromocion mant = new MantenerPromocion();
         //mant.setVisible(true);
+        try { 
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
+        } catch (Exception ex) { 
+            ex.printStackTrace(); 
+        }
         Login  prin = new Login();
         prin.setVisible(true);
     }
