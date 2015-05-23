@@ -256,6 +256,9 @@
                   <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_prodMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

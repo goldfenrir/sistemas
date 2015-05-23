@@ -120,6 +120,11 @@ public class BuscaProd extends javax.swing.JFrame {
         });
         tbl_prod.getTableHeader().setResizingAllowed(false);
         tbl_prod.getTableHeader().setReorderingAllowed(false);
+        tbl_prod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_prodMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_prod);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 530, 170));
@@ -135,6 +140,14 @@ public class BuscaProd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbl_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_prodMouseClicked
+     // TODO add your handling code here:
+        tbl_prodMouseClicked2(evt);
+    }//GEN-LAST:event_tbl_prodMouseClicked
+    private void tbl_prodMouseClicked2(java.awt.event.MouseEvent evt) {                                      
+        
+        this.dispose();        // TODO add your handling code here:
+    } 
     /**
      * @param args the command line arguments
      */

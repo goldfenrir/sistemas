@@ -19,6 +19,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     public MantenerObjetivos() {
         initComponents();
         visibleItems();
+        text_prod.setVisible(false);
     }
     public javax.swing.JPanel getPanel(){
         return jPanel1;
@@ -96,19 +97,19 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Id");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 39, 32));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 39, 32));
 
         jLabel2.setText("Tipo");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         text_id.setEditable(false);
         jPanel3.add(text_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 190, -1));
 
         jLabel3.setText("Unidad medida");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         jLabel4.setText("Valor");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         text_valor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -452,7 +453,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         lblCamp.setVisible(false);
         cmbCamp.setVisible(false);
         lblProd.setVisible(false);
-        
+        text_prod.setVisible(false);
         lblTipo.setVisible(false);
         cmbTipoP.setVisible(false);
         lblMarca.setVisible(false);
@@ -463,6 +464,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         }
         else if(combo_tipo.getSelectedItem().toString().compareTo("Por producto")==0){
             lblProd.setVisible(true);
+            text_prod.setVisible(true);
             BuscaProd appBus= new BuscaProd();
             appBus.setVisible(true);
         }
@@ -544,7 +546,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
             lblCamp.setVisible(false);
             cmbCamp.setVisible(false);
             lblProd.setVisible(false);
-            
+            text_prod.setVisible(false);
             lblTipo.setVisible(false);
             cmbTipoP.setVisible(false);   
             lblMarca.setVisible(false);
