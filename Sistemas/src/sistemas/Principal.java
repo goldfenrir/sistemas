@@ -247,6 +247,21 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
     }
+    
+    public void agregarDetPag(){
+        
+        getContentPane().removeAll();
+        pack();
+        barra();
+        detPag.getPanel().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        detPag.pack();
+        getContentPane().add(detPag.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
+        pack();
+        panelStack.push(detPag.getPanel());
+        
+        //getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));        
+        pack();
+    }
     /**
      * @param args the command line arguments
      */
@@ -294,8 +309,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JButton regresar;
-    private Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();
-    private MantenerCatalogo cat = new MantenerCatalogo();
+    public static Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();
+    private MantenerCatalogo cat = new MantenerCatalogo(this);
     private MantenerPromocion prom = new MantenerPromocion();
     private MantenerCombos comb = new MantenerCombos();
     private javax.swing.JToolBar jToolBar1;
@@ -307,4 +322,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private ReporteVentas rep = new ReporteVentas();
     private Proyecciones proy = new Proyecciones();
+    private DetallePagina detPag = new DetallePagina();
 }
