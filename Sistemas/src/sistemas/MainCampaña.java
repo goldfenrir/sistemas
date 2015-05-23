@@ -263,6 +263,7 @@ public class MainCampaña extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        table_objetivos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(table_objetivos);
 
         jPanel4.add(jScrollPane1);
@@ -290,6 +291,7 @@ public class MainCampaña extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable3.setPreferredSize(new java.awt.Dimension(200, 48));
         jScrollPane4.setViewportView(jTable3);
 
         jPanel5.add(jScrollPane4);
@@ -318,7 +320,7 @@ public class MainCampaña extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -336,18 +338,26 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"25", "15/06/2014"},
-                {"26", "16/06/2014"},
-                {"27", "16/06/2014"},
-                {"28", "17/06/2014"},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"25", "15/06/2014", "5"},
+                {"26", "16/06/2014", "3"},
+                {"27", "16/06/2014", "6"},
+                {"28", "17/06/2014", "1"},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Código", "Fecha de Registro"
+                "Código", "Fecha de Registro", "Puntuación"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable4);
 
         jPanel7.add(jScrollPane3);

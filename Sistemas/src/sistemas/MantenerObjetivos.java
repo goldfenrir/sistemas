@@ -86,9 +86,9 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         text_idCampaña1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        text_tematica1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        text_nombre2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         lblProd1 = new javax.swing.JLabel();
         cmbMarca1 = new javax.swing.JComboBox();
@@ -294,6 +294,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jLabel8.setText("Id");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 39, 32));
 
+        text_id1.setEditable(false);
         text_id1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 text_id1KeyTyped(evt);
@@ -378,6 +379,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
         jLabel13.setText("IdCampaña");
 
+        text_idCampaña1.setEditable(false);
         text_idCampaña1.setText("23");
         text_idCampaña1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,21 +394,11 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
         jLabel14.setText("Nombre");
 
-        text_tematica1.setText("Día de la madre");
-        text_tematica1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_tematica1ActionPerformed(evt);
-            }
-        });
-
         jLabel15.setText("Temática");
 
-        text_nombre2.setText("Campaña 5");
-        text_nombre2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_nombre2ActionPerformed(evt);
-            }
-        });
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Campaña 1", "Campaña 2", "Campaña 3", " " }));
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Día de la madre", "Día del padre", "Fiestas Patrias", "Inicio primavera" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -420,13 +412,13 @@ public class MantenerObjetivos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(text_idCampaña1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
                         .addGap(18, 18, 18)
-                        .addComponent(text_nombre2))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(49, 49, 49)
-                        .addComponent(text_tematica1)))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -439,17 +431,17 @@ public class MantenerObjetivos extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(text_nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(text_tematica1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton1.setToolTipText("Buscar");
         jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 90, -1));
 
@@ -600,14 +592,6 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_text_idCampaña1ActionPerformed
 
-    private void text_tematica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tematica1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_tematica1ActionPerformed
-
-    private void text_nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_nombre2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_nombre2ActionPerformed
-
     private void cmbTipoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipoPActionPerformed
@@ -712,8 +696,10 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_tipo;
     private javax.swing.JComboBox combo_tipo1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -756,11 +742,9 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private javax.swing.JTextField text_idCampaña;
     private javax.swing.JTextField text_idCampaña1;
     private javax.swing.JTextField text_nombre1;
-    private javax.swing.JTextField text_nombre2;
     private javax.swing.JTextField text_prod;
     private javax.swing.JTextField text_prod1;
     private javax.swing.JTextField text_tematica;
-    private javax.swing.JTextField text_tematica1;
     private javax.swing.JTextField text_valor;
     private javax.swing.JTextField text_valor1;
     private javax.swing.JTextField text_valor2;

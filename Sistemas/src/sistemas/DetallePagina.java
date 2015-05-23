@@ -99,7 +99,15 @@ public class DetallePagina extends javax.swing.JFrame {
             new String [] {
                 "Codigo", "Nombre", "Nivel Exp.", "Discover", "Cod. Prom"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 640, 90));

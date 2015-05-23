@@ -56,13 +56,13 @@ public class MantCampaña extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, -1));
 
         jButton3.setText("Campaña Fiestas Patrias");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 160, -1));
 
         jButton4.setText("Campaña Inicio primavera");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 160, -1));
 
         jButton5.setText("Registrar Nueva Campaña");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class MantCampaña extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 160, -1));
 
         jLabel10.setText("Estas son tus campañas activas:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
