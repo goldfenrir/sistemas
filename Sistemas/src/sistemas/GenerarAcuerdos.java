@@ -86,15 +86,15 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"70", null},
-                {"71", null},
-                {"72", null},
-                {"73", null},
-                {"74", null},
-                {"75", null},
-                {"76", null},
-                {"77", null},
-                {"78", null},
+                {"70", "Revisar página 10 del catálogo Esika"},
+                {"71", "Revisar páginas 20-30 del catálogo cyºzone"},
+                {"72", "Revisar página 15 del cátalogo de L'Bel"},
+                {"73", "Revisar niveles de exposición de cremas"},
+                {"74", "Revisar descuentos en labiales"},
+                {"75", "Revisar promociones de cyºzone"},
+                {"76", "Nueva reunión con publicidad del 23/03/2014"},
+                {"77", "Revisar lineamientos de marca L'Bel"},
+                {"78", "Reunión con Legal País para 01/04/2014"},
                 {"79", null}
             },
             new String [] {

@@ -178,7 +178,18 @@
                       <Data value="78"/>
                       <Data value="79"/>
                     </Column>
-                    <Column editable="true" title="Descripcion" type="java.lang.Object"/>
+                    <Column editable="true" title="Descripcion" type="java.lang.Object">
+                      <Data value="Revisar p&#xe1;gina 10 del cat&#xe1;logo Esika"/>
+                      <Data value="Revisar p&#xe1;ginas 20-30 del cat&#xe1;logo cy&#xba;zone"/>
+                      <Data value="Revisar p&#xe1;gina 15 del c&#xe1;talogo de L&apos;Bel"/>
+                      <Data value="Revisar niveles de exposici&#xf3;n de cremas"/>
+                      <Data value="Revisar descuentos en labiales"/>
+                      <Data value="Revisar promociones de cy&#xba;zone"/>
+                      <Data value="Nueva reuni&#xf3;n con publicidad del 23/03/2014"/>
+                      <Data value="Revisar lineamientos de marca L&apos;Bel"/>
+                      <Data value="Reuni&#xf3;n con Legal Pa&#xed;s para 01/04/2014"/>
+                      <Data value="null"/>
+                    </Column>
                   </Table>
                 </Property>
               </Properties>
