@@ -680,13 +680,13 @@ public class MainCampaña extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         barra();
-        rep.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
-        getContentPane().add(rep.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
+        rep.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
+        getContentPane().add(rep.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 520));
         pack();
         panelStack.push(rep.getPanel());
         getContentPane().removeAll();
         pack();
-        getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));        
+        getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 520));        
         pack();
     }//GEN-LAST:event_jButton11ActionPerformed
 

@@ -101,7 +101,7 @@ public class ReporteVentas extends javax.swing.JFrame {
 
         buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("UNIDADES");
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
 
         buttonGroup2.add(jRadioButton4);
         jRadioButton4.setSelected(true);
