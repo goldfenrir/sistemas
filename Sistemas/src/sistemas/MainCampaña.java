@@ -229,7 +229,7 @@ public class MainCampaña extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 130, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 290, 190));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 290, 190));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos de la campaña"));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
@@ -257,7 +257,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane1);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 180));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 280, 120));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos externos"));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
@@ -292,13 +292,20 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"50", "Workshop", "22/03/2014"},
+                {"51", "Feedback workshop", "23/03/2014"},
+                {"52", "presentación pxp", "24/03/2014"},
+                {"53", "feedback pxp", "25/03/2014"},
+                {"54", "presentación publicidad", "26/03/2014"},
+                {"55", "revisión bocetos 1", "29/03/2014"},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
             new String [] {
-                "Id", "Descripción", "Fecha"
+                "Id", "Tema", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -313,27 +320,30 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jPanel6.add(jScrollPane2);
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 270, 320));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 270, 270));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Diágnosticos"));
         jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"25", "15/06/2014"},
+                {"26", "16/06/2014"},
+                {"27", "16/06/2014"},
+                {"28", "17/06/2014"},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Fecha de Registro"
             }
         ));
         jScrollPane3.setViewportView(jTable4);
 
         jPanel7.add(jScrollPane3);
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 270, 180));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 270, 160));
 
         jTabbedPane1.addTab("Campaña", jPanel2);
 
