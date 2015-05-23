@@ -86,12 +86,6 @@ public class Proyecciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cmbMarca = new javax.swing.JComboBox();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnSave = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnHelp = new javax.swing.JButton();
-        btnInfo = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
@@ -126,46 +120,6 @@ public class Proyecciones extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cmbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
-
-        jToolBar1.setRollover(true);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save-32.png"))); // NOI18N
-        btnSave.setToolTipText("");
-        btnSave.setFocusable(false);
-        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnSave);
-
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blank-file-32.png"))); // NOI18N
-        btnAdd.setFocusable(false);
-        btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnAdd);
-
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x-mark-3-32.png"))); // NOI18N
-        btnDelete.setFocusable(false);
-        btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnDelete);
-
-        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help-32.png"))); // NOI18N
-        btnHelp.setFocusable(false);
-        btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnHelp);
-
-        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-3-32.png"))); // NOI18N
-        btnInfo.setFocusable(false);
-        btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnInfo);
-
-        jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 47, 498, 10));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Proyectar todos", "Proyectar por marca", "Proyectar por tipo de producto", "Proyectar por producto" }));
@@ -267,10 +221,6 @@ public class Proyecciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaveActionPerformed
-
     private void txtCodPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPActionPerformed
         // TODO add your handling code here:
         txtCodP.setText("");
@@ -317,13 +267,12 @@ public class Proyecciones extends javax.swing.JFrame {
         });
     }
     
+    public javax.swing.JPanel getPanel(){
+        return jPanel1;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnExp;
-    private javax.swing.JButton btnHelp;
-    private javax.swing.JButton btnInfo;
-    private javax.swing.JButton btnSave;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox cmbMarca;
     private javax.swing.JComboBox cmbTipoP;
@@ -344,7 +293,6 @@ public class Proyecciones extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField txtCodP;
     private javax.swing.JButton txtGen;
     // End of variables declaration//GEN-END:variables
