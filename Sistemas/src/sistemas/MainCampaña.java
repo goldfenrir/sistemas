@@ -59,17 +59,30 @@ public class MainCampaña extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jToolBar3 = new javax.swing.JToolBar();
-        jButton11 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jToolBar4 = new javax.swing.JToolBar();
+        jButton4 = new javax.swing.JButton();
+        jToolBar5 = new javax.swing.JToolBar();
+        jButton6 = new javax.swing.JButton();
+        jToolBar6 = new javax.swing.JToolBar();
+        jToolBar7 = new javax.swing.JToolBar();
+        jButton9 = new javax.swing.JButton();
+        jToolBar8 = new javax.swing.JToolBar();
+        jToolBar9 = new javax.swing.JToolBar();
+        jButton7 = new javax.swing.JButton();
+        jToolBar10 = new javax.swing.JToolBar();
+        jToolBar11 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+        jToolBar12 = new javax.swing.JToolBar();
+        jToolBar13 = new javax.swing.JToolBar();
+        jButton11 = new javax.swing.JButton();
+        jToolBar17 = new javax.swing.JToolBar();
         jButton8 = new javax.swing.JButton();
+        jToolBar18 = new javax.swing.JToolBar();
+        jButton3 = new javax.swing.JButton();
+        jToolBar19 = new javax.swing.JToolBar();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,7 +154,7 @@ public class MainCampaña extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 290, 190));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos de la campaña"));
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,7 +182,7 @@ public class MainCampaña extends javax.swing.JFrame {
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 180));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos externos"));
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,7 +210,7 @@ public class MainCampaña extends javax.swing.JFrame {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 280, 120));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Reuniones"));
-        jPanel6.setLayout(new java.awt.GridLayout());
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,7 +238,7 @@ public class MainCampaña extends javax.swing.JFrame {
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 270, 320));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Diágnosticos"));
-        jPanel7.setLayout(new java.awt.GridLayout());
+        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,8 +259,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Campaña", jPanel2);
 
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        jToolBar2.setFloatable(false);
         jToolBar2.setRollover(true);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/goal.gif"))); // NOI18N
@@ -262,51 +274,8 @@ public class MainCampaña extends javax.swing.JFrame {
         });
         jToolBar2.add(jButton2);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo_SP.png"))); // NOI18N
-        jButton4.setText("Campaña");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton4);
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/book.png"))); // NOI18N
-        jButton6.setText("Catalogo");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton6);
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/combo.png"))); // NOI18N
-        jButton7.setText("Combos");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton7);
-
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/direction.png"))); // NOI18N
-        jButton9.setText("Lineamientos");
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton9);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guarantee.png"))); // NOI18N
-        jButton1.setText("Acuerdos");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton1);
-
-        jPanel8.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 610, 60));
-
+        jToolBar3.setFloatable(false);
         jToolBar3.setRollover(true);
-
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/report.png"))); // NOI18N
-        jButton11.setText("Reporte Venta");
-        jButton11.setFocusable(false);
-        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton11);
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/graph.png"))); // NOI18N
         jButton10.setText("Proyección");
@@ -320,30 +289,175 @@ public class MainCampaña extends javax.swing.JFrame {
         });
         jToolBar3.add(jButton10);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Medic.png"))); // NOI18N
-        jButton5.setText("Diagnóstico");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton5);
+        jToolBar4.setFloatable(false);
+        jToolBar4.setRollover(true);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_prod.png"))); // NOI18N
-        jButton3.setText("Buscar Producto");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton3);
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo_SP.png"))); // NOI18N
+        jButton4.setText("Campaña");
+        jButton4.setFocusable(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar4.add(jButton4);
+
+        jToolBar5.setFloatable(false);
+        jToolBar5.setRollover(true);
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/book.png"))); // NOI18N
+        jButton6.setText("Catalogo");
+        jButton6.setFocusable(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar5.add(jButton6);
+
+        jToolBar6.setFloatable(false);
+        jToolBar6.setRollover(true);
+
+        jToolBar7.setRollover(true);
+        jToolBar6.add(jToolBar7);
+
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/direction.png"))); // NOI18N
+        jButton9.setText("Lineamientos");
+        jButton9.setFocusable(false);
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar6.add(jButton9);
+
+        jToolBar8.setFloatable(false);
+        jToolBar8.setRollover(true);
+
+        jToolBar9.setRollover(true);
+        jToolBar8.add(jToolBar9);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/combo.png"))); // NOI18N
+        jButton7.setText("Combos");
+        jButton7.setFocusable(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar8.add(jButton7);
+
+        jToolBar10.setFloatable(false);
+        jToolBar10.setRollover(true);
+
+        jToolBar11.setRollover(true);
+        jToolBar10.add(jToolBar11);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guarantee.png"))); // NOI18N
+        jButton1.setText("Acuerdos");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar10.add(jButton1);
+
+        jToolBar12.setFloatable(false);
+        jToolBar12.setRollover(true);
+
+        jToolBar13.setRollover(true);
+        jToolBar12.add(jToolBar13);
+
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/report.png"))); // NOI18N
+        jButton11.setText("Reporte Venta");
+        jButton11.setFocusable(false);
+        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar12.add(jButton11);
+
+        jToolBar17.setFloatable(false);
+        jToolBar17.setRollover(true);
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/offer.png"))); // NOI18N
         jButton8.setText("Promociones");
         jButton8.setFocusable(false);
         jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton8);
+        jToolBar17.add(jButton8);
 
-        jPanel8.add(jToolBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 600, 50));
+        jToolBar18.setFloatable(false);
+        jToolBar18.setRollover(true);
 
-        jTabbedPane1.addTab("tab2", jPanel8);
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_prod.png"))); // NOI18N
+        jButton3.setText("Buscar Producto");
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar18.add(jButton3);
+
+        jToolBar19.setFloatable(false);
+        jToolBar19.setRollover(true);
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Medic.png"))); // NOI18N
+        jButton5.setText("Diagnóstico");
+        jButton5.setFocusable(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar19.add(jButton5);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jToolBar19, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171)
+                        .addComponent(jToolBar6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToolBar17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToolBar12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(199, 199, 199)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jToolBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jToolBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jToolBar18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(191, 191, 191)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToolBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToolBar10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToolBar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToolBar17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jToolBar12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jToolBar10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jToolBar18, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jToolBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar19, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Panel Control", jPanel8);
 
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
 
@@ -450,7 +564,20 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar10;
+    private javax.swing.JToolBar jToolBar11;
+    private javax.swing.JToolBar jToolBar12;
+    private javax.swing.JToolBar jToolBar13;
+    private javax.swing.JToolBar jToolBar17;
+    private javax.swing.JToolBar jToolBar18;
+    private javax.swing.JToolBar jToolBar19;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
+    private javax.swing.JToolBar jToolBar4;
+    private javax.swing.JToolBar jToolBar5;
+    private javax.swing.JToolBar jToolBar6;
+    private javax.swing.JToolBar jToolBar7;
+    private javax.swing.JToolBar jToolBar8;
+    private javax.swing.JToolBar jToolBar9;
     // End of variables declaration//GEN-END:variables
 }
