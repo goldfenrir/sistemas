@@ -110,9 +110,11 @@ public class Diagnostico extends javax.swing.JFrame {
 
         jLabel3.setText("Conclusión");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        jTextField3.setText("LLama al buscar campaña");
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 320, 100));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
