@@ -85,10 +85,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         textField1 = new java.awt.TextField();
         txtStock = new java.awt.TextField();
-        txtDescrip = new java.awt.TextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,8 +104,8 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jLabel2.setText("Cantidad de productos llevados");
         promnxntab.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
-        promnxntab.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
-        promnxntab.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        promnxntab.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 40, -1));
+        promnxntab.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 40, -1));
 
         jLabel3.setText("Información del producto");
         promnxntab.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
@@ -127,19 +128,27 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jLabel9.setText("Tipo de producto");
         promnxntab.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
 
+        jTextField1.setEditable(false);
         jTextField1.setText("101");
         promnxntab.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 40, -1));
+
+        jTextField2.setEditable(false);
+        jTextField2.setText("Labial rojo intenso");
         promnxntab.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 110, -1));
 
+        jTextField3.setEditable(false);
         jTextField3.setText("75.70");
         promnxntab.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 50, -1));
 
+        jTextField4.setEditable(false);
         jTextField4.setText("Esika");
         promnxntab.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 80, -1));
 
+        jTextField5.setEditable(false);
         jTextField5.setText("500");
         promnxntab.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 50, -1));
 
+        jTextField6.setEditable(false);
         jTextField6.setText("Labial");
         promnxntab.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 100, -1));
 
@@ -203,8 +212,17 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jLabel16.setText("Marca");
         montotab.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jTextField9.setEditable(false);
+        jTextField9.setText("201");
         montotab.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
+
+        jTextField10.setEditable(false);
+        jTextField10.setText("Rímel Volumanía");
         montotab.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 110, -1));
+
+        jTextField11.setEditable(false);
+        jTextField11.setText("CyºZone");
         montotab.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 110, -1));
 
         jLabel17.setText("Se lleva los productos");
@@ -212,10 +230,9 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"101", "Labial rojo intenso", "Esika"},
+                {"102", "Polvos compacto Coral", "CyºZone"},
+                {"103 ", "Polvos Compacto Carmesí", "CyºZone"}
             },
             new String [] {
                 "Codigo", "Nombre", "Marca"
@@ -231,7 +248,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        montotab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 250, 90));
+        montotab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 250, 80));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -280,7 +297,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Promociones Activas", jPanel2);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 650, 290));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 650, 290));
 
         label1.setText("Código de la promoción");
         jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 84, -1, -1));
@@ -302,13 +319,13 @@ public class MantenerPromocion extends javax.swing.JFrame {
         textField1.setText("15");
         jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 60, -1));
 
+        txtStock.setText("700");
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
             }
         });
         jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
-        jPanel1.add(txtDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 160, 50));
 
         jRadioButton1.setText("Activo");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -326,6 +343,14 @@ public class MantenerPromocion extends javax.swing.JFrame {
         });
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 130, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Promoción por el día de la madre de un 10% de descuento en los labiales");
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 220, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 610));
 
@@ -484,6 +509,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSpinner jSpinner1;
@@ -491,6 +517,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -512,7 +539,6 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private javax.swing.JPanel promdsctotab;
     private javax.swing.JPanel promnxntab;
     private java.awt.TextField textField1;
-    private java.awt.TextField txtDescrip;
     private java.awt.TextField txtStock;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JComboBox jComboBox1;
