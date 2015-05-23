@@ -728,6 +728,17 @@ public class MainCampaña extends javax.swing.JFrame {
 		
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    public void agregarPaginaCatalogo(){
+        barra();
+        detPag.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        getContentPane().add(detPag.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
+        pack();
+        panelStack.push(detPag.getPanel());
+        getContentPane().removeAll();
+        pack();
+        getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));        
+        pack();
+    }
     /**
      * @param args the command line arguments
      */
@@ -833,10 +844,10 @@ public class MainCampaña extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
      private javax.swing.JButton regresar;
     private Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();
-    private MantenerCatalogo cat = new MantenerCatalogo();
+    private MantenerCatalogo cat = new MantenerCatalogo(this);
     private MantenerPromocion prom = new MantenerPromocion();
     private MantenerCombos comb = new MantenerCombos();
-    
+    private DetallePagina detPag = new DetallePagina();
     private BuscaProd buscaProd=new BuscaProd();
     private Diagnostico diagnostico=new Diagnostico();
     private GenerarAcuerdos acuerdos=new GenerarAcuerdos();
