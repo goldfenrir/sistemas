@@ -5,6 +5,9 @@
  */
 package sistemas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author alulab14
@@ -16,6 +19,8 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
      */
     public GenerarAcuerdos() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
     public javax.swing.JPanel getPanel(){
         return jPanel1;

@@ -5,6 +5,9 @@
  */
 package sistemas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author goldfenrir
@@ -16,6 +19,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
 
     /**
@@ -42,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login SuperPlanit");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

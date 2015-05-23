@@ -5,6 +5,8 @@
  */
 package sistemas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 
@@ -19,6 +21,8 @@ public class MantenerPromocion extends javax.swing.JFrame {
      */
     public MantenerPromocion() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
 
     /**

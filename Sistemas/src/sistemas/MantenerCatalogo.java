@@ -5,6 +5,8 @@
  */
 package sistemas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,8 @@ public class MantenerCatalogo extends javax.swing.JFrame {
     public MantenerCatalogo(MainCampaña p) {
         prin = p;
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
 
     /**

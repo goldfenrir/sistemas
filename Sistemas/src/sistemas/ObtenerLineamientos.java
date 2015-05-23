@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package sistemas;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 /**
@@ -17,6 +19,8 @@ public class ObtenerLineamientos extends javax.swing.JFrame {
      */
     public ObtenerLineamientos() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
 public javax.swing.JPanel getPanel(){
         return jPanel1;

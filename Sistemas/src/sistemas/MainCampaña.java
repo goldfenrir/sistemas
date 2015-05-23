@@ -7,6 +7,8 @@ package sistemas;
 
 import com.jgoodies.looks.plastic.PlasticLookAndFeel;
 import com.jgoodies.looks.plastic.theme.DesertBlue;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Stack;
 import javax.swing.UIManager;
 
@@ -22,6 +24,9 @@ public class MainCampaña extends javax.swing.JFrame {
     public MainCampaña() {
         
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
+        
         panelStack.push(jPanel1);
     }
     public void barra(){

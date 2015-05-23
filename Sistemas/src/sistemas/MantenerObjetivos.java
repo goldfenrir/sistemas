@@ -5,6 +5,8 @@
  */
 
 package sistemas;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 /**
@@ -20,6 +22,8 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         initComponents();
         visibleItems();
         text_prod.setVisible(false);
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
     public javax.swing.JPanel getPanel(){
         return jPanel1;
