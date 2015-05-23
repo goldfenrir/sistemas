@@ -10,6 +10,8 @@ import com.jgoodies.looks.plastic.theme.DesertBlue;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.Stack;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -64,6 +66,11 @@ public class MainCampaña extends javax.swing.JFrame {
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar99.add(btnDelete);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer-32.png"))); // NOI18N
         btnInfo1.setToolTipText("Imprimir");
@@ -611,7 +618,13 @@ public class MainCampaña extends javax.swing.JFrame {
         pack();
 		
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        int res = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro?");
+			if (res == JOptionPane.OK_OPTION) {
+				
+			}
+    }   
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
        //proyecciones
         barra();
