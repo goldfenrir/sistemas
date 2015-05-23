@@ -19,7 +19,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     public MantenerObjetivos() {
         initComponents();
         visibleItems();
-        text_prod.setVisible(false);
+        visibleItems2();
     }
     public javax.swing.JPanel getPanel(){
         return jPanel1;
@@ -86,6 +86,14 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         text_nombre2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        lblProd1 = new javax.swing.JLabel();
+        cmbMarca1 = new javax.swing.JComboBox();
+        cmbTipoP1 = new javax.swing.JComboBox();
+        lblCamp1 = new javax.swing.JLabel();
+        cmbCamp1 = new javax.swing.JComboBox();
+        lblMarca1 = new javax.swing.JLabel();
+        lblTipo1 = new javax.swing.JLabel();
+        text_prod1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -271,6 +279,8 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel4.add(jScrollPane1);
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 590, 210));
+
+        text_prod.setText("Labial rojo intenso");
         jPanel3.add(text_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
 
         jTabbedPane1.addTab("Objetivos", jPanel3);
@@ -282,6 +292,12 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
         jLabel8.setText("Id");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 39, 32));
+
+        text_id1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                text_id1KeyTyped(evt);
+            }
+        });
         jPanel5.add(text_id1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 190, -1));
 
         jLabel9.setText("Tipo");
@@ -296,7 +312,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel5.add(combo_tipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 190, -1));
 
         jLabel10.setText("Unidad medida");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Porcentaje", "Unidades", "Reales", "Dólares" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -304,17 +320,17 @@ public class MantenerObjetivos extends javax.swing.JFrame {
                 jComboBox3ActionPerformed(evt);
             }
         });
-        jPanel5.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, -1));
+        jPanel5.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, -1));
 
         jLabel11.setText("Valor máximo");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 90, -1));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 90, -1));
 
         text_valor1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 text_valor1KeyTyped(evt);
             }
         });
-        jPanel5.add(text_valor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 190, -1));
+        jPanel5.add(text_valor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 190, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0));
@@ -348,19 +364,19 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
         jPanel6.add(jScrollPane2);
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 590, 210));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 610, 210));
 
         jLabel12.setText("Valor mínimo");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 90, -1));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 90, -1));
 
         text_valor2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 text_valor2KeyTyped(evt);
             }
         });
-        jPanel5.add(text_valor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 190, -1));
+        jPanel5.add(text_valor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 190, -1));
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de campaña"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Por datos de campaña"));
 
         jLabel13.setText("IdCampaña");
 
@@ -368,6 +384,11 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         text_idCampaña1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 text_idCampaña1ActionPerformed(evt);
+            }
+        });
+        text_idCampaña1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                text_idCampaña1KeyTyped(evt);
             }
         });
 
@@ -432,7 +453,41 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
         jButton1.setToolTipText("Buscar");
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 90, -1));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 90, -1));
+
+        lblProd1.setText("Producto");
+        jPanel5.add(lblProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        cmbMarca1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "L'bel", "Esika", "Cy°Zone" }));
+        cmbMarca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMarca1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cmbMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
+
+        cmbTipoP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Labial", "Perfumes", "Cremas", "Sombras", "Desmaquilladoras", "Ropa", "Delineadores", "Rimel", "Desodorantes", "Shampoo", "Accesorios", "Otros" }));
+        cmbTipoP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoP1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cmbTipoP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, 20));
+
+        lblCamp1.setText("Campaña");
+        jPanel5.add(lblCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        cmbCamp1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Campaña 12 (diciembre)", "Campaña 1 (enero)", "Campaña 2 (febrero)", "Campaña 3 (marzo)", "Campaña 4 (abril)", " " }));
+        jPanel5.add(cmbCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 170, -1));
+
+        lblMarca1.setText("Marca");
+        jPanel5.add(lblMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 73, -1));
+
+        lblTipo1.setText("Tipo producto");
+        jPanel5.add(lblTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        text_prod1.setText("Labial rojo intenso");
+        jPanel5.add(text_prod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
 
         jTabbedPane1.addTab("Buscar", jPanel5);
 
@@ -455,14 +510,8 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     }//GEN-LAST:event_text_valorKeyTyped
 
     private void combo_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoActionPerformed
-        lblCamp.setVisible(false);
-        cmbCamp.setVisible(false);
-        lblProd.setVisible(false);
-        text_prod.setVisible(false);
-        lblTipo.setVisible(false);
-        cmbTipoP.setVisible(false);
-        lblMarca.setVisible(false);
-        cmbMarca.setVisible(false);
+        visibleItems();
+
         if(combo_tipo.getSelectedItem().toString().compareTo("Incremento respecto a campaña")==0){
             lblCamp.setVisible(true);
             cmbCamp.setVisible(true);
@@ -506,6 +555,26 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
     private void combo_tipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipo1ActionPerformed
         // TODO add your handling code here:
+        visibleItems2();
+
+        if(combo_tipo1.getSelectedItem().toString().compareTo("Incremento respecto a campaña")==0){
+            lblCamp1.setVisible(true);
+            cmbCamp1.setVisible(true);
+        }
+        else if(combo_tipo1.getSelectedItem().toString().compareTo("Por producto")==0){
+            lblProd1.setVisible(true);
+            text_prod1.setVisible(true);
+            BuscaProd appBus= new BuscaProd();
+            appBus.setVisible(true);
+        }
+        else if(combo_tipo1.getSelectedItem().toString().compareTo("Por tipo de producto")==0){
+            lblTipo1.setVisible(true);
+            cmbTipoP1.setVisible(true);
+        }
+        else if(combo_tipo1.getSelectedItem().toString().compareTo("Por marca")==0){
+            lblMarca1.setVisible(true);
+            cmbMarca1.setVisible(true);
+        }
     }//GEN-LAST:event_combo_tipo1ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
@@ -518,7 +587,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
             getToolkit().beep();
             evt.consume();
             JFrame frame = new JFrame("Error message");
-            jop.showMessageDialog(null,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
+            jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",JOptionPane.ERROR_MESSAGE);
         }          // TODO add your handling code here:
     }//GEN-LAST:event_text_valor1KeyTyped
 
@@ -527,8 +596,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         if(Character.isLetter(c)) {
             getToolkit().beep();
             evt.consume();
-            JFrame frame = new JFrame("Error message");
-            jop.showMessageDialog(null,"Está ingresando letras","Error de input",JOptionPane.ERROR_MESSAGE);
+            jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",JOptionPane.ERROR_MESSAGE);
         }          // TODO add your handling code here:
     }//GEN-LAST:event_text_valor2KeyTyped
 
@@ -548,6 +616,34 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipoPActionPerformed
 
+    private void cmbMarca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMarca1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMarca1ActionPerformed
+
+    private void cmbTipoP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoP1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoP1ActionPerformed
+
+    private void text_id1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_id1KeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)) {
+            getToolkit().beep();
+            evt.consume();
+            jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",JOptionPane.ERROR_MESSAGE);
+        }   
+    }//GEN-LAST:event_text_id1KeyTyped
+
+    private void text_idCampaña1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_idCampaña1KeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)) {
+            getToolkit().beep();
+            evt.consume();
+            jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",JOptionPane.ERROR_MESSAGE);
+        }   
+    }//GEN-LAST:event_text_idCampaña1KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -559,8 +655,22 @@ public class MantenerObjetivos extends javax.swing.JFrame {
             lblTipo.setVisible(false);
             cmbTipoP.setVisible(false);   
             lblMarca.setVisible(false);
-            cmbMarca.setVisible(false);            
+            cmbMarca.setVisible(false);
+            
+       
     }
+     public void visibleItems2(){
+  
+            lblCamp1.setVisible(false);
+            cmbCamp1.setVisible(false);
+            lblProd1.setVisible(false);
+            text_prod1.setVisible(false);
+            lblTipo1.setVisible(false);
+            cmbTipoP1.setVisible(false);   
+            lblMarca1.setVisible(false);
+            cmbMarca1.setVisible(false);             
+       
+    }   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -598,8 +708,11 @@ public class MantenerObjetivos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbCamp;
+    private javax.swing.JComboBox cmbCamp1;
     private javax.swing.JComboBox cmbMarca;
+    private javax.swing.JComboBox cmbMarca1;
     private javax.swing.JComboBox cmbTipoP;
+    private javax.swing.JComboBox cmbTipoP1;
     private javax.swing.JComboBox combo_tipo;
     private javax.swing.JComboBox combo_tipo1;
     private javax.swing.JButton jButton1;
@@ -635,9 +748,13 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblCamp;
+    private javax.swing.JLabel lblCamp1;
     private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblMarca1;
     private javax.swing.JLabel lblProd;
+    private javax.swing.JLabel lblProd1;
     private javax.swing.JLabel lblTipo;
+    private javax.swing.JLabel lblTipo1;
     private javax.swing.JTextField text_id;
     private javax.swing.JTextField text_id1;
     private javax.swing.JTextField text_idCampaña;
@@ -645,6 +762,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private javax.swing.JTextField text_nombre1;
     private javax.swing.JTextField text_nombre2;
     private javax.swing.JTextField text_prod;
+    private javax.swing.JTextField text_prod1;
     private javax.swing.JTextField text_tematica;
     private javax.swing.JTextField text_tematica1;
     private javax.swing.JTextField text_valor;

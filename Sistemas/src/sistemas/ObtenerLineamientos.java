@@ -124,7 +124,7 @@ public javax.swing.JPanel getPanel(){
 
         jPanel3.add(jScrollPane1);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 430, 150));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 480, 150));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
         jButton1.setToolTipText("Buscar");
@@ -169,7 +169,7 @@ public javax.swing.JPanel getPanel(){
 
         jPanel4.add(jScrollPane2);
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 420, 150));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 480, 150));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_1.png"))); // NOI18N
         jButton2.setToolTipText("Buscar");
@@ -185,8 +185,7 @@ public javax.swing.JPanel getPanel(){
     }//GEN-LAST:event_rbutt_cyzoneActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFrame frames = new JFrame("Error message");
-        jop.showMessageDialog(frames,"Obtienendo accesos al sistema branding","",JOptionPane.INFORMATION_MESSAGE);// TODO add your handling code here:
+        // TODO add your handling code here:
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
