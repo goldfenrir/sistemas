@@ -242,7 +242,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        montotab.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+        montotab.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
 
         jButton4.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.interiorBackground"));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
@@ -254,7 +254,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        montotab.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
+        montotab.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, -1, -1));
 
         jTabbedPane1.addTab("Monto Adicional", montotab);
 
