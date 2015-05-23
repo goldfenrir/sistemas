@@ -295,7 +295,7 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private javax.swing.JButton regresar;
     private Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();
-    private MantenerCatalogo cat = new MantenerCatalogo();
+    private MantenerCatalogo cat = new MantenerCatalogo(new MainCampaña());
     private MantenerPromocion prom = new MantenerPromocion();
     private MantenerCombos comb = new MantenerCombos();
     private javax.swing.JToolBar jToolBar99;
