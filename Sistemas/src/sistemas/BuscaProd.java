@@ -150,9 +150,9 @@ public class BuscaProd extends javax.swing.JFrame {
      // TODO add your handling code here:
        if (evt.getClickCount() == 2) {
            setVisible(false);
-           int selRow = tbl_prod.getSelectedRow();
-           int prodId = Integer.parseInt(
-						tbl_prod.getValueAt(selRow, 0).toString());
+           //int selRow = tbl_prod.getSelectedRow();
+           //int prodId = Integer.parseInt(
+	//					tbl_prod.getValueAt(selRow, 0).toString());
            
         }
     }//GEN-LAST:event_tbl_prodMouseClicked

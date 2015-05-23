@@ -147,6 +147,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         promnxntab.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 60, -1));
 
         jTabbedPane1.addTab("NXN", promnxntab);
@@ -232,6 +237,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         montotab.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         jButton4.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.interiorBackground"));
@@ -239,6 +249,11 @@ public class MantenerPromocion extends javax.swing.JFrame {
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         montotab.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
         jTabbedPane1.addTab("Monto Adicional", montotab);
@@ -380,6 +395,21 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         jRadioButton1.setSelected(false);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        BuscaProd prod = new BuscaProd();
+        prod.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        BuscaProd prod = new BuscaProd();
+        prod.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        BuscaProd prod = new BuscaProd();
+        prod.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
