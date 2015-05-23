@@ -104,9 +104,42 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="10">
-                    <Column editable="true" title="Codigo" type="java.lang.Object"/>
-                    <Column editable="true" title="Tema" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha" type="java.lang.Object"/>
+                    <Column editable="true" title="Codigo" type="java.lang.Object">
+                      <Data value="50"/>
+                      <Data value="51"/>
+                      <Data value="52"/>
+                      <Data value="53"/>
+                      <Data value="54"/>
+                      <Data value="55"/>
+                      <Data value="56"/>
+                      <Data value="57"/>
+                      <Data value="58"/>
+                      <Data value="59"/>
+                    </Column>
+                    <Column editable="true" title="Tema" type="java.lang.Object">
+                      <Data value="Workshop"/>
+                      <Data value="Feedback workshop"/>
+                      <Data value="presentaci&#xf3;n pxp"/>
+                      <Data value="feedback pxp"/>
+                      <Data value="Presentaci&#xf3;n publicidad"/>
+                      <Data value="revisi&#xf3;n bocetos 1"/>
+                      <Data value="revisi&#xf3;n bocetos 2"/>
+                      <Data value="revisi&#xf3;n bocetos 3"/>
+                      <Data value="proyecciones de ventas"/>
+                      <Data value="Reuni&#xf3;n Branding"/>
+                    </Column>
+                    <Column editable="true" title="Fecha" type="java.lang.Object">
+                      <Data value="22/03/2014"/>
+                      <Data value="23/03/2014"/>
+                      <Data value="24/03/2014"/>
+                      <Data value="25/03/2014"/>
+                      <Data value="26/03/2014"/>
+                      <Data value="29/03/2014"/>
+                      <Data value="29/03/2014"/>
+                      <Data value="31/03/2014"/>
+                      <Data value="01/04/2014"/>
+                      <Data value="02/04/2014"/>
+                    </Column>
                   </Table>
                 </Property>
               </Properties>
@@ -133,7 +166,18 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="10">
-                    <Column editable="true" title="Codigo" type="java.lang.Object"/>
+                    <Column editable="true" title="Codigo" type="java.lang.Object">
+                      <Data value="70"/>
+                      <Data value="71"/>
+                      <Data value="72"/>
+                      <Data value="73"/>
+                      <Data value="74"/>
+                      <Data value="75"/>
+                      <Data value="76"/>
+                      <Data value="77"/>
+                      <Data value="78"/>
+                      <Data value="79"/>
+                    </Column>
                     <Column editable="true" title="Descripcion" type="java.lang.Object"/>
                   </Table>
                 </Property>
