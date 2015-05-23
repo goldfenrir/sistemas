@@ -20,7 +20,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         barra();
-        jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        jPanel1.add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -31,14 +31,14 @@ public class Principal extends javax.swing.JFrame {
     }
     
     public void barra(){
-        jToolBar1 = new javax.swing.JToolBar();
+        jToolBar99 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnInfo1 = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
-        jToolBar1.setRollover(true);
+        jToolBar99.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save-32.png"))); // NOI18N
         btnSave.setToolTipText("Guardar");
@@ -50,49 +50,49 @@ public class Principal extends javax.swing.JFrame {
                 //btnSaveActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnSave);
+        jToolBar99.add(btnSave);
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blank-file-32.png"))); // NOI18N
         btnAdd.setToolTipText("Nuevo");
         btnAdd.setFocusable(false);
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnAdd);
+        jToolBar99.add(btnAdd);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x-mark-3-32.png"))); // NOI18N
         btnDelete.setToolTipText("Eliminar");
         btnDelete.setFocusable(false);
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnDelete);
+        jToolBar99.add(btnDelete);
 
         btnInfo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/printer-32.png"))); // NOI18N
         btnInfo1.setToolTipText("Imprimir");
         btnInfo1.setFocusable(false);
         btnInfo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnInfo1);
+        jToolBar99.add(btnInfo1);
 
         btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help-32.png"))); // NOI18N
         btnHelp.setToolTipText("Ayuda");
         btnHelp.setFocusable(false);
         btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnHelp);
+        jToolBar99.add(btnHelp);
 
         btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-3-32.png"))); // NOI18N
         btnInfo.setToolTipText("Información");
         btnInfo.setFocusable(false);
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnInfo);
+        jToolBar99.add(btnInfo);
         
         regresar = new javax.swing.JButton();
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back.png"))); // NOI18N
         regresar.setFocusable(false);
         regresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         regresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(regresar);
+        jToolBar99.add(regresar);
         
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // boton manter catalogo
         barra();
-        cat.getPanel().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        cat.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(cat.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
         panelStack.push(cat.getPanel());
@@ -186,7 +186,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Mantener combos
         barra();
-        comb.getPanel().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        comb.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(comb.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
         panelStack.push(comb.getPanel());
@@ -199,7 +199,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // mantener promocion
         barra();
-        prom.getPanel().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        prom.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(prom.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
         panelStack.push(prom.getPanel());
@@ -212,7 +212,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Reporte ventas
         barra();
-        rep.getPanel().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        rep.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(rep.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
         panelStack.push(rep.getPanel());
@@ -225,7 +225,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         //proyecciones
         barra();
-        proy.getPanel().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        proy.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(proy.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
         panelStack.push(proy.getPanel());
@@ -243,7 +243,7 @@ public class Principal extends javax.swing.JFrame {
         barra();
         
         javax.swing.JPanel pn = panelStack.peek();
-        pn.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        pn.add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
     }
@@ -298,7 +298,7 @@ public class Principal extends javax.swing.JFrame {
     private MantenerCatalogo cat = new MantenerCatalogo();
     private MantenerPromocion prom = new MantenerPromocion();
     private MantenerCombos comb = new MantenerCombos();
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar99;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnHelp;
