@@ -22,6 +22,8 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         initComponents();
         visibleItems();
         visibleItems2();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
+        setIconImage(icon);
     }
     public javax.swing.JPanel getPanel(){
         return jPanel1;
