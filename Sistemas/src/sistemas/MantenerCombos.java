@@ -86,19 +86,23 @@ public class MantenerCombos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"1", "Labial rojo intenso", "18.5", "2"},
+                {"2", "Perfume esencia de heroe", "20", "1"},
+                {"3", "Sombras divinas ", "10", "1"},
+                {"4", "Esmalte super brillo", "15", "1"}
             },
             new String [] {
                 "Codigo", "Nombre", "Precio", "Cantidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane5.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 247, 534, 180));
@@ -168,25 +172,23 @@ public class MantenerCombos extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"1", "Combo especial dia de la madre", "58.5", "Si"},
+                {"2", "Combo super oferta en sombras", "32.5", "Si"},
+                {"3", "Combo noche de gala para padres", "86", "No"},
+                {"4", "Combo sombras go everye where ", "26", "Si"}
             },
             new String [] {
                 "Codigo", "Descripcion", "Precio", "Activo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N

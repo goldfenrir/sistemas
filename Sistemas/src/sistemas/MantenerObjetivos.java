@@ -75,7 +75,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         text_valor1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable3 = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         text_valor2 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
@@ -246,21 +246,18 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         lblTipo.setText("Tipo producto");
         jPanel3.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos de campaña actual"));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {"1", "Incremento respecto a campaña", "Campaña 2", "Porcentaje", "10"},
+                {"2", "Por producto", "Labial rojo intenso", "Unidades", "500"},
+                {"3", "Por producto", "Desodorante limon", "Dólares", "3000"},
+                {"4", " Por marca", "Esika", "Unidades", "1200"},
+                {"5", "Incremento respecto a campaña", "Campaña 3", "Dólares", "2000"},
+                {"6", "Por tipo de producto", "Labiales", "Unidades", "350"},
+                {"7", " Por marca", "L'bel", "Dólares", "1200"}
             },
             new String [] {
                 "Id", "Tipo", "Objeto tipo", "Unidad medida", "Valor"
@@ -335,32 +332,29 @@ public class MantenerObjetivos extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"1", "Incremento respecto a campaña", "Campaña 2", "Porcentaje", "10", "5"},
+                {"2", "Por producto", "Labial rojo intenso", "Unidades", "500", "5"},
+                {"3", "Por producto", "Desodorante limon", "Dólares", "3000", "5"},
+                {"4", " Por marca", "Esika", "Unidades", "1200", "5"},
+                {"5", "Incremento respecto a campaña", "Campaña 3", "Dólares", "2000", "5"},
+                {"6", "Por tipo de producto", "Labiales", "Unidades", "350", "5"},
+                {"7", " Por marca", "L'bel", "Dólares", "1200", "5"}
             },
             new String [] {
-                "Id", "Tipo", "Objeto tipo", "Unidad medida", "Valor", "IdCampaña"
+                "Id", "Tipo", "Objeto tipo", "Unidad medida", "Valor", "Id Campaña"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTable3);
 
         jPanel6.add(jScrollPane2);
 
@@ -746,7 +740,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JLabel lblCamp;
     private javax.swing.JLabel lblCamp1;
     private javax.swing.JLabel lblMarca;

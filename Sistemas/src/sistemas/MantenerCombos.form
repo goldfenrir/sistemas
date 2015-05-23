@@ -128,11 +128,31 @@
                     <Component class="javax.swing.JTable" name="jTable1">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="8">
-                            <Column editable="true" title="Codigo" type="java.lang.Object"/>
-                            <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="true" title="Precio" type="java.lang.Object"/>
-                            <Column editable="true" title="Cantidad" type="java.lang.Object"/>
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="false" title="Codigo" type="java.lang.Object">
+                              <Data value="1"/>
+                              <Data value="2"/>
+                              <Data value="3"/>
+                              <Data value="4"/>
+                            </Column>
+                            <Column editable="false" title="Nombre" type="java.lang.Object">
+                              <Data value="Labial rojo intenso"/>
+                              <Data value="Perfume esencia de heroe"/>
+                              <Data value="Sombras divinas "/>
+                              <Data value="Esmalte super brillo"/>
+                            </Column>
+                            <Column editable="false" title="Precio" type="java.lang.Object">
+                              <Data value="18.5"/>
+                              <Data value="20"/>
+                              <Data value="10"/>
+                              <Data value="15"/>
+                            </Column>
+                            <Column editable="false" title="Cantidad" type="java.lang.Object">
+                              <Data value="2"/>
+                              <Data value="1"/>
+                              <Data value="1"/>
+                              <Data value="1"/>
+                            </Column>
                           </Table>
                         </Property>
                       </Properties>
@@ -387,11 +407,31 @@
                     <Component class="javax.swing.JTable" name="jTable2">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="14">
-                            <Column editable="true" title="Codigo" type="java.lang.Object"/>
-                            <Column editable="true" title="Descripcion" type="java.lang.Object"/>
-                            <Column editable="true" title="Precio" type="java.lang.Object"/>
-                            <Column editable="true" title="Activo" type="java.lang.Object"/>
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="false" title="Codigo" type="java.lang.Object">
+                              <Data value="1"/>
+                              <Data value="2"/>
+                              <Data value="3"/>
+                              <Data value="4"/>
+                            </Column>
+                            <Column editable="false" title="Descripcion" type="java.lang.Object">
+                              <Data value="Combo especial dia de la madre"/>
+                              <Data value="Combo super oferta en sombras"/>
+                              <Data value="Combo noche de gala para padres"/>
+                              <Data value="Combo sombras go everye where "/>
+                            </Column>
+                            <Column editable="false" title="Precio" type="java.lang.Object">
+                              <Data value="58.5"/>
+                              <Data value="32.5"/>
+                              <Data value="86"/>
+                              <Data value="26"/>
+                            </Column>
+                            <Column editable="false" title="Activo" type="java.lang.Object">
+                              <Data value="Si"/>
+                              <Data value="Si"/>
+                              <Data value="No"/>
+                              <Data value="Si"/>
+                            </Column>
                           </Table>
                         </Property>
                       </Properties>
