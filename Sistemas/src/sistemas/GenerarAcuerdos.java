@@ -58,16 +58,16 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"50", "Workshop", "22/03/2014"},
+                {"51", "Feedback workshop", "23/03/2014"},
+                {"52", "presentación pxp", "24/03/2014"},
+                {"53", "feedback pxp", "25/03/2014"},
+                {"54", "Presentación publicidad", "26/03/2014"},
+                {"55", "revisión bocetos 1", "29/03/2014"},
+                {"56", "revisión bocetos 2", "29/03/2014"},
+                {"57", "revisión bocetos 3", "31/03/2014"},
+                {"58", "proyecciones de ventas", "01/04/2014"},
+                {"59", "Reunión Branding", "02/04/2014"}
             },
             new String [] {
                 "Codigo", "Tema", "Fecha"
@@ -81,16 +81,16 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"70", null},
+                {"71", null},
+                {"72", null},
+                {"73", null},
+                {"74", null},
+                {"75", null},
+                {"76", null},
+                {"77", null},
+                {"78", null},
+                {"79", null}
             },
             new String [] {
                 "Codigo", "Descripcion"
