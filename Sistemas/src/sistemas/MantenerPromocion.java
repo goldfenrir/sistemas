@@ -279,21 +279,21 @@ public class MantenerPromocion extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"301", "NXN", "250"},
+                {"302", "NXN", "620"},
+                {"303", "NXN", "150"},
+                {"304", "Descuento", "300"},
+                {"501", "Descuento", "400"},
+                {"502", "Monto Adicional", "490"},
+                {"510", "Descuento", "380"}
             },
             new String [] {
-                "Codigo", "Nombre", "Tipo de promoción", "Stock"
+                "Codigo", "Tipo de promoción", "Stock"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 580, 200));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 580, 150));
 
         jTabbedPane1.addTab("Promociones Activas", jPanel2);
 
