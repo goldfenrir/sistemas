@@ -99,11 +99,11 @@ public class BuscaProd extends javax.swing.JFrame {
             new Object [][] {
                 {"101", "Labial rojo intenso", "labial", "10.0", "Si"},
                 {"102", "Labial rojo carmesí", "labial", "11.0", "Si"},
-                {"103", "Polvos compacto coral", null, "20.0", "No"},
-                {"104", "Polvos compacto rosa", null, "20.0", "No"},
+                {"103", "Polvos compacto coral", "Polvos", "20.0", "No"},
+                {"104", "Polvos compacto rosa", "Polvos", "20.0", "No"},
                 {"105", "Labial rosa intenso", "Labial", "11.0", "No"},
                 {"106", "Labial rosa palido", "Labial", "15.0", "Si"},
-                {"107", "Rímel volumania", null, "20.1", null}
+                {"107", "Rímel volumania", "Rímel", "20.1", "No"}
             },
             new String [] {
                 "Código", "Nombre ", "Tipo de Producto", "Precio Base", "Prom. Activa"

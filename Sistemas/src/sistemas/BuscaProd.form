@@ -229,11 +229,11 @@
                     <Column editable="false" title="Tipo de Producto" type="java.lang.Object">
                       <Data value="labial"/>
                       <Data value="labial"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
+                      <Data value="Polvos"/>
+                      <Data value="Polvos"/>
                       <Data value="Labial"/>
                       <Data value="Labial"/>
-                      <Data value="null"/>
+                      <Data value="R&#xed;mel"/>
                     </Column>
                     <Column editable="false" title="Precio Base" type="java.lang.Object">
                       <Data value="10.0"/>
@@ -251,7 +251,7 @@
                       <Data value="No"/>
                       <Data value="No"/>
                       <Data value="Si"/>
-                      <Data value="null"/>
+                      <Data value="No"/>
                     </Column>
                   </Table>
                 </Property>
