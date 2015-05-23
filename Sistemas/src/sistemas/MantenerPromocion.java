@@ -168,7 +168,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jRadioButton3ActionPerformed(evt);
             }
         });
-        promdsctotab.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        promdsctotab.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jLabel11.setText("Aplicar a:");
         promdsctotab.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, -1, -1));
@@ -179,7 +179,7 @@ public class MantenerPromocion extends javax.swing.JFrame {
                 jRadioButton4ActionPerformed(evt);
             }
         });
-        promdsctotab.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
+        promdsctotab.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
         panelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         promdsctotab.add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 590, 110));
@@ -340,27 +340,30 @@ public class MantenerPromocion extends javax.swing.JFrame {
         //jRadioButton3.setEnabled(false);
         jRadioButton3.setSelected(false);
         panelInfo.removeAll();
-            codlabel = new java.awt.Label();
-        descripcionlabel = new java.awt.Label();
-        codlabel.setText("Codigo");
-        descripcionlabel.setText("Descripcion");
-        txtCod1 = new java.awt.TextField();
-        txtDescrip1 = new java.awt.TextField();
-        nombrelabel = new java.awt.Label();
-        nombrelabel.setText("nombre");
-        txtNombre1 = new java.awt.TextField();
-        panelInfo.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 150, -1));
-        panelInfo.add(nombrelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-        panelInfo.add(codlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        panelInfo.add(descripcionlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-        panelInfo.add(txtCod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 100, -1));
-        panelInfo.add(txtDescrip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 150, 100));
+        promdsctotab.remove(jButton40);
+        pack();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Labial", "Perfumes", "Cremas", "Sombras", "Desmaquilladoras", "Ropa", "Delineadores", "Rimel", "Desarodorantes", "Shampoo", "Accesorios", "Otros" }));
+        panelInfo.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 130, 20));
         pack();
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         jRadioButton4.setSelected(false);
         panelInfo.removeAll();
+        pack();
+        jButton40 = new javax.swing.JButton();
+        jButton40.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.interiorBackground"));
+        jButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        jButton40.setBorder(null);
+        jButton40.setBorderPainted(false);
+        jButton40.setContentAreaFilled(false);
+        jButton40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        promdsctotab.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
         codlabel = new java.awt.Label();
         nombrelabel = new java.awt.Label();
         codlabel.setText("Codigo");
@@ -512,7 +515,9 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private java.awt.TextField txtDescrip;
     private java.awt.TextField txtStock;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.JComboBox jComboBox1;
     private java.awt.Label codlabel;
+    private javax.swing.JButton jButton40;
     private java.awt.Label nombrelabel;
     private java.awt.Label preciolabel;
     private java.awt.Label descripcionlabel;
@@ -522,4 +527,5 @@ public class MantenerPromocion extends javax.swing.JFrame {
     private java.awt.TextField txtCod1;
     private java.awt.TextField txtDescrip1;
     private java.awt.TextField txtNombre1;
+    //private javax.swing.co
 }
