@@ -18,11 +18,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -43,16 +45,18 @@ public class ReporteVentas extends javax.swing.JFrame {
       private String pathDisp="src\\img\\DispChart.jpg";
     private String pathAct="";
     private boolean first=true;
-
+    MyTableModel ventasModel;
     /**
      * Creates new form Template
      */
     public ReporteVentas() {
         this.setTitle("Reporte de ventas");
+        ventasModel = new MyTableModel();
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
-     
+        
+	//jTable1.setModel(ventasModel);
     }
 
     /**
@@ -77,7 +81,7 @@ public class ReporteVentas extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        comboAgrupar = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -129,13 +133,13 @@ public class ReporteVentas extends javax.swing.JFrame {
         jLabel5.setText("Agrupar por:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mes", "Marca", "Producto", "Campaña" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        comboAgrupar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mes", "Marca", "Producto", "Campaña" }));
+        comboAgrupar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                comboAgruparActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 160, -1));
+        jPanel1.add(comboAgrupar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 160, -1));
 
         jButton1.setText("Generar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -159,25 +163,10 @@ public class ReporteVentas extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"01", "USD", "523.3", "570.8", "600.8", "630.5", "653", "670", "600", "30.5"},
-                {"02", "USD", "12", "20.2", "30.2", "40.8", "20", "15", "15", "3"},
-                {"03", "USD", "50", "60", "30", "40", "35", "32", "30", "10"},
-                {"04", "USD", "50", "110", "12", "45", "65", "60", "45", "8"}
-            },
-            new String [] {
-                "Código", "Unidades", "Ene-2015", "Feb-2015", "Mar-2015", "Abr-2015", "May-2015", "Jun-2015", "Promedio", "Total"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, true
-            };
+        jScrollPane1.setToolTipText("");
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(ventasModel);
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1);
@@ -204,7 +193,40 @@ public class ReporteVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+	class MyTableModel extends AbstractTableModel{
+		//ArrayList<Product> productsLst = SalesManager.queryAllProducts(); 
+		ArrayList<String>  titles=new ArrayList<String>()  ;
+		@Override
+		public int getColumnCount() {
+			// TODO Auto-generated method stub
+			return titles.size();
+		}
 
+		@Override
+		public int getRowCount() {
+			// TODO Auto-generated method stub
+			//eturn productsLst.size();
+                        return 0;
+		}
+
+		@Override
+		public Object getValueAt(int row, int col) {
+			String value = "";
+			switch(col){
+				//case 0:  value = "" + productsLst.get(row).getId(); break;
+				//case 1:  value = productsLst.get(row).getName(); break;
+				//case 2:  value = "" + productsLst.get(row).getPrice(); break;
+				//case 3:  value = "" + productsLst.get(row).getStock(); break;	
+                          
+			}
+			return value;
+		}
+		
+		public String getColumnName(int col){
+			return titles.get(col);
+		}
+		
+	}
     private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
        if (first){
            JOptionPane.showMessageDialog(new JFrame(), "Cree los datos a exportar");
@@ -252,10 +274,53 @@ public class ReporteVentas extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnExpActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void comboAgruparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAgruparActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
+        if(comboAgrupar.getSelectedIndex()==0){//Por mes
+            ventasModel.titles.add("Código");
+            ventasModel.titles.add("Nombre de mes");
+            ventasModel.titles.add("Total");
+        }
+        else if(comboAgrupar.getSelectedIndex()==1){// Por marca
+            ventasModel.titles.clear();
+            ventasModel.titles.add("Marca");
+            int mesIni =jDateChooser1.getDate().getMonth();
+            int anoIni= jDateChooser1.getDate().getYear();
+            int mesFin =jDateChooser2.getDate().getMonth();
+            int anoFin =jDateChooser2.getDate().getYear();
+            System.out.println(mesIni);
+            System.out.println(anoIni);
+            System.out.println(mesFin);
+            System.out.println(anoFin);
+            int cantMeses=mesFin-mesIni;
+            
+            if(anoIni<anoFin) cantMeses+= ((anoFin-anoIni)*12);       
+            for(int i=mesIni;i<mesIni+cantMeses;i++){
+                ventasModel.titles.add(toMonth(i,anoIni));
+                System.out.println(toMonth(i,anoIni));
+            }
+                  
+        }  
+        ventasModel.fireTableChanged(null);   
+    }//GEN-LAST:event_comboAgruparActionPerformed
+    private String toMonth(int i,int anho){
+        int year=(i-1)/12+1+anho-100;
+        int month=(i-1)%12 + 1;
+        if(month==1) return "Ene"+year;
+        if(month==2) return "Feb"+year;
+        if(month==3) return "Mar"+year;
+        if(month==4) return "Abr"+year;
+        if(month==5) return "May"+year;
+        if(month==6) return "Jun"+year;
+        if(month==7) return "Jul"+year;
+        if(month==8) return "Ago"+year;
+        if(month==9) return "Set"+year;
+        if(month==10) return "Oct"+year;
+        if(month==11) return "Nov"+year;
+         return "Dec"+year;
+        
+    }
+    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -348,11 +413,11 @@ public class ReporteVentas extends javax.swing.JFrame {
     private javax.swing.JButton btnExp;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox comboAgrupar;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
