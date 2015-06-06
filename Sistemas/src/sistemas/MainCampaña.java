@@ -26,6 +26,7 @@ public class MainCampaña extends javax.swing.JFrame {
     public MainCampaña() {
         
         initComponents();
+        modificar();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
         
@@ -138,13 +139,13 @@ public class MainCampaña extends javax.swing.JFrame {
         table_objetivos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        table_externos = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_reuniones = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        table_diagnosticos = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
         jButton2 = new javax.swing.JButton();
@@ -236,7 +237,7 @@ public class MainCampaña extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 130, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 290, 190));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 290, 190));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos de la campaña"));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
@@ -268,12 +269,12 @@ public class MainCampaña extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane1);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 280, 120));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 500, 160));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos externos"));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        table_externos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Obtener el 95% de tareas a tiempo"},
                 {"2", "Incrementar la fidelidad de nuestros clientes"},
@@ -291,17 +292,17 @@ public class MainCampaña extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable3.setPreferredSize(new java.awt.Dimension(200, 48));
-        jScrollPane4.setViewportView(jTable3);
+        table_externos.setPreferredSize(new java.awt.Dimension(200, 48));
+        jScrollPane4.setViewportView(table_externos);
 
         jPanel5.add(jScrollPane4);
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 280, 120));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 330, 100));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Reuniones"));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_reuniones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"50", "Workshop", "22/03/2014"},
                 {"51", "Feedback workshop", "23/03/2014"},
@@ -327,16 +328,16 @@ public class MainCampaña extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(table_reuniones);
 
         jPanel6.add(jScrollPane2);
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 270, 270));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 270, 210));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Diágnosticos"));
         jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        table_diagnosticos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"25", "15/06/2014", "5"},
                 {"26", "16/06/2014", "3"},
@@ -347,7 +348,7 @@ public class MainCampaña extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Código", "Fecha de Registro", "Puntuación"
+                "Id", "Fecha de Registro", "Puntuación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -358,11 +359,11 @@ public class MainCampaña extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable4);
+        jScrollPane3.setViewportView(table_diagnosticos);
 
         jPanel7.add(jScrollPane3);
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 270, 160));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 250, 110));
 
         jTabbedPane1.addTab("Campaña", jPanel2);
 
@@ -830,6 +831,25 @@ public class MainCampaña extends javax.swing.JFrame {
         pack();
         jToolBar99.setVisible(false);
     }
+     private void modificar(){
+         table_objetivos.getColumn("Objeto tipo").setMinWidth(130);
+         table_objetivos.getColumn("Objeto tipo").setMaxWidth(130);
+         table_objetivos.getColumn("Tipo").setMinWidth(190);
+         table_objetivos.getColumn("Tipo").setMaxWidth(190);
+         table_externos.getColumn("Id").setMinWidth(30);
+         table_externos.getColumn("Id").setMaxWidth(30);
+         table_reuniones.getColumn("Id").setMaxWidth(30);
+         table_reuniones.getColumn("Id").setMinWidth(30);    
+         table_reuniones.getColumn("Tema").setMaxWidth(130);
+         table_reuniones.getColumn("Tema").setMinWidth(130);   
+         table_diagnosticos.getColumn("Id").setMaxWidth(30);
+         table_diagnosticos.getColumn("Id").setMinWidth(30);
+         table_diagnosticos.getColumn("Puntuación").setMaxWidth(80);
+         table_diagnosticos.getColumn("Puntuación").setMinWidth(80);
+         table_diagnosticos.getColumn("Fecha de Registro").setMaxWidth(120);
+         table_diagnosticos.getColumn("Fecha de Registro").setMinWidth(120);
+         
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -863,9 +883,6 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -883,7 +900,10 @@ public class MainCampaña extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar5;
     private javax.swing.JToolBar jToolBar6;
     private javax.swing.JToolBar jToolBar8;
+    private javax.swing.JTable table_diagnosticos;
+    private javax.swing.JTable table_externos;
     private javax.swing.JTable table_objetivos;
+    private javax.swing.JTable table_reuniones;
     // End of variables declaration//GEN-END:variables
      private javax.swing.JButton regresar;
     private Stack <javax.swing.JPanel> panelStack = new Stack<javax.swing.JPanel>();
