@@ -5,14 +5,39 @@
  */
 package sistemas;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JComboBox;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
  * @author alulab14
  */
 public class ReporteVentas extends javax.swing.JFrame {
+    private String pathPie="src\\img\\PieChart.jpg";
+    private String pathAct="";
 
     /**
      * Creates new form Template
@@ -21,8 +46,36 @@ public class ReporteVentas extends javax.swing.JFrame {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
+        initComponents2();
     }
+     private void initComponents2(){
+          
+                
+        MyItemListener actionListener = new MyItemListener();
+        jComboBox1.addItemListener(actionListener);
+    }
+      class MyItemListener implements ItemListener {
+  // This method is called only if a new item has been selected.
+        public void itemStateChanged(ItemEvent evt) {
+       
 
+          Object item = evt.getItem();
+
+          if (evt.getStateChange() == ItemEvent.SELECTED) {
+               
+            if (((String)item).compareTo("Circular")==0){
+                
+            }else if (((String)item).compareTo("Dispersión")==0){
+                 
+            }else if(((String)item).compareTo("Barras")==0){
+                
+            }
+            
+          } else if (evt.getStateChange() == ItemEvent.DESELECTED) {
+            // Item is no longer selected
+          }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +109,6 @@ public class ReporteVentas extends javax.swing.JFrame {
         btnExp = new javax.swing.JButton();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
@@ -76,6 +128,11 @@ public class ReporteVentas extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Circular", "Dispersión", "Barras" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, 20));
 
         jLabel4.setText("Ordenar por:");
@@ -94,9 +151,19 @@ public class ReporteVentas extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mes", "Marca", "Producto", "Campaña" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 160, -1));
 
         jButton1.setText("Generar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, -1));
 
         jLabel6.setText("Unidades");
@@ -139,16 +206,18 @@ public class ReporteVentas extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 420, 270));
 
         btnExp.setText("Exportar");
-        jPanel1.add(btnExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, -1, -1));
+        btnExp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 480, -1, -1));
 
-        jCheckBox3.setText("Excel (.xls)");
-        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
+        jCheckBox3.setText("Excel (.xlsx)");
+        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
-        jCheckBox1.setText("PDF");
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 340, 220));
+        jCheckBox1.setText("PDF(Gráfico)");
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, -1, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 100, -1));
         jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 100, -1));
 
@@ -156,6 +225,55 @@ public class ReporteVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
+        try {
+            // TODO add your handling code here:
+         //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
+//jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
+               if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
+                   Utils.writeXLSXFile(jTable1,"C:\\Temp\\text.xlsx");
+                   Utils.imageToPDF(ImageIO.read(new File(pathAct)));
+               }else if(jCheckBox3.isSelected()){
+                   Utils.writeXLSXFile(jTable1,"C:\\Temp\\text.xlsx");
+               }else if(jCheckBox1.isSelected()){
+                   Utils.imageToPDF(ImageIO.read(new File(pathAct)));
+               }
+               
+               
+               
+        } catch (IOException ex) {
+            Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExpActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         
+         JFreeChart chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
+         try{
+             final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+             final File file1=new File(pathPie); 
+             pathAct=pathPie;
+             ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);             
+        }catch(Exception e){
+             
+        }
+        ChartPanel panelC=new ChartPanel(chart);        
+        panelC.setDomainZoomable(true);
+        panelC.setVisible(true);
+        jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
+        this.pack(); 
+        this.repaint();
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,7 +332,6 @@ public class ReporteVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
