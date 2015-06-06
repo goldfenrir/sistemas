@@ -5,6 +5,7 @@
  */
 package sistemas;
 
+import SalesBusinessModel.SalesManager;
 import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
@@ -81,8 +82,8 @@ public class ReporteVentas extends javax.swing.JFrame {
         comboAgrupar = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        but_u = new javax.swing.JRadioButton();
+        but_d = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -137,14 +138,14 @@ public class ReporteVentas extends javax.swing.JFrame {
         jLabel6.setText("Unidades");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
-        buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setText("UNIDADES");
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
+        buttonGroup2.add(but_u);
+        but_u.setText("UNIDADES");
+        jPanel1.add(but_u, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
 
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setSelected(true);
-        jRadioButton4.setText("USD MILES");
-        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+        buttonGroup2.add(but_d);
+        but_d.setSelected(true);
+        but_d.setText("USD MILES");
+        jPanel1.add(but_d, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -224,6 +225,44 @@ public class ReporteVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExpActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                if(comboAgrupar.getSelectedIndex()==0){//Por mes
+            ventasModel.titles.add("Código");
+            ventasModel.titles.add("Nombre de mes");
+            ventasModel.titles.add("Total");
+        }
+        else if(comboAgrupar.getSelectedIndex()==1){// Por marca
+            ventasModel.titles.clear();
+            ventasModel.titles.add("Marca");
+            int mesIni =jDateChooser1.getDate().getMonth();
+            int anoIni= jDateChooser1.getDate().getYear();
+            int mesFin =jDateChooser2.getDate().getMonth();
+            int anoFin =jDateChooser2.getDate().getYear();
+            System.out.println(mesIni);
+            System.out.println(anoIni);
+            System.out.println(mesFin);
+            System.out.println(anoFin);
+            int cantMeses=mesFin-mesIni;
+
+            if(anoIni<anoFin) cantMeses+= ((anoFin-anoIni)*12);
+            for(int i=mesIni;i<mesIni+cantMeses;i++){
+                
+                                 //System.out.println(SalesManager.ventaMarca("esika", i, anoIni+1900, 1));
+                
+                ventasModel.esika.add(SalesManager.ventaMarca("esika", i, anoIni+1900, 1));
+                ventasModel.lbel.add(SalesManager.ventaMarca("lbel", i, anoIni+1900, 1));
+                ventasModel.cyzone.add(SalesManager.ventaMarca("cyzone", i, anoIni+1900, 1));
+                System.out.println(toMonth(i,anoIni));
+            }
+            for(int i=mesIni;i<mesIni+cantMeses;i++){
+                ventasModel.titles.add(toMonth(i,anoIni));
+              
+            }
+
+        }
+        ventasModel.fireTableChanged(null);
+        
+        
+        
         String sel=(String)(jComboBox1.getSelectedItem());
         JFreeChart chart=null;
         if (sel.compareTo("Circular")==0){
@@ -268,38 +307,17 @@ public class ReporteVentas extends javax.swing.JFrame {
 
     private void comboAgruparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAgruparActionPerformed
         // TODO add your handling code here:
-        if(comboAgrupar.getSelectedIndex()==0){//Por mes
-            ventasModel.titles.add("Código");
-            ventasModel.titles.add("Nombre de mes");
-            ventasModel.titles.add("Total");
-        }
-        else if(comboAgrupar.getSelectedIndex()==1){// Por marca
-            ventasModel.titles.clear();
-            ventasModel.titles.add("Marca");
-            int mesIni =jDateChooser1.getDate().getMonth();
-            int anoIni= jDateChooser1.getDate().getYear();
-            int mesFin =jDateChooser2.getDate().getMonth();
-            int anoFin =jDateChooser2.getDate().getYear();
-            System.out.println(mesIni);
-            System.out.println(anoIni);
-            System.out.println(mesFin);
-            System.out.println(anoFin);
-            int cantMeses=mesFin-mesIni;
 
-            if(anoIni<anoFin) cantMeses+= ((anoFin-anoIni)*12);
-            for(int i=mesIni;i<mesIni+cantMeses;i++){
-                ventasModel.titles.add(toMonth(i,anoIni));
-                System.out.println(toMonth(i,anoIni));
-            }
-
-        }
-        ventasModel.fireTableChanged(null);
     }//GEN-LAST:event_comboAgruparActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 	class MyTableModel extends AbstractTableModel{
+            ArrayList<Integer> esika=new ArrayList<Integer>();
+             ArrayList<Integer> lbel=new ArrayList<Integer>();
+             ArrayList<Integer> cyzone=new ArrayList<Integer>();
+                    
 		//ArrayList<Product> productsLst = SalesManager.queryAllProducts(); 
 		ArrayList<String>  titles=new ArrayList<String>()  ;
 		@Override
@@ -312,12 +330,25 @@ public class ReporteVentas extends javax.swing.JFrame {
 		public int getRowCount() {
 			// TODO Auto-generated method stub
 			//eturn productsLst.size();
-                        return 0;
+                        return 3;
 		}
 
 		@Override
 		public Object getValueAt(int row, int col) {
 			String value = "";
+                        if(comboAgrupar.getSelectedIndex()==1){//marca
+                            if(col==0){
+                                if(row==0) return "esika";
+                                if(row==1) return "lbel";
+                                if(row==2) return "cyZone";
+                            }
+                            else{
+                                if(row==0 ) return ""+esika.get(col-1);
+                                if(row==1 ) return ""+lbel.get(col-1);
+                                if(row==2 ) return ""+cyzone.get(col-1);
+                                
+                            }
+                        }
 			switch(col){
 				//case 0:  value = "" + productsLst.get(row).getId(); break;
 				//case 1:  value = productsLst.get(row).getName(); break;
@@ -392,6 +423,8 @@ public class ReporteVentas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExp;
+    private javax.swing.JRadioButton but_d;
+    private javax.swing.JRadioButton but_u;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox comboAgrupar;
@@ -408,8 +441,6 @@ public class ReporteVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

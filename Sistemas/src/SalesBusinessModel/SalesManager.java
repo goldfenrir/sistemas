@@ -8,7 +8,7 @@ public class SalesManager {
     private static ProductDB productDB = new ProductDB();
     private static SalesDB salesDB=new SalesDB();
     
-    public static int ventaMarca(String marca, int mes, int anho, int unidad){
+    public static int ventaMarca(String marca, int mes, int anho, int unidad){//1 unidades 2 usd
         return salesDB.ventaMarca(marca, mes, anho, unidad);
     }
     public static void addSale(Sales s)

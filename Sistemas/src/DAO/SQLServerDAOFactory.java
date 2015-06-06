@@ -9,7 +9,7 @@ public class SQLServerDAOFactory extends DAOFactory {
 
     @Override
     public DAOSales getDAOSales() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new SQLServerDAOSales();//To change body of generated methods, choose Tools | Templates.
     }
 
 }
