@@ -6,6 +6,7 @@
 package sistemas;
 
 import javax.swing.JFrame;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -41,6 +42,7 @@ public class ReporteVentas extends javax.swing.JFrame {
      private String pathBar="src\\img\\BarChart.jpg";
       private String pathDisp="src\\img\\DispChart.jpg";
     private String pathAct="";
+    private boolean first=true;
 
     /**
      * Creates new form Template
@@ -103,7 +105,7 @@ public class ReporteVentas extends javax.swing.JFrame {
         jLabel3.setText("Tipo de gráfico");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Circular", "Dispersión", "Barras" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Circular", "Barras" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -203,24 +205,42 @@ public class ReporteVentas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
-        try {
-            // TODO add your handling code here:
-         //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
-//jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
-               if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
-                   Utils.writeXLSXFile(jTable1,"C:\\Temp\\text.xlsx");
-                   Utils.imageToPDF(ImageIO.read(new File(pathAct)));
-               }else if(jCheckBox3.isSelected()){
-                   Utils.writeXLSXFile(jTable1,"C:\\Temp\\text.xlsx");
-               }else if(jCheckBox1.isSelected()){
-                   Utils.imageToPDF(ImageIO.read(new File(pathAct)));
-               }
-               
-               
-               
-        } catch (IOException ex) {
-            Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+        String pathSave=null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Specify a file to save");   
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int userSelection = fileChooser.showSaveDialog(this);
+        File fileToSave=null;
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            fileToSave = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            pathSave=fileToSave.getAbsolutePath();
+        }else if (userSelection == JFileChooser.CANCEL_OPTION){
+            pathSave=null;
         }
+       
+        
+        if (pathSave!=null){
+             try {
+                    // TODO add your handling code here:
+                 //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
+        //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
+                       if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
+                           Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
+                           Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
+                       }else if(jCheckBox3.isSelected()){
+                           Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
+                       }else if(jCheckBox1.isSelected()){
+                           Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
+                       }
+
+
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+       
     }//GEN-LAST:event_btnExpActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -245,9 +265,6 @@ public class ReporteVentas extends javax.swing.JFrame {
 
            }
            
-        }else if (sel.compareTo("Dispersión")==0){
-            JOptionPane.showMessageDialog(new JFrame(), "Dispersión");
-            
         }else if (sel.compareTo("Barras")==0){
            // JOptionPane.showMessageDialog(new JFrame(), "Barras");
             chart =Utils.JTableToBarChart(jTable1,"Gráfico Barras",0);
@@ -260,12 +277,21 @@ public class ReporteVentas extends javax.swing.JFrame {
 
            }
         }
-         ChartPanel panelC=new ChartPanel(chart);        
+        if (first){
+          panelC=new ChartPanel(chart); 
+         
          panelC.setDomainZoomable(true);
          panelC.setVisible(true);
          jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
          this.pack(); 
-         this.repaint();
+         this.repaint(); 
+         first=false;
+        }else{
+            panelC.setChart(chart);
+            this.pack(); 
+            this.repaint();   
+        }
+         
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -337,4 +363,5 @@ public class ReporteVentas extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+    ChartPanel panelC;
 }

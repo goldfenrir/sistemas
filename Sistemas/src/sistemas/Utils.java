@@ -85,12 +85,12 @@ public class Utils {
     wb.write(new FileOutputStream(path.toString()));//Save the file     
     }*/
 
-    static void imageToPDF(BufferedImage img){
+    static void imageToPDF(BufferedImage img,String path){
         try{
             Document document = new Document();
 
         PdfWriter writer = PdfWriter.getInstance(document,
-                               new FileOutputStream("Image.pdf"));
+                               new FileOutputStream(path));
         document.open();
 
         PdfContentByte pdfCB = new PdfContentByte(writer);
