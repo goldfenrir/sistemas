@@ -210,6 +210,7 @@ public class Proyecciones extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1);

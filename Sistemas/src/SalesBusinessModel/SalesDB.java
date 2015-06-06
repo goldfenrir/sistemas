@@ -16,6 +16,9 @@ public class SalesDB {
 	public void add(Sales s) {
 		daoSales.add(s);
 	 }
+        public int ventaMarca(String marca, int mes, int anho, int unidad){
+            return daoSales.ventaMarca(marca, mes, anho, unidad);
+        }
 	 
 	 public void update(Sales s) {
 		 daoSales.update(s);

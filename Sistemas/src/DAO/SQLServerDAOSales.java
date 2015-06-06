@@ -19,6 +19,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class SQLServerDAOSales implements DAOSales{
 
+        
 	@Override
 	public void add(Sales s) {
 		Connection conn = null;
@@ -227,5 +228,54 @@ public class SQLServerDAOSales implements DAOSales{
 
 		return null;
 	}
+
+    @Override
+    public int ventaMarca(String marca, int mes, int anho, int unidad) {
+        Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+                         String sql=null;
+			//Paso 3: Preparar la sentencia
+                        if (unidad==1){
+                            sql = "select sum(d.cantidad) as suma from ventas v inner join detalleventa d on v.idventa=d.idventa join producto p on d.idproducto=p.idproducto where  "
+                                + "marca='"+marca+"'"
+                                + "and month(v.fechadia)="+mes
+                                + "and year(v.fechadia)="+anho; 
+                        }else{
+                            sql = "select sum(d.subtotal) as sumafrom ventas v inner join detalleventa d on v.idventa=d.idventa join producto p on d.idproducto=p.idproducto where  "
+                                + "marca='"+marca+"'"
+                                + "and month(v.fechadia)="+mes
+                                + "and year(v.fechadia)="+anho; 
+                        }
+			                               ;
+			pstmt = conn.prepareStatement(sql);
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+			while (rs.next()){
+				int suma = rs.getInt("suma");
+				return suma;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+
+		
+        return 0;
+    }
 
 }

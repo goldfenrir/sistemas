@@ -77,9 +77,6 @@ public class ReporteVentas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         comboAgrupar = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
@@ -118,18 +115,6 @@ public class ReporteVentas extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, 20));
 
-        jLabel4.setText("Ordenar por:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Fecha");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("Nombre de producto");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
-
         jLabel5.setText("Agrupar por:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
@@ -150,11 +135,11 @@ public class ReporteVentas extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, -1));
 
         jLabel6.setText("Unidades");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("UNIDADES");
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
 
         buttonGroup2.add(jRadioButton4);
         jRadioButton4.setSelected(true);
@@ -193,6 +178,127 @@ public class ReporteVentas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
+        if (first){
+            JOptionPane.showMessageDialog(new JFrame(), "Cree los datos a exportar");
+            return;
+        }
+        if (!jCheckBox3.isSelected() && !jCheckBox1.isSelected()){
+            JOptionPane.showMessageDialog(new JFrame(), "Seleccione algún formato de salida");
+            return;
+        }
+        String pathSave=null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Specify a file to save");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int userSelection = fileChooser.showSaveDialog(this);
+        File fileToSave=null;
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            fileToSave = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            pathSave=fileToSave.getAbsolutePath();
+        }else if (userSelection == JFileChooser.CANCEL_OPTION){
+            pathSave=null;
+        }
+
+        if (pathSave!=null){
+            try {
+                // TODO add your handling code here:
+                //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
+                //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
+                if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
+                    Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
+                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
+                }else if(jCheckBox3.isSelected()){
+                    Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
+                }else if(jCheckBox1.isSelected()){
+                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_btnExpActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String sel=(String)(jComboBox1.getSelectedItem());
+        JFreeChart chart=null;
+        if (sel.compareTo("Circular")==0){
+            chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
+            try{
+                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+                final File file1=new File(pathPie);
+                pathAct=pathPie;
+                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);
+            }catch(Exception e){
+
+            }
+
+        }else if (sel.compareTo("Barras")==0){
+            // JOptionPane.showMessageDialog(new JFrame(), "Barras");
+            chart =Utils.JTableToBarChart(jTable1,"Gráfico Barras",0);
+            try{
+                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+                final File file1=new File(pathBar);
+                pathAct=pathBar;
+                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);
+            }catch(Exception e){
+
+            }
+        }
+        if (first){
+            panelC=new ChartPanel(chart);
+
+            panelC.setDomainZoomable(true);
+            panelC.setVisible(true);
+            jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));
+            this.pack();
+            this.repaint();
+            first=false;
+        }else{
+            panelC.setChart(chart);
+            this.pack();
+            this.repaint();
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboAgruparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAgruparActionPerformed
+        // TODO add your handling code here:
+        if(comboAgrupar.getSelectedIndex()==0){//Por mes
+            ventasModel.titles.add("Código");
+            ventasModel.titles.add("Nombre de mes");
+            ventasModel.titles.add("Total");
+        }
+        else if(comboAgrupar.getSelectedIndex()==1){// Por marca
+            ventasModel.titles.clear();
+            ventasModel.titles.add("Marca");
+            int mesIni =jDateChooser1.getDate().getMonth();
+            int anoIni= jDateChooser1.getDate().getYear();
+            int mesFin =jDateChooser2.getDate().getMonth();
+            int anoFin =jDateChooser2.getDate().getYear();
+            System.out.println(mesIni);
+            System.out.println(anoIni);
+            System.out.println(mesFin);
+            System.out.println(anoFin);
+            int cantMeses=mesFin-mesIni;
+
+            if(anoIni<anoFin) cantMeses+= ((anoFin-anoIni)*12);
+            for(int i=mesIni;i<mesIni+cantMeses;i++){
+                ventasModel.titles.add(toMonth(i,anoIni));
+                System.out.println(toMonth(i,anoIni));
+            }
+
+        }
+        ventasModel.fireTableChanged(null);
+    }//GEN-LAST:event_comboAgruparActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 	class MyTableModel extends AbstractTableModel{
 		//ArrayList<Product> productsLst = SalesManager.queryAllProducts(); 
 		ArrayList<String>  titles=new ArrayList<String>()  ;
@@ -226,84 +332,7 @@ public class ReporteVentas extends javax.swing.JFrame {
 			return titles.get(col);
 		}
 		
-	}
-    private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
-       if (first){
-           JOptionPane.showMessageDialog(new JFrame(), "Cree los datos a exportar");
-           return;
-       }
-        if (!jCheckBox3.isSelected() && !jCheckBox1.isSelected()){
-           JOptionPane.showMessageDialog(new JFrame(), "Seleccione algún formato de salida");
-           return;
-       }
-        String pathSave=null;
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Specify a file to save");   
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int userSelection = fileChooser.showSaveDialog(this);
-        File fileToSave=null;
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            fileToSave = fileChooser.getSelectedFile();
-            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
-            pathSave=fileToSave.getAbsolutePath();
-        }else if (userSelection == JFileChooser.CANCEL_OPTION){
-            pathSave=null;
-        }
-       
-        
-        if (pathSave!=null){
-             try {
-                    // TODO add your handling code here:
-                 //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
-        //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
-                       if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
-                           Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
-                           Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
-                       }else if(jCheckBox3.isSelected()){
-                           Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
-                       }else if(jCheckBox1.isSelected()){
-                           Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
-                       }
-
-
-
-                } catch (IOException ex) {
-                    Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        }
-       
-    }//GEN-LAST:event_btnExpActionPerformed
-
-    private void comboAgruparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAgruparActionPerformed
-        // TODO add your handling code here:
-        if(comboAgrupar.getSelectedIndex()==0){//Por mes
-            ventasModel.titles.add("Código");
-            ventasModel.titles.add("Nombre de mes");
-            ventasModel.titles.add("Total");
-        }
-        else if(comboAgrupar.getSelectedIndex()==1){// Por marca
-            ventasModel.titles.clear();
-            ventasModel.titles.add("Marca");
-            int mesIni =jDateChooser1.getDate().getMonth();
-            int anoIni= jDateChooser1.getDate().getYear();
-            int mesFin =jDateChooser2.getDate().getMonth();
-            int anoFin =jDateChooser2.getDate().getYear();
-            System.out.println(mesIni);
-            System.out.println(anoIni);
-            System.out.println(mesFin);
-            System.out.println(anoFin);
-            int cantMeses=mesFin-mesIni;
-            
-            if(anoIni<anoFin) cantMeses+= ((anoFin-anoIni)*12);       
-            for(int i=mesIni;i<mesIni+cantMeses;i++){
-                ventasModel.titles.add(toMonth(i,anoIni));
-                System.out.println(toMonth(i,anoIni));
-            }
-                  
-        }  
-        ventasModel.fireTableChanged(null);   
-    }//GEN-LAST:event_comboAgruparActionPerformed
-    private String toMonth(int i,int anho){
+	}    private String toMonth(int i,int anho){
         int year=(i-1)/12+1+anho-100;
         int month=(i-1)%12 + 1;
         if(month==1) return "Ene"+year;
@@ -321,54 +350,6 @@ public class ReporteVentas extends javax.swing.JFrame {
         
     }
     
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sel=(String)(jComboBox1.getSelectedItem());
-        JFreeChart chart=null;
-        if (sel.compareTo("Circular")==0){
-            chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
-            try{
-                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
-                final File file1=new File(pathPie); 
-                pathAct=pathPie;
-                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);             
-           }catch(Exception e){
-
-           }
-           
-        }else if (sel.compareTo("Barras")==0){
-           // JOptionPane.showMessageDialog(new JFrame(), "Barras");
-            chart =Utils.JTableToBarChart(jTable1,"Gráfico Barras",0);
-            try{
-                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
-                final File file1=new File(pathBar); 
-                pathAct=pathBar;
-                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);             
-           }catch(Exception e){
-
-           }
-        }
-        if (first){
-          panelC=new ChartPanel(chart); 
-         
-         panelC.setDomainZoomable(true);
-         panelC.setVisible(true);
-         jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
-         this.pack(); 
-         this.repaint(); 
-         first=false;
-        }else{
-            panelC.setChart(chart);
-            this.pack(); 
-            this.repaint();   
-        }
-         
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -423,13 +404,10 @@ public class ReporteVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;

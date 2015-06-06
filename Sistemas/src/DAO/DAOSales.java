@@ -10,4 +10,5 @@ public interface DAOSales {
 	void delete (int id);
 	ArrayList<Sales> queryAll();
 	Sales queryById(int id);
+        int ventaMarca(String marca,int mes,int anho,int unidad);
 }
