@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -46,36 +47,9 @@ public class ReporteVentas extends javax.swing.JFrame {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
-        initComponents2();
+     
     }
-     private void initComponents2(){
-          
-                
-        MyItemListener actionListener = new MyItemListener();
-        jComboBox1.addItemListener(actionListener);
-    }
-      class MyItemListener implements ItemListener {
-  // This method is called only if a new item has been selected.
-        public void itemStateChanged(ItemEvent evt) {
-       
 
-          Object item = evt.getItem();
-
-          if (evt.getStateChange() == ItemEvent.SELECTED) {
-               
-            if (((String)item).compareTo("Circular")==0){
-                
-            }else if (((String)item).compareTo("Dispersión")==0){
-                 
-            }else if(((String)item).compareTo("Barras")==0){
-                
-            }
-            
-          } else if (evt.getStateChange() == ItemEvent.DESELECTED) {
-            // Item is no longer selected
-          }
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -256,22 +230,29 @@ public class ReporteVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         
-         JFreeChart chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
-         try{
-             final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
-             final File file1=new File(pathPie); 
-             pathAct=pathPie;
-             ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);             
-        }catch(Exception e){
-             
+        String sel=(String)(jComboBox1.getSelectedItem());
+        if (sel.compareTo("Circular")==0){
+            JFreeChart chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
+            try{
+                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+                final File file1=new File(pathPie); 
+                pathAct=pathPie;
+                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);             
+           }catch(Exception e){
+
+           }
+           ChartPanel panelC=new ChartPanel(chart);        
+           panelC.setDomainZoomable(true);
+           panelC.setVisible(true);
+           jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
+           this.pack(); 
+           this.repaint();
+        }else if (sel.compareTo("Dispersión")==0){
+            JOptionPane.showMessageDialog(new JFrame(), "Dispersión");
+        }else if (sel.compareTo("Barras")==0){
+            JOptionPane.showMessageDialog(new JFrame(), "Dispersión");
         }
-        ChartPanel panelC=new ChartPanel(chart);        
-        panelC.setDomainZoomable(true);
-        panelC.setVisible(true);
-        jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
-        this.pack(); 
-        this.repaint();
+         
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
