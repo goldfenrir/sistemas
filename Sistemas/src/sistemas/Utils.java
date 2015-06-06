@@ -29,6 +29,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 public class Utils {
@@ -125,5 +127,26 @@ public class Utils {
         );
         return chart;
     }
-
+     public static JFreeChart JTableToBarChart(JTable table,String title,int ind){
+         TableModel model = table.getModel(); 
+         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+          
+         for (int i=0;i<model.getRowCount();i++){
+            dataset.setValue(Double.parseDouble(""+model.getValueAt(i,model.getColumnCount()-1)),
+                    "Total",
+                    model.getValueAt(i, ind)+"");
+        }
+          
+         JFreeChart chart = ChartFactory.createBarChart(
+            "Bar Chart Demo",         // chart title
+            "Category",               // domain axis label
+            "Value",                  // range axis label
+            dataset,                  // data
+            PlotOrientation.VERTICAL, // orientation
+            true,                     // include legend
+            true,                     // tooltips?
+            false                     // URLs?
+        );
+           return chart;
+     }
 }

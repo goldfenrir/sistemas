@@ -38,6 +38,8 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class ReporteVentas extends javax.swing.JFrame {
     private String pathPie="src\\img\\PieChart.jpg";
+     private String pathBar="src\\img\\BarChart.jpg";
+      private String pathDisp="src\\img\\DispChart.jpg";
     private String pathAct="";
 
     /**
@@ -231,8 +233,9 @@ public class ReporteVentas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String sel=(String)(jComboBox1.getSelectedItem());
+        JFreeChart chart=null;
         if (sel.compareTo("Circular")==0){
-            JFreeChart chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
+            chart =Utils.JTableToPieChart(jTable1,"Gráfico Circular",0);
             try{
                 final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
                 final File file1=new File(pathPie); 
@@ -241,18 +244,28 @@ public class ReporteVentas extends javax.swing.JFrame {
            }catch(Exception e){
 
            }
-           ChartPanel panelC=new ChartPanel(chart);        
-           panelC.setDomainZoomable(true);
-           panelC.setVisible(true);
-           jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
-           this.pack(); 
-           this.repaint();
+           
         }else if (sel.compareTo("Dispersión")==0){
             JOptionPane.showMessageDialog(new JFrame(), "Dispersión");
+            
         }else if (sel.compareTo("Barras")==0){
-            JOptionPane.showMessageDialog(new JFrame(), "Dispersión");
+           // JOptionPane.showMessageDialog(new JFrame(), "Barras");
+            chart =Utils.JTableToBarChart(jTable1,"Gráfico Barras",0);
+            try{
+                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+                final File file1=new File(pathBar); 
+                pathAct=pathBar;
+                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);             
+           }catch(Exception e){
+
+           }
         }
-         
+         ChartPanel panelC=new ChartPanel(chart);        
+         panelC.setDomainZoomable(true);
+         panelC.setVisible(true);
+         jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 340, 260));     
+         this.pack(); 
+         this.repaint();
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
