@@ -44,18 +44,21 @@ public class Utils {
  
 		XSSFWorkbook wb = new XSSFWorkbook();
 		XSSFSheet sheet = wb.createSheet(sheetName) ;
- 
+                XSSFRow rowH = sheet.createRow(0);
+                for(int headings = 0; headings < model.getColumnCount(); headings++){ //For each column
+                    rowH.createCell(headings).setCellValue(model.getColumnName(headings));//Write column name
+                }
 		//iterating r number of rows
-		for (int r=0;r < 5; r++ )
+		for (int r=1;r <= model.getRowCount(); r++ )
 		{
 			XSSFRow row = sheet.createRow(r);
  
 			//iterating c number of columns
-			for (int c=0;c < 5; c++ )
+			for (int c=0;c < model.getColumnCount(); c++ )
 			{
 				XSSFCell cell = row.createCell(c);
 	
-				cell.setCellValue("Cell "+r+" "+c);
+				cell.setCellValue(""+model.getValueAt(r-1, c));
 			}
 		}
  

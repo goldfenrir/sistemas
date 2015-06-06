@@ -48,6 +48,7 @@ public class ReporteVentas extends javax.swing.JFrame {
      * Creates new form Template
      */
     public ReporteVentas() {
+        this.setTitle("Reporte de ventas");
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
@@ -205,6 +206,14 @@ public class ReporteVentas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
+       if (first){
+           JOptionPane.showMessageDialog(new JFrame(), "Cree los datos a exportar");
+           return;
+       }
+        if (!jCheckBox3.isSelected() && !jCheckBox1.isSelected()){
+           JOptionPane.showMessageDialog(new JFrame(), "Seleccione algún formato de salida");
+           return;
+       }
         String pathSave=null;
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Specify a file to save");   
