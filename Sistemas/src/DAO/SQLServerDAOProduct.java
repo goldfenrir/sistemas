@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Product;
+import Model.TipoProducto;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -136,12 +137,52 @@ public class SQLServerDAOProduct implements DAOProduct{
 		}
 		
 	}
+        
+        private TipoProducto queryTypeById(int idTipo){
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+                try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql2 = "Select * from tipo_de_producto where IdTipo = " + idTipo;
+                                pstmt = conn.prepareStatement(sql2);
+			//Paso 4: Ejecutar la sentencia
+                                rs = pstmt.executeQuery();
+                                if(rs.next()){
+                                    TipoProducto tprod = new TipoProducto();
+                                    tprod.setId(idTipo);
+                                    tprod.setNombre(rs.getString("Nombre"));
+                                    tprod.setDescricpion(rs.getString("Descripcion"));
+                                    pstmt.close();
+                                    conn.close();
+                                    return tprod;
+                                            
+                                }
+                                } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+                return null;
+        }
 
 	@Override
 	public ArrayList<Product> queryAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+                ResultSet rs2 = null;
 		ArrayList<Product> arr = new ArrayList<Product>();
 		try {
 			//Paso 1: Registrar el Driver
@@ -151,7 +192,7 @@ public class SQLServerDAOProduct implements DAOProduct{
 								DBConnection.user,
 								DBConnection.password);
 			//Paso 3: Preparar la sentencia
-			String sql = "SELECT * FROM Product_2015_1_2011";
+			String sql = "SELECT * FROM Producto";
 			pstmt = conn.prepareStatement(sql);
 			//Paso 4: Ejecutar la sentencia
 			rs = pstmt.executeQuery();
@@ -167,20 +208,31 @@ public class SQLServerDAOProduct implements DAOProduct{
                                 String marca = rs.getString("Marca");
 				int stock = rs.getInt("Stock");
 				String estado = rs.getString("Estado");
-                                LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
-				LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
+                                //LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
+				//LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
                                 
 				Product p = new Product();
 				p.setBasePrice(precio_Base);
                                 p.setDescription(descripcion);
                                 p.setEstado(estado);
-                                p.setFechaDescontinuacion(fechaDescontinuacion);
-                                p.setFechaIngreso(fechaIngreso);
-                                p.setId(idTipo);
+                                //p.setFechaDescontinuacion(fechaDescontinuacion);
+                                //p.setFechaIngreso(fechaIngreso);
+                                p.setId(idProducto);
                                 p.setMarca(marca);
                                 //p.setMoneda(null);
                                 p.setNombre(nombre);
                                 p.setStock(stock);
+                                String sql2 = "Select * from tipo_de_producto where IdTipo = " + idTipo;
+                                pstmt = conn.prepareStatement(sql2);
+			//Paso 4: Ejecutar la sentencia
+                                rs2 = pstmt.executeQuery();
+                                if(rs2.next()){
+                                    TipoProducto tprod = new TipoProducto();
+                                    tprod.setId(idTipo);
+                                    tprod.setNombre(rs2.getString("Nombre"));
+                                    tprod.setDescricpion(rs2.getString("Descripcion"));
+                                    p.setTipoProducto(tprod);
+                                }
                                 //p.setTipoProducto(null);
                                 
 				arr.add(p);
@@ -303,11 +355,12 @@ public class SQLServerDAOProduct implements DAOProduct{
                                 p.setEstado(estado);
                                 //p.setFechaDescontinuacion(fechaDescontinuacion);
                                 //p.setFechaIngreso(fechaIngreso);
-                                p.setId(idTipo);
+                                p.setId(idProducto);
                                 p.setMarca(marca);
                                 //p.setMoneda(null);
                                 p.setNombre(nombre);
                                 p.setStock(stock);
+                                p.setTipoProducto(queryTypeById(idTipo));
                                 plist.add(p);
                                 
 			}
@@ -368,11 +421,12 @@ public class SQLServerDAOProduct implements DAOProduct{
                                 p.setEstado(estado);
                                 //p.setFechaDescontinuacion(fechaDescontinuacion);
                                 //p.setFechaIngreso(fechaIngreso);
-                                p.setId(idTipo);
+                                p.setId(idProducto);
                                 p.setMarca(marca);
                                 //p.setMoneda(null);
                                 p.setNombre(nombre);
                                 p.setStock(stock);
+                                p.setTipoProducto(queryTypeById(idTipo));
                                 plist.add(p);
                                 
 			}
@@ -433,11 +487,12 @@ public class SQLServerDAOProduct implements DAOProduct{
                                 p.setEstado(estado);
                                 //p.setFechaDescontinuacion(fechaDescontinuacion);
                                 //p.setFechaIngreso(fechaIngreso);
-                                p.setId(idTipo);
+                                p.setId(idProducto);
                                 p.setMarca(marca);
                                 //p.setMoneda(null);
                                 p.setNombre(nombre);
                                 p.setStock(stock);
+                                p.setTipoProducto(queryTypeById(idTipo));
                                 plist.add(p);
                                 
 			}
@@ -456,5 +511,73 @@ public class SQLServerDAOProduct implements DAOProduct{
 		}
 		return null;
         }
-
+    @Override
+    public ArrayList<Product> queryByPrice(double minPrice, double maxPrice, String brand, int prodType){
+        ArrayList<Product> plist = new ArrayList<Product>();
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Product p = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "SELECT * FROM Producto"
+					+ " WHERE Precio_Base between " +
+                                minPrice + " and " + maxPrice + " and "
+                                + "Marca like '%" + brand + "%' ";
+                        if(prodType>0)
+                            sql += "and IdTipo = "+ prodType;
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setInt(1, idProduct);
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+			while (rs.next()){
+				int idProducto = rs.getInt("IdProducto");
+				int idTipo = rs.getInt("IdTipo");
+				int idMoneda = rs.getInt("IdMoneda");
+                                String nombre = rs.getString("Nombre");
+				String descripcion = rs.getString("Descripcion");
+				double precio_Base = rs.getDouble("Precio_Base");
+                                String marca = rs.getString("Marca");
+				int stock = rs.getInt("Stock");
+				String estado = rs.getString("Estado");
+                                //LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
+				//LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
+                                
+				p = new Product();
+				p.setBasePrice(precio_Base);
+                                p.setDescription(descripcion);
+                                p.setEstado(estado);
+                                //p.setFechaDescontinuacion(fechaDescontinuacion);
+                                //p.setFechaIngreso(fechaIngreso);
+                                p.setId(idProducto);
+                                p.setMarca(marca);
+                                //p.setMoneda(null);
+                                p.setNombre(nombre);
+                                p.setStock(stock);
+                                p.setTipoProducto(queryTypeById(idTipo));
+                                plist.add(p);
+                                
+			}
+                        pstmt.close();
+                        conn.close();
+                        return plist;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return null;
+    }
 }

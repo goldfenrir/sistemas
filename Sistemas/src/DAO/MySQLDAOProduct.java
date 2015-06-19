@@ -47,4 +47,9 @@ public class MySQLDAOProduct implements DAOProduct{
     public ArrayList<Product> queryByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public ArrayList<Product> queryByPrice(double min, double max, String brand, int type){
+        return null;
+    }
 }	

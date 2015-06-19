@@ -5,6 +5,7 @@
  */
 package sistemas;
 
+import DAO.SQLServerDAOProduct;
 import SalesBusinessModel.SalesManager;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -41,7 +42,10 @@ public class Proyecciones extends javax.swing.JFrame {
      */
     private String pathAct="";
      private String pathLinearChart="src\\img\\LinearChart.jpg";
+     private BuscaProd appBus;
     public Proyecciones() {
+        appBus = new BuscaProd();
+        appBus.setParent(this);
         salesModel = new MyTableModel();
         futureSales = new MyTableModel();
         initComponents();
@@ -104,10 +108,12 @@ public class Proyecciones extends javax.swing.JFrame {
                  cmbTipoP.setVisible(true);
             }else if(((String)item).compareTo("Proyectar por producto")==0){
                 jLabel2.setVisible(true);
-                    getTxtCodP().setText("a");
+                    getTxtCodP().setText("");
                     getTxtCodP().selectAll();
+                    getTxtCodP().setEditable(false);
                     getTxtCodP().setVisible(true);
-                BuscaProd appBus= new BuscaProd();
+                //BuscaProd appBus= new BuscaProd();
+                //appBus.setParent(this);
                 appBus.setVisible(true);
             }else if(((String)item).compareTo("Proyectar todos")==0){
                
@@ -326,7 +332,7 @@ public class Proyecciones extends javax.swing.JFrame {
         if(jComboBox1.getSelectedIndex() == 2){
             String tipoProd = (String)cmbTipoP.getSelectedItem();
             //query por tipo prod;
-            salesModel.cants = SalesManager.queryDailySalesByProdType(1, 9, dia.getYear(), type);
+            salesModel.cants = SalesManager.queryDailySalesByProdType(cmbTipoP.getSelectedIndex(), 9, dia.getYear(), type);
         }
         if(jComboBox1.getSelectedIndex() == 1){
             //por marca
@@ -446,6 +452,11 @@ public class Proyecciones extends javax.swing.JFrame {
                 new Proyecciones().setVisible(true);
             }
         });
+    }
+    
+    public void setCod(String codigo){
+        txtCodP.setText(codigo);
+        
     }
     
     class MyTableModel extends AbstractTableModel{

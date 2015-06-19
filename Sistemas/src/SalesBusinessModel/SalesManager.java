@@ -79,4 +79,9 @@ public class SalesManager {
     public static ArrayList<Product> queryProductByName(String name){
         return productDB.queryByName(name);
     }
+    
+    public static ArrayList<Product> queryProductByPrice(double minPrice, double maxPrice, 
+            String brand, int type){
+        return productDB.queryByPrice(minPrice, maxPrice, brand, type);
+    }
 }

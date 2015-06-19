@@ -55,4 +55,7 @@ public class ProductDB {
     public ArrayList<Product> queryByName(String name){
         return daoProduct.queryByName(name);
     }
+    public ArrayList<Product> queryByPrice(double minPrice, double maxPrice, String brand, int idtype){
+        return daoProduct.queryByPrice(minPrice, maxPrice, brand, idtype);
+    }
 }
