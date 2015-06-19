@@ -326,13 +326,13 @@ public class Proyecciones extends javax.swing.JFrame {
             int idprod = Integer.parseInt(txtCodP.getText());
             System.out.println("" + idprod + " " + dia.getMonthValue());
             salesModel.cants = SalesManager.queryDailySalesByProduct(idprod, 
-                    9, dia.getYear(), type);
+                   dia.getMonthValue(), dia.getYear(), type);
             
         }
         if(jComboBox1.getSelectedIndex() == 2){
             String tipoProd = (String)cmbTipoP.getSelectedItem();
             //query por tipo prod;
-            salesModel.cants = SalesManager.queryDailySalesByProdType(cmbTipoP.getSelectedIndex(), 9, dia.getYear(), type);
+            salesModel.cants = SalesManager.queryDailySalesByProdType(cmbTipoP.getSelectedIndex(), dia.getMonthValue(), dia.getYear(), type);
         }
         if(jComboBox1.getSelectedIndex() == 1){
             //por marca
@@ -343,10 +343,10 @@ public class Proyecciones extends javax.swing.JFrame {
                 case 1 : brand = "esika"; break;
                 case 2 : brand  = "cyzone"; break;
             }
-            salesModel.cants = SalesManager.queryDailySalesByBrand(brand, 9, dia.getYear(), type);   
+            salesModel.cants = SalesManager.queryDailySalesByBrand(brand, dia.getMonthValue(), dia.getYear(), type);   
         }
         else {
-            salesModel.cants = SalesManager.queryAllDailySales(9, dia.getYear(), type);
+            salesModel.cants = SalesManager.queryAllDailySales(dia.getMonthValue(), dia.getYear(), type);
         }
         jTable1.setModel(salesModel);
         salesModel.fireTableChanged(null);
