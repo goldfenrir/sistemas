@@ -154,6 +154,7 @@ public class Proyecciones extends javax.swing.JFrame {
         btnExp = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -281,6 +282,14 @@ public class Proyecciones extends javax.swing.JFrame {
         });
         jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
+        jButton1.setText("Ajuste Exponencial");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 620));
 
         pack();
@@ -326,8 +335,8 @@ public class Proyecciones extends javax.swing.JFrame {
             int idprod = Integer.parseInt(txtCodP.getText());
             System.out.println("" + idprod + " " + dia.getMonthValue());
             salesModel.cants = SalesManager.queryDailySalesByProduct(idprod, 
-                   dia.getMonthValue(), dia.getYear(), type);
-            
+                  8, dia.getYear(), type);
+            System.out.println("deberiaaa: " + (Integer)salesModel.cants.get(14));
         }
         if(jComboBox1.getSelectedIndex() == 2){
             String tipoProd = (String)cmbTipoP.getSelectedItem();
@@ -345,7 +354,7 @@ public class Proyecciones extends javax.swing.JFrame {
             }
             salesModel.cants = SalesManager.queryDailySalesByBrand(brand, dia.getMonthValue(), dia.getYear(), type);   
         }
-        else {
+        if(jComboBox1.getSelectedIndex()== 0) {
             salesModel.cants = SalesManager.queryAllDailySales(dia.getMonthValue(), dia.getYear(), type);
         }
         jTable1.setModel(salesModel);
@@ -407,7 +416,8 @@ public class Proyecciones extends javax.swing.JFrame {
                     Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
                     Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\graficoProyeccion.pdf");
                 }else if(jCheckBox3.isSelected()){
-                    Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
+                    //Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
+                    try {Utils.chartExcel(salesModel.cants, futureSales.cants); } catch (Exception e){System.out.println("no se pudo excel");}
                 }else if(jCheckBox1.isSelected()){
                     Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\graficoProyeccion.pdf");
                 }
@@ -417,6 +427,51 @@ public class Proyecciones extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnExpActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // generar ajuste exponencial
+        int type = 1;
+        ArrayList<String> fechas2 = new ArrayList<String>();
+        ArrayList<String> fechasFuturas = new ArrayList<String>();
+        LocalDate dia = LocalDate.now();
+        if (jRadioButton1.isSelected())
+            type = 1;
+        if (jRadioButton2.isSelected())
+            type = 2;
+        
+        double pend, constant;
+        pend = Utils.calculateExpB(salesModel.cants);
+        System.out.println("el b seria" + pend);
+        constant = Utils.calculateExpA(salesModel.cants, pend);
+        System.out.println("el a seria" + constant);
+        ArrayList<Double> listaFut = Utils.generarValoresExp(constant, pend);
+        futureSales.cants = new ArrayList<Object>();
+        for(int i = 0; i<listaFut.size(); i++)
+            futureSales.cants.add((Object)listaFut.get(i));
+        //jTable2.setModel(futureSales);
+        futureSales.fireTableChanged(null);
+        JFreeChart chart = Utils.JTableToExpChart(jTable1, constant, pend, type);
+        try{
+                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+                final File file1=new File(pathLinearChart);
+                pathAct=pathLinearChart;
+                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);
+            }catch(Exception e){
+
+            }
+        panelC=new ChartPanel(chart);
+
+            //panelC.setDomainZoomable(true);
+            panelC.setVisible(true);
+            panelC.setPreferredSize(new Dimension(300,100));
+            javax.swing.JPanel pan2 = new javax.swing.JPanel();
+            pan2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            pan2.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 200));
+            jPanel1.add(pan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 350, 200));
+            pack();
+            jPanel1.revalidate();
+            pack();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -525,6 +580,7 @@ public class Proyecciones extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox cmbMarca;
     private javax.swing.JComboBox cmbTipoP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox jComboBox1;
