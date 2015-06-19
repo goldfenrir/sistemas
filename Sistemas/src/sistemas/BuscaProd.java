@@ -64,14 +64,14 @@ public class BuscaProd extends javax.swing.JFrame {
         jLabel2.setText("Marca");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "L'bel", "Esika", "CyºZone" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "L'bel", "Esika", "CyºZone" }));
         jComboBox1.setToolTipText("");
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 80, -1));
 
         jLabel3.setText("Tipo de Producto");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Labial", "Perfumes", "Cremas", "Sombras", "Desmaquilladoras", "Ropa", "Delineadores", "Rimel", "Desarodorantes", "Shampoo", "Accesorios", "Otros" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Labial", "Perfumes", "Cremas", "Sombras", "Desmaquilladoras", "Ropa", "Delineadores", "Rimel", "Desarodorantes", "Shampoo", "Accesorios", "Otros" }));
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 100, -1));
 
         jLabel5.setText("Precio mínimo:");

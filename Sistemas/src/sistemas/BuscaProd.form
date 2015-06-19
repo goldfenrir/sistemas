@@ -70,10 +70,11 @@
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="L&apos;bel"/>
-                <StringItem index="1" value="Esika"/>
-                <StringItem index="2" value="Cy&#xba;Zone"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Todas"/>
+                <StringItem index="1" value="L&apos;bel"/>
+                <StringItem index="2" value="Esika"/>
+                <StringItem index="3" value="Cy&#xba;Zone"/>
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -97,19 +98,20 @@
         <Component class="javax.swing.JComboBox" name="jComboBox2">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="12">
-                <StringItem index="0" value="Labial"/>
-                <StringItem index="1" value="Perfumes"/>
-                <StringItem index="2" value="Cremas"/>
-                <StringItem index="3" value="Sombras"/>
-                <StringItem index="4" value="Desmaquilladoras"/>
-                <StringItem index="5" value="Ropa"/>
-                <StringItem index="6" value="Delineadores"/>
-                <StringItem index="7" value="Rimel"/>
-                <StringItem index="8" value="Desarodorantes"/>
-                <StringItem index="9" value="Shampoo"/>
-                <StringItem index="10" value="Accesorios"/>
-                <StringItem index="11" value="Otros"/>
+              <StringArray count="13">
+                <StringItem index="0" value="Todos"/>
+                <StringItem index="1" value="Labial"/>
+                <StringItem index="2" value="Perfumes"/>
+                <StringItem index="3" value="Cremas"/>
+                <StringItem index="4" value="Sombras"/>
+                <StringItem index="5" value="Desmaquilladoras"/>
+                <StringItem index="6" value="Ropa"/>
+                <StringItem index="7" value="Delineadores"/>
+                <StringItem index="8" value="Rimel"/>
+                <StringItem index="9" value="Desarodorantes"/>
+                <StringItem index="10" value="Shampoo"/>
+                <StringItem index="11" value="Accesorios"/>
+                <StringItem index="12" value="Otros"/>
               </StringArray>
             </Property>
           </Properties>

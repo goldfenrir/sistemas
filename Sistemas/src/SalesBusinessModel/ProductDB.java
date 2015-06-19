@@ -43,4 +43,16 @@ public class ProductDB {
     public Product queryById(int productId) {
         return daoProduct.queryById(productId);
     }
+    
+    public ArrayList<Product> queryByBrand(String brand, int idtype){
+        return daoProduct.queryByBrand(brand, idtype);
+    }
+    
+    public ArrayList<Product> queryByType(int idtype){
+        return daoProduct.queryByType(idtype);
+    }
+    
+    public ArrayList<Product> queryByName(String name){
+        return daoProduct.queryByName(name);
+    }
 }

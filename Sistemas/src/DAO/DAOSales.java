@@ -17,4 +17,5 @@ public interface DAOSales {
         ArrayList<Object> queryByBrand(String brand, int month, int year, int measureType);
          
         ArrayList<Object> queryByProdType(int typeId, int month, int year, int measureType);
+        ArrayList<Object> queryAll(int month, int year, int measureType);
 }

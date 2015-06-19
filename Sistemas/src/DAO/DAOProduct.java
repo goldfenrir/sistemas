@@ -9,4 +9,8 @@ public interface DAOProduct {
 	void delete (int idProduct);
 	ArrayList<Product> queryAll();
 	Product queryById(int idProduct);
+        ArrayList<Product> queryByBrand(String brand, int prodType);
+        ArrayList<Product> queryByType(int prodType);
+        ArrayList<Product> queryByName(String name);
+        
 }

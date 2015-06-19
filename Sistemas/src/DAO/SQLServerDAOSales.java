@@ -507,5 +507,75 @@ public class SQLServerDAOSales implements DAOSales{
 
 		return null;
     }
+    @Override
+    public ArrayList<Object> queryAll(int month, int year, int measureType){
+        ArrayList<Object> cants = new ArrayList<Object>();
+         ArrayList<Object> subs = new ArrayList<Object>();
+         
+         for(int i = 0; i<32;i++){
+            int cero = 0;
+            double cero1 = 0.0;
+             cants.add(cero);
+             subs.add(cero1);
+         }
+        Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "select sum(subtotal) as subtotal, sum(cantidad) as cantidad, "
+                                + "v.FechaDia from detalleventa d inner join "
+                                + "ventas v on month(v.FechaDia)= " + month + " and year(v.FechaDia)= "
+                                + year + " and d.IdVenta = v.IdVenta group by v.FechaDia " +
+                                    " order by v.FechaDia ";
+			pstmt = conn.prepareStatement(sql);
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+                        //SQLServerDAOProduct daop = new SQLServerDAOProduct();
+                        int i = 0;
+			while (rs.next()){
+				//int id = rs.getInt("id");
+                                    //int idVenta = rs.getInt("IdVenta");
+                                    //int idCampanha = rs.getInt("IdProducto");
+                                    double subtotal = rs.getDouble("Subtotal");
+                                    int cantidad = rs.getInt("Cantidad");
+                                    int dia = rs.getDate("FechaDia").toLocalDate().getDayOfMonth();
+                                    System.out.println("" + dia);
+                                    if(measureType == 1)
+                                        cants.set(dia-1, cantidad);
+                                        //cants.add(cantidad);
+                                    else 
+                                        subs.set(dia-1, subtotal);
+                                        //subs.add(subtotal);
+                                    //LocalDate date = rs.getDate("FechaDia").toLocalDate();
+                                   //Falta campaña y moneda
+				//arr.add(p);
+			}
+                        pstmt.close();
+                                    conn.close();
+                                    if(measureType == 1)
+                                        return cants;
+                                    else
+                                        return subs;
+                                            
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
 
+		return null;
+    }
 }

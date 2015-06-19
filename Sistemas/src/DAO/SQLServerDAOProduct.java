@@ -258,5 +258,203 @@ public class SQLServerDAOProduct implements DAOProduct{
 		}
 		return p;	
 	}
+        
+        @Override
+        public ArrayList<Product> queryByBrand(String brand, int type){
+            ArrayList<Product> plist = new ArrayList<Product>();
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Product p = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "SELECT * FROM Producto"
+					+ " WHERE Marca like '%" + brand
+                                + "%' ";
+                        if(type > 0)
+                            sql += "and IdTipo = " + type;
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setInt(1, idProduct);
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+			while (rs.next()){
+				int idProducto = rs.getInt("IdProducto");
+				int idTipo = rs.getInt("IdTipo");
+				int idMoneda = rs.getInt("IdMoneda");
+                                String nombre = rs.getString("Nombre");
+				String descripcion = rs.getString("Descripcion");
+				double precio_Base = rs.getDouble("Precio_Base");
+                                String marca = rs.getString("Marca");
+				int stock = rs.getInt("Stock");
+				String estado = rs.getString("Estado");
+                                //LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
+				//LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
+                                
+				p = new Product();
+				p.setBasePrice(precio_Base);
+                                p.setDescription(descripcion);
+                                p.setEstado(estado);
+                                //p.setFechaDescontinuacion(fechaDescontinuacion);
+                                //p.setFechaIngreso(fechaIngreso);
+                                p.setId(idTipo);
+                                p.setMarca(marca);
+                                //p.setMoneda(null);
+                                p.setNombre(nombre);
+                                p.setStock(stock);
+                                plist.add(p);
+                                
+			}
+                        pstmt.close();
+                        conn.close();
+                        return plist;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return null;
+        }
+        
+        @Override
+        public ArrayList<Product> queryByType(int type){
+            ArrayList<Product> plist = new ArrayList<Product>();
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Product p = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "SELECT * FROM Producto"
+					+ " WHERE IdTipo" + type;
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setInt(1, idProduct);
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+			while (rs.next()){
+				int idProducto = rs.getInt("IdProducto");
+				int idTipo = rs.getInt("IdTipo");
+				int idMoneda = rs.getInt("IdMoneda");
+                                String nombre = rs.getString("Nombre");
+				String descripcion = rs.getString("Descripcion");
+				double precio_Base = rs.getDouble("Precio_Base");
+                                String marca = rs.getString("Marca");
+				int stock = rs.getInt("Stock");
+				String estado = rs.getString("Estado");
+                                //LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
+				//LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
+                                
+				p = new Product();
+				p.setBasePrice(precio_Base);
+                                p.setDescription(descripcion);
+                                p.setEstado(estado);
+                                //p.setFechaDescontinuacion(fechaDescontinuacion);
+                                //p.setFechaIngreso(fechaIngreso);
+                                p.setId(idTipo);
+                                p.setMarca(marca);
+                                //p.setMoneda(null);
+                                p.setNombre(nombre);
+                                p.setStock(stock);
+                                plist.add(p);
+                                
+			}
+                        pstmt.close();
+                        conn.close();
+                        return plist;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return null;
+        }
+        @Override
+        public ArrayList<Product> queryByName(String name){
+            ArrayList<Product> plist = new ArrayList<Product>();
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Product p = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "SELECT * FROM Producto"
+					+ " WHERE Nombre like '%" + name
+                                + "%' ";
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setInt(1, idProduct);
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+			while (rs.next()){
+				int idProducto = rs.getInt("IdProducto");
+				int idTipo = rs.getInt("IdTipo");
+				int idMoneda = rs.getInt("IdMoneda");
+                                String nombre = rs.getString("Nombre");
+				String descripcion = rs.getString("Descripcion");
+				double precio_Base = rs.getDouble("Precio_Base");
+                                String marca = rs.getString("Marca");
+				int stock = rs.getInt("Stock");
+				String estado = rs.getString("Estado");
+                                //LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
+				//LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
+                                
+				p = new Product();
+				p.setBasePrice(precio_Base);
+                                p.setDescription(descripcion);
+                                p.setEstado(estado);
+                                //p.setFechaDescontinuacion(fechaDescontinuacion);
+                                //p.setFechaIngreso(fechaIngreso);
+                                p.setId(idTipo);
+                                p.setMarca(marca);
+                                //p.setMoneda(null);
+                                p.setNombre(nombre);
+                                p.setStock(stock);
+                                plist.add(p);
+                                
+			}
+                        pstmt.close();
+                        conn.close();
+                        return plist;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return null;
+        }
 
 }

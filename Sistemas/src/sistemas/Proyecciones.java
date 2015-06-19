@@ -339,6 +339,9 @@ public class Proyecciones extends javax.swing.JFrame {
             }
             salesModel.cants = SalesManager.queryDailySalesByBrand(brand, 9, dia.getYear(), type);   
         }
+        else {
+            salesModel.cants = SalesManager.queryAllDailySales(9, dia.getYear(), type);
+        }
         jTable1.setModel(salesModel);
         salesModel.fireTableChanged(null);
         double pend, constant;

@@ -50,4 +50,8 @@ public class SalesDB {
          public ArrayList<Object> queryByProdType(int typeId, int month, int year, int measure){
              return daoSales.queryByProdType(typeId, month, year, measure);
          }
+         
+         public ArrayList<Object> queryAll(int month, int year, int measure){
+             return daoSales.queryAll(month, year, measure);
+         }
 }
