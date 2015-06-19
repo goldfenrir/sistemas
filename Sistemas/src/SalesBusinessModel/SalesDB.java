@@ -4,6 +4,7 @@ import DAO.DAOFactory;
 import DAO.DAOSales;
 import DAO.DBConnection;
 import Model.Sales;
+import Model.SalesDetail;
 import java.util.ArrayList;
 
 
@@ -36,5 +37,17 @@ public class SalesDB {
 	 public Sales queryById(int id){
 		 return daoSales.queryById(id);
 	 }
-	 
+	 //////////
+         
+         public ArrayList<Object> queryByProduct(int prodId, int month, int year, int measure){
+             return daoSales.queryByProduct(prodId, month, year, measure);
+         }
+         
+         public ArrayList<Object> queryByBrand(String brand, int month, int year, int measure){
+             return daoSales.queryByBrand(brand, month, year, measure);
+         }
+         
+         public ArrayList<Object> queryByProdType(int typeId, int month, int year, int measure){
+             return daoSales.queryByProdType(typeId, month, year, measure);
+         }
 }

@@ -5,13 +5,21 @@
  */
 package sistemas;
 
+import SalesBusinessModel.SalesManager;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.SwingUtilities;
+import javax.swing.table.AbstractTableModel;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 
 /**
  *
@@ -23,6 +31,7 @@ public class Proyecciones extends javax.swing.JFrame {
      * Creates new form Template
      */
     public Proyecciones() {
+        salesModel = new MyTableModel();
         initComponents();
         initComponents2();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
@@ -83,14 +92,11 @@ public class Proyecciones extends javax.swing.JFrame {
                  cmbTipoP.setVisible(true);
             }else if(((String)item).compareTo("Proyectar por producto")==0){
                 jLabel2.setVisible(true);
-                    getTxtCodP().setText("                                               ");
+                    getTxtCodP().setText("a");
                     getTxtCodP().selectAll();
                     getTxtCodP().setVisible(true);
-                BuscaProd appBus= new BuscaProd();
-                appBus.setVisible(true);
-                 
-                
-               
+                //BuscaProd appBus= new BuscaProd();
+                //appBus.setVisible(true);
             }else if(((String)item).compareTo("Proyectar todos")==0){
                
             }
@@ -125,7 +131,6 @@ public class Proyecciones extends javax.swing.JFrame {
         txtGen = new javax.swing.JButton();
         btnExp = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel6 = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,23 +198,12 @@ public class Proyecciones extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"01", "USD", "523.3", "570.8", "600.8", "630.5", "653", "670", "600", "30.5"},
-                {"02", "USD", "12", "20.2", "30.2", "40.8", "20", "15", "15", "3"},
-                {"03", "USD", "50", "60", "30", "40", "35", "32", "30", "10"},
-                {"04", "USD", "50", "110", "12", "45", "65", "60", "45", "8"}
+
             },
             new String [] {
-                "Código", "Unidades", "Ene-2015", "Feb-2015", "Mar-2015", "Abr-2015", "May-2015", "Jun-2015", "Promedio", "Desviación"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, true
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(jTable1);
 
@@ -218,18 +212,25 @@ public class Proyecciones extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 490, 200));
 
         txtGen.setText("Generar");
+        txtGen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGenActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtGen, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, 40));
 
         btnExp.setText("Exportar");
         jPanel1.add(btnExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, -1, -1));
 
         jCheckBox1.setText("PDF");
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/proyVen.jpg"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 470, 220));
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, 20));
 
         jCheckBox3.setText("Excel (.xls)");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 620));
@@ -254,6 +255,64 @@ public class Proyecciones extends javax.swing.JFrame {
         // TODO add your handling code here:
         getTxtCodP().setText("");
     }//GEN-LAST:event_txtCodPMouseClicked
+
+    private void txtGenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenActionPerformed
+        //se generó
+        int type = 1;
+        ArrayList<String> fechas2 = new ArrayList<String>();
+        LocalDate dia = LocalDate.now();
+        if (jRadioButton1.isSelected())
+            type = 1;
+        if (jRadioButton2.isSelected())
+            type = 2;
+        for(int i = 0; i<15;i++){
+            String fecha = "" + (i+1) + "-" + dia.getMonthValue() + "-" + dia.getYear();
+            fechas2.add(fecha);
+        }
+        salesModel.fechas = fechas2;
+        if(jComboBox1.getSelectedIndex() == 3){
+            int idprod = Integer.parseInt(txtCodP.getText());
+            System.out.println("" + idprod + " " + dia.getMonthValue());
+            salesModel.cants = SalesManager.queryDailySalesByProduct(idprod, 
+                    9, dia.getYear(), type);
+            
+        }
+        if(jComboBox1.getSelectedIndex() == 2){
+            String tipoProd = (String)cmbTipoP.getSelectedItem();
+            //query por tipo prod;
+            salesModel.cants = SalesManager.queryDailySalesByProdType(1, 9, dia.getYear(), type);
+        }
+        if(jComboBox1.getSelectedIndex() == 1){
+            //por marca
+            int ind = cmbMarca.getSelectedIndex();
+            String brand = "";
+            switch(ind){
+                case 0 : brand = "lbel";break;
+                case 1 : brand = "esika"; break;
+                case 2 : brand  = "cyzone"; break;
+            }
+            salesModel.cants = SalesManager.queryDailySalesByBrand(brand, 9, dia.getYear(), type);   
+        }
+        jTable1.setModel(salesModel);
+        salesModel.fireTableChanged(null);
+        double pend, constant;
+        pend = Utils.getM(salesModel.cants);
+        constant = Utils.getConstant(salesModel.cants, pend);
+        JFreeChart chart = Utils.JTableToLinearChart(jTable1, constant, pend, type);
+        panelC=new ChartPanel(chart);
+
+            //panelC.setDomainZoomable(true);
+            panelC.setVisible(true);
+            panelC.setPreferredSize(new Dimension(300,100));
+            jPanel1.add(panelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 350, 200));
+            pack();
+            jPanel1.revalidate();
+            pack();
+    }//GEN-LAST:event_txtGenActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,10 +350,66 @@ public class Proyecciones extends javax.swing.JFrame {
         });
     }
     
+    class MyTableModel extends AbstractTableModel{
+            ArrayList<String> fechas;
+             ArrayList<Object> cants;
+             ArrayList<Double> subs=new ArrayList<Double>();
+		//ArrayList<Product> productsLst = SalesManager.queryAllProducts(); 
+		String[]  titles= {"Fecha", "Unidad", "Cantidad"} ;
+		@Override
+		public int getColumnCount() {
+			// TODO Auto-generated method stub
+			return titles.length;
+		}
+
+		@Override
+		public int getRowCount() {
+			// TODO Auto-generated method stub
+			//eturn productsLst.size();
+                        return fechas.size();
+		}
+
+		@Override
+		public Object getValueAt(int row, int col) {
+			String value = "";
+                        if(col == 0){
+                            value  = fechas.get(row);
+                            return value;
+                        }
+                        if(col == 1){
+                            if(jRadioButton1.isSelected())
+                                value ="unidades";
+                            else
+                                value = "USD miles";
+                            return value;
+                        }
+			if(col == 2 && row < cants.size()){
+                            if(cants.get(row) instanceof Integer){
+                                int num = (Integer)cants.get(row);
+                                value = "" + num;
+                                return value;
+                            }
+                            if(cants.get(row) instanceof Double){
+                                double num = (Double)cants.get(row);
+                                value = "" +num;
+                                return value;
+                            }
+                        }
+			return value;
+		}
+		
+		public String getColumnName(int col){
+			return titles[col];
+		}
+		
+	} 
+    
     public javax.swing.JPanel getPanel(){
         return jPanel1;
     }
     
+    private ChartPanel panelC;
+    private MyTableModel salesModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExp;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -308,7 +423,6 @@ public class Proyecciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;

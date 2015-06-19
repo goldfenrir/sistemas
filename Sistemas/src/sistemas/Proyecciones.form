@@ -220,70 +220,15 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="10" rowCount="4">
-                        <Column editable="false" title="C&#xf3;digo" type="java.lang.Object">
-                          <Data value="01"/>
-                          <Data value="02"/>
-                          <Data value="03"/>
-                          <Data value="04"/>
-                        </Column>
-                        <Column editable="false" title="Unidades" type="java.lang.Object">
-                          <Data value="USD"/>
-                          <Data value="USD"/>
-                          <Data value="USD"/>
-                          <Data value="USD"/>
-                        </Column>
-                        <Column editable="false" title="Ene-2015" type="java.lang.Object">
-                          <Data value="523.3"/>
-                          <Data value="12"/>
-                          <Data value="50"/>
-                          <Data value="50"/>
-                        </Column>
-                        <Column editable="false" title="Feb-2015" type="java.lang.Object">
-                          <Data value="570.8"/>
-                          <Data value="20.2"/>
-                          <Data value="60"/>
-                          <Data value="110"/>
-                        </Column>
-                        <Column editable="false" title="Mar-2015" type="java.lang.Object">
-                          <Data value="600.8"/>
-                          <Data value="30.2"/>
-                          <Data value="30"/>
-                          <Data value="12"/>
-                        </Column>
-                        <Column editable="false" title="Abr-2015" type="java.lang.Object">
-                          <Data value="630.5"/>
-                          <Data value="40.8"/>
-                          <Data value="40"/>
-                          <Data value="45"/>
-                        </Column>
-                        <Column editable="false" title="May-2015" type="java.lang.Object">
-                          <Data value="653"/>
-                          <Data value="20"/>
-                          <Data value="35"/>
-                          <Data value="65"/>
-                        </Column>
-                        <Column editable="false" title="Jun-2015" type="java.lang.Object">
-                          <Data value="670"/>
-                          <Data value="15"/>
-                          <Data value="32"/>
-                          <Data value="60"/>
-                        </Column>
-                        <Column editable="true" title="Promedio" type="java.lang.Object">
-                          <Data value="600"/>
-                          <Data value="15"/>
-                          <Data value="30"/>
-                          <Data value="45"/>
-                        </Column>
-                        <Column editable="true" title="Desviaci&#xf3;n" type="java.lang.Object">
-                          <Data value="30.5"/>
-                          <Data value="3"/>
-                          <Data value="10"/>
-                          <Data value="8"/>
-                        </Column>
-                      </Table>
+                      <Table columnCount="0" rowCount="0"/>
                     </Property>
                     <Property name="autoResizeMode" type="int" value="0"/>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -294,6 +239,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGenActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="360" y="130" width="130" height="40"/>
@@ -316,19 +264,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="520" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/proyVen.jpg"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="120" y="380" width="470" height="220"/>
+              <AbsoluteConstraints x="460" y="520" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -336,6 +272,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Excel (.xls)"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox3ActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="460" y="490" width="-1" height="-1"/>

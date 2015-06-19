@@ -51,4 +51,16 @@ public class SalesManager {
     public static Product queryProductById(int productId) {
         return productDB.queryById(productId);
     }
+    
+    public static ArrayList<Object> queryDailySalesByProduct(int prodId, int month, int year, int measure){
+        return salesDB.queryByProduct(prodId, month, year, measure);
+    }
+    
+    public static ArrayList<Object> queryDailySalesByBrand(String brand, int month, int year, int measure){
+        return salesDB.queryByBrand(brand, month, year, measure);
+    }
+    
+    public static ArrayList<Object> queryDailySalesByProdType(int typeId, int month, int year, int measure){
+        return salesDB.queryByProdType(typeId, month, year, measure);
+    }
 }

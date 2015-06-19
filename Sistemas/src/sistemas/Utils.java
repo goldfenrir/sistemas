@@ -12,12 +12,14 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
@@ -28,10 +30,22 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.DatasetRenderingOrder;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYBarRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.IntervalXYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 public class Utils {
     
@@ -110,6 +124,91 @@ public class Utils {
         
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public static double getM(ArrayList<Object> cants){
+        double pendiente;
+        double sumaProd = 0, sumaX = 0, sumaY = 0, sumaX2=0;
+        for(int i = 0; i<cants.size();i++){
+            sumaX += (i+1);
+            sumaX2 += (i+1)*(i+1);
+            if(cants.get(i) instanceof Integer){
+                sumaProd += (i+1)*(Integer)cants.get(i);
+                sumaY += (Integer)cants.get(i);
+            }
+            else{
+                sumaProd += (i+1)*(Double)cants.get(i);
+                sumaY += (Double)(cants.get(i));
+            }
+        }
+        
+        int n = cants.size();
+        pendiente = ((n*sumaProd)-(sumaX*sumaY))/((n*sumaX2)-(sumaX*sumaX));
+        return pendiente;
+    }
+    
+    public static double getConstant(ArrayList<Object> cants, double pend){
+        double constante;
+        double sumaY = 0, sumaX = 0;
+        for(int i = 0; i<cants.size();i++){
+            sumaX += (i+1);
+            if(cants.get(i) instanceof Integer){
+                sumaY += (Integer)cants.get(i);
+            }
+            else
+                sumaY += (Double)cants.get(i);
+        }
+        constante = (sumaY - (pend * sumaX))/cants.size();
+        return constante;
+    }
+    
+    private static ArrayList<Double> generarValoresFuturos(double constant, double pend){
+        ArrayList<Double> lista = new ArrayList<Double>();
+        for(int i = 1; i<=30 ;i++){
+            double num = constant + (pend*i);
+            lista.add(num);
+        }
+        return lista;
+    }
+    
+    public static JFreeChart JTableToLinearChart(JTable table, double constant, double pend, int type){
+         final XYSeries series1 = new XYSeries("Graph1");
+         final XYSeries series2 = new XYSeries("Graph2");
+         for(int i = 0; i + 1 < table.getModel().getRowCount() - 1; i++){
+             String st = (String)table.getModel().getValueAt(i,2);
+             st.replaceAll("\\s", "");
+             if(st != null && st != "")
+                if(type == 1) series1.add((i+1)*1.0, (Integer.parseInt(st))*1.0);
+                else series1.add((i+1), Double.parseDouble(st));
+         }
+         ArrayList<Double> values = generarValoresFuturos(constant, pend);
+         for(int i = 0; i<values.size();i++){
+             series2.add(i+1,values.get(i));
+         }
+        //final NumberAxis domainAxis = new NumberAxis("Dias ");
+        //final ValueAxis rangeAxis = new NumberAxis("Cant Ventas ");
+
+    // create plot ...
+        final XYSeriesCollection coll1 = new XYSeriesCollection();
+        coll1.addSeries(series1);
+        coll1.addSeries(series2);
+        //final IntervalXYDataset data0 = coll1;
+        //final XYItemRenderer renderer0 = new XYLineAndShapeRenderer();
+    // change "new XYBarRenderer(0.20)" to "StandardXYItemRenderer()" if you want to change  type of graph
+      final JFreeChart chart = ChartFactory.createXYLineChart("Line Chart demo 6", "dia", "ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
+      chart.setBackgroundPaint(Color.white);
+      final XYPlot plot = chart.getXYPlot();
+      plot.setBackgroundPaint(Color.white);
+      plot.setDomainGridlinePaint(Color.white);
+      plot.setRangeGridlinePaint(Color.white);
+      final XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+      renderer.setSeriesLinesVisible(0, true);
+      renderer.setSeriesShapesVisible(1, false);
+      plot.setRenderer(renderer);
+      final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+      rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+      return chart;
+    }
+    
     public static JFreeChart JTableToPieChart(JTable table,String title,int ind){
         TableModel model = table.getModel(); 
         DefaultPieDataset data = new DefaultPieDataset();

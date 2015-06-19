@@ -5,9 +5,11 @@
  */
 package sistemas;
 
+import SalesBusinessModel.SalesManager;
 import javax.swing.UIManager;
 import com.jgoodies.looks.plastic.PlasticLookAndFeel;
 import com.jgoodies.looks.plastic.theme.DesertBlue;
+import java.util.ArrayList;
 /**
  *
  * @author alulab14
@@ -21,6 +23,7 @@ public class Sistemas {
         // TODO code application logic here
         //MantenerPromocion mant = new MantenerPromocion();
         //mant.setVisible(true);
+        
         try { 
           //  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
             PlasticLookAndFeel.setPlasticTheme(new DesertBlue());
@@ -30,6 +33,9 @@ public class Sistemas {
         }
         Login  prin = new Login();
         prin.setVisible(true);
+        /*ArrayList<Object> list = SalesManager.queryDailySalesByProduct(6, 9, 2015, 1);
+       for(int i = 0; i<list.size();i++)
+           System.out.println("cantidad de producto " + i + " :" + (Integer)list.get(i));*/
     }
     
 }

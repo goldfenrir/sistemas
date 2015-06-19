@@ -212,10 +212,10 @@ public class SQLServerDAOProduct implements DAOProduct{
 								DBConnection.user,
 								DBConnection.password);
 			//Paso 3: Preparar la sentencia
-			String sql = "SELECT * FROM Product_2015_1_2011 "
-					+ "WHERE id=?";
+			String sql = "SELECT * FROM Producto"
+					+ " WHERE IdProducto = " + idProduct;
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, idProduct);
+			//pstmt.setInt(1, idProduct);
 			//Paso 4: Ejecutar la sentencia
 			rs = pstmt.executeQuery();
 			//Paso 5(opc.): Procesar los resultados
@@ -229,15 +229,15 @@ public class SQLServerDAOProduct implements DAOProduct{
                                 String marca = rs.getString("Marca");
 				int stock = rs.getInt("Stock");
 				String estado = rs.getString("Estado");
-                                LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
-				LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
+                                //LocalDate fechaIngreso = rs.getDate("FechaIngreso").toLocalDate();
+				//LocalDate fechaDescontinuacion = rs.getDate("FechaDescontinuacion").toLocalDate();
                                 
 				p = new Product();
 				p.setBasePrice(precio_Base);
                                 p.setDescription(descripcion);
                                 p.setEstado(estado);
-                                p.setFechaDescontinuacion(fechaDescontinuacion);
-                                p.setFechaIngreso(fechaIngreso);
+                                //p.setFechaDescontinuacion(fechaDescontinuacion);
+                                //p.setFechaIngreso(fechaIngreso);
                                 p.setId(idTipo);
                                 p.setMarca(marca);
                                 //p.setMoneda(null);
