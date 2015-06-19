@@ -161,7 +161,7 @@ public class Utils {
         return constante;
     }
     
-    private static ArrayList<Double> generarValoresFuturos(double constant, double pend){
+    public static ArrayList<Double> generarValoresFuturos(double constant, double pend){
         ArrayList<Double> lista = new ArrayList<Double>();
         for(int i = 1; i<=30 ;i++){
             double num = constant + (pend*i);

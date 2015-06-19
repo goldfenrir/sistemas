@@ -13,13 +13,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.table.AbstractTableModel;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
 
 /**
  *
@@ -30,8 +39,11 @@ public class Proyecciones extends javax.swing.JFrame {
     /**
      * Creates new form Template
      */
+    private String pathAct="";
+     private String pathLinearChart="src\\img\\LinearChart.jpg";
     public Proyecciones() {
         salesModel = new MyTableModel();
+        futureSales = new MyTableModel();
         initComponents();
         initComponents2();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
@@ -95,8 +107,8 @@ public class Proyecciones extends javax.swing.JFrame {
                     getTxtCodP().setText("a");
                     getTxtCodP().selectAll();
                     getTxtCodP().setVisible(true);
-                //BuscaProd appBus= new BuscaProd();
-                //appBus.setVisible(true);
+                BuscaProd appBus= new BuscaProd();
+                appBus.setVisible(true);
             }else if(((String)item).compareTo("Proyectar todos")==0){
                
             }
@@ -126,8 +138,12 @@ public class Proyecciones extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         txtGen = new javax.swing.JButton();
         btnExp = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -194,7 +210,13 @@ public class Proyecciones extends javax.swing.JFrame {
         jRadioButton2.setText("USD MILES");
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Valores Actuales");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 90, 30));
+
+        jLabel7.setText("Valores Futuros");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -207,9 +229,24 @@ public class Proyecciones extends javax.swing.JFrame {
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1);
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 170));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 490, 200));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 250, 170));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 510, 200));
 
         txtGen.setText("Generar");
         txtGen.addActionListener(new java.awt.event.ActionListener() {
@@ -220,6 +257,11 @@ public class Proyecciones extends javax.swing.JFrame {
         jPanel1.add(txtGen, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, 40));
 
         btnExp.setText("Exportar");
+        btnExp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExpActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, -1, -1));
 
         jCheckBox1.setText("PDF");
@@ -260,6 +302,7 @@ public class Proyecciones extends javax.swing.JFrame {
         //se generó
         int type = 1;
         ArrayList<String> fechas2 = new ArrayList<String>();
+        ArrayList<String> fechasFuturas = new ArrayList<String>();
         LocalDate dia = LocalDate.now();
         if (jRadioButton1.isSelected())
             type = 1;
@@ -267,9 +310,12 @@ public class Proyecciones extends javax.swing.JFrame {
             type = 2;
         for(int i = 0; i<15;i++){
             String fecha = "" + (i+1) + "-" + dia.getMonthValue() + "-" + dia.getYear();
+            String fecha2 = "" + (i+15) + "-" + dia.getMonthValue() + "-" + dia.getYear();
+            fechasFuturas.add(fecha2);
             fechas2.add(fecha);
         }
         salesModel.fechas = fechas2;
+        futureSales.fechas  = fechasFuturas;
         if(jComboBox1.getSelectedIndex() == 3){
             int idprod = Integer.parseInt(txtCodP.getText());
             System.out.println("" + idprod + " " + dia.getMonthValue());
@@ -298,7 +344,21 @@ public class Proyecciones extends javax.swing.JFrame {
         double pend, constant;
         pend = Utils.getM(salesModel.cants);
         constant = Utils.getConstant(salesModel.cants, pend);
+        ArrayList<Double> listaFut = Utils.generarValoresFuturos(constant, pend);
+        futureSales.cants = new ArrayList<Object>();
+        for(int i = 0; i<listaFut.size(); i++)
+            futureSales.cants.add((Object)listaFut.get(i));
+        jTable2.setModel(futureSales);
+        futureSales.fireTableChanged(null);
         JFreeChart chart = Utils.JTableToLinearChart(jTable1, constant, pend, type);
+        try{
+                final ChartRenderingInfo info=new ChartRenderingInfo(new StandardEntityCollection());
+                final File file1=new File(pathLinearChart);
+                pathAct=pathLinearChart;
+                ChartUtilities.saveChartAsJPEG(file1, chart, 600, 400);
+            }catch(Exception e){
+
+            }
         panelC=new ChartPanel(chart);
 
             //panelC.setDomainZoomable(true);
@@ -313,6 +373,41 @@ public class Proyecciones extends javax.swing.JFrame {
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void btnExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpActionPerformed
+        String pathSave=null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Specify a file to save");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int userSelection = fileChooser.showSaveDialog(this);
+        File fileToSave=null;
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            fileToSave = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            pathSave=fileToSave.getAbsolutePath();
+        }else if (userSelection == JFileChooser.CANCEL_OPTION){
+            pathSave=null;
+        }
+
+        if (pathSave!=null){
+            try {
+                // TODO add your handling code here:
+                //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
+                //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
+                if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
+                    Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
+                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\graficoProyeccion.pdf");
+                }else if(jCheckBox3.isSelected()){
+                    Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
+                }else if(jCheckBox1.isSelected()){
+                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\graficoProyeccion.pdf");
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnExpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,6 +505,7 @@ public class Proyecciones extends javax.swing.JFrame {
     
     private ChartPanel panelC;
     private MyTableModel salesModel;
+    private MyTableModel futureSales;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExp;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -423,14 +519,18 @@ public class Proyecciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtCodP;
     private javax.swing.JButton txtGen;
     // End of variables declaration//GEN-END:variables
