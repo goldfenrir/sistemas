@@ -34,6 +34,12 @@ public class ComboDB {
         daoCombo.delete(idCombo);
     }    
     
+    public ArrayList<Combo> queryByPrice(double minPrice, double maxPrice){
+        return daoCombo.queryByPrice(minPrice, maxPrice);
+    }
     
+    public Combo queryById(int id){
+        return daoCombo.queryById(id);
+    }
     
 }

@@ -24,13 +24,14 @@ public class MantenerCombos extends javax.swing.JFrame {
      * Creates new form Template
      */
     public MantenerCombos() {
+        comboModel = new MyTableModel();
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
     }
     
     class MyTableModel extends AbstractTableModel{
-            ArrayList<Product> productList=new ArrayList<Product>();
+            ArrayList<Combo> productList=new ArrayList<Combo>();
             String[]  titles= {"Codigo", "Nombre", "Tipo Producto","Precio Base"} ;
             @Override
             public int getColumnCount() {
@@ -280,6 +281,11 @@ public class MantenerCombos extends javax.swing.JFrame {
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 170, -1));
 
         jButton3.setText("Buscar Combos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Por datos de campaña"));
@@ -400,6 +406,20 @@ public class MantenerCombos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_text_idCampaña1KeyTyped
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        double uno = 12.0;
+        double dos = 100.0;
+        ArrayList<Combo> clist = new ArrayList<Combo> ();//SalesManager.queryComboByPrice(uno, dos);
+        int id = 29;
+        Combo c = SalesManager.queryComboById(id);
+        if(c == null) System.out.println("gglavida");
+        else System.out.println(c.getNombre());
+        clist.add(c);
+        comboModel.productList =  clist;
+        tblCombos.setModel(comboModel);
+        comboModel.fireTableChanged(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -441,7 +461,7 @@ public class MantenerCombos extends javax.swing.JFrame {
         pn = jPanel1;
         return jPanel1;
     }
-
+    private MyTableModel comboModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

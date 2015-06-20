@@ -102,4 +102,12 @@ public class SalesManager {
             String brand, int type){
         return productDB.queryByPrice(minPrice, maxPrice, brand, type);
     }
+    
+    public static Combo queryComboById(int id){
+        return comboDB.queryById(id);
+    }
+    
+    public static ArrayList<Combo> queryComboByPrice(double minPrice, double maxPrice){
+        return comboDB.queryByPrice(minPrice, maxPrice);
+    }
 }
