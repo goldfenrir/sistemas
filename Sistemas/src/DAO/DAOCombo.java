@@ -18,5 +18,5 @@ public interface DAOCombo {
     void delete(int idCombo);
     Combo queryById(int idCombo);
     ArrayList<Combo> queryByPrice(double minP, double maxP);
-    
+    ArrayList<Combo> queryAll();
 }

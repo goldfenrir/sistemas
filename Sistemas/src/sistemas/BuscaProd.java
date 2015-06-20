@@ -160,6 +160,12 @@ public class BuscaProd extends javax.swing.JFrame {
                String nom= (String)productModel.getValueAt(row, 1);
                pr.setProd(cod,nom);
            }
+           if(parent != null && parent instanceof MantenerCombos){
+               MantenerCombos comb = (MantenerCombos)parent;
+               int row = tbl_prod.getSelectedRow();
+               int cod = productModel.productsLst.get(row).getId();
+               comb.addProduct(cod);
+           }
            setVisible(false);
            //int selRow = tbl_prod.getSelectedRow();
            //int prodId = Integer.parseInt(

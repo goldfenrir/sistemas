@@ -24,13 +24,15 @@ public class MantenerCombos extends javax.swing.JFrame {
      * Creates new form Template
      */
     public MantenerCombos() {
+        comboModel = new MyTableModel();
+        productModel = new MyTableModel2();
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
     }
     
     class MyTableModel extends AbstractTableModel{
-            ArrayList<Product> productList=new ArrayList<Product>();
+            ArrayList<Combo> productList=new ArrayList<Combo>();
             String[]  titles= {"Codigo", "Nombre", "Tipo Producto","Precio Base"} ;
             @Override
             public int getColumnCount() {
@@ -67,14 +69,52 @@ public class MantenerCombos extends javax.swing.JFrame {
             }
 		
 	} 
+    class MyTableModel2 extends AbstractTableModel{
+            ArrayList<Product> productList=new ArrayList<Product>();
+            String[]  titles= {"Codigo", "Nombre", "Tipo Producto","Precio Base"} ;
+            @Override
+            public int getColumnCount() {
+                    // TODO Auto-generated method stub
+                    return titles.length;
+            }
+
+            @Override
+            public int getRowCount() {
+                    // TODO Auto-generated method stub
+                    //eturn productsLst.size();
+                    return productList.size();
+            }
+
+            @Override
+            public Object getValueAt(int row, int col) {
+                    if(col == 0){
+                        return " " +productList.get(row).getId();
+                    }
+                    if(col == 1){
+                        return productList.get(row).getNombre();
+                    }
+                    if(col == 2){
+                        return productList.get(row).getTipoProducto().getNombre();
+                    }
+                    if(col == 3){
+                        return " "+productList.get(row).getBasePrice();
+                    }
+                    return " ";
+            }
+		
+            public String getColumnName(int col){
+                    return titles[col];
+            }
+		
+	}
     
     
     public void agregarCombo(){
 //        JOptionPane.showMessageDialog(null, "Funciono");
         Combo c=new Combo();
-        c.setId(Integer.parseInt(txtId.getText()));
-        c.setDescription(txtDescription.getText());
-        c.setBasePrice(Double.parseDouble(txtPrice.getText()));
+        c.setId(Integer.parseInt(ctxtCod.getText()));
+        c.setDescription(ctxtDescription.getText());
+        c.setBasePrice(Double.parseDouble(ctxtPrice.getText()));
         c.setProductList(null);
         int valor=SalesManager.updateCombo(c);
         if(valor==0){
@@ -103,20 +143,20 @@ public class MantenerCombos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblPRoductos = new javax.swing.JTable();
-        txtId = new javax.swing.JTextField();
-        txtPrice = new javax.swing.JTextField();
+        ctxtCod = new javax.swing.JTextField();
+        ctxtPrice = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextPane();
+        ctxtDescription = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        txtCod = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtMinPrice = new javax.swing.JTextField();
+        txtMaxPrice = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -161,14 +201,14 @@ public class MantenerCombos extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 247, 534, 180));
 
-        txtId.setEditable(false);
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        ctxtCod.setEditable(false);
+        ctxtCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                ctxtCodActionPerformed(evt);
             }
         });
-        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 32, 180, -1));
-        jPanel2.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 173, 180, -1));
+        jPanel2.add(ctxtCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 32, 180, -1));
+        jPanel2.add(ctxtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 173, 180, -1));
 
         jTextField4.setEditable(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +232,7 @@ public class MantenerCombos extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 77, -1, -1));
 
-        jScrollPane1.setViewportView(txtDescription);
+        jScrollPane1.setViewportView(ctxtDescription);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 77, 180, 78));
 
@@ -200,13 +240,12 @@ public class MantenerCombos extends javax.swing.JFrame {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField5.setEditable(false);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtCodActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 32, 180, -1));
+        jPanel3.add(txtCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 32, 180, -1));
 
         jLabel5.setText("Codigo:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 35, -1, -1));
@@ -214,19 +253,19 @@ public class MantenerCombos extends javax.swing.JFrame {
         jLabel6.setText("Precio Minimo:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 83, -1, -1));
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtMinPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtMinPriceActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 80, 180, -1));
+        jPanel3.add(txtMinPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 80, 180, -1));
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtMaxPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtMaxPriceActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 121, 180, -1));
+        jPanel3.add(txtMaxPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 121, 180, -1));
 
         jLabel7.setText("Precio Maximo:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 124, -1, -1));
@@ -259,6 +298,11 @@ public class MantenerCombos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblCombos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCombosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblCombos);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 533, 198));
@@ -280,6 +324,11 @@ public class MantenerCombos extends javax.swing.JFrame {
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 170, -1));
 
         jButton3.setText("Buscar Combos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Por datos de campaña"));
@@ -357,25 +406,25 @@ public class MantenerCombos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void ctxtCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxtCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_ctxtCodActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtCodActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtMinPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMinPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtMinPriceActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtMaxPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaxPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtMaxPriceActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
@@ -383,7 +432,9 @@ public class MantenerCombos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new BuscaProd().setVisible(true);
+        BuscaProd busca = new BuscaProd();
+        busca.setParent(this);
+        busca.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void text_idCampaña1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_idCampaña1ActionPerformed
@@ -399,6 +450,56 @@ public class MantenerCombos extends javax.swing.JFrame {
             jop.showMessageDialog(null,"Debe ingresar un valor númerico","Error de input",javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_text_idCampaña1KeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ArrayList<Combo> clist = new ArrayList<Combo> ();//SalesManager.queryComboByPrice(uno, dos);
+        if(txtCod.getText().length()<=0){
+            if(txtMinPrice.getText().length()<=0)
+                comboModel.productList = SalesManager.queryAllCombos();
+            else{
+                double minPrice, maxPrice;
+                minPrice = Double.parseDouble(txtMinPrice.getText());
+                maxPrice = Double.parseDouble(txtMaxPrice.getText());
+                comboModel.productList = SalesManager.queryComboByPrice(minPrice, maxPrice);
+            }
+        }
+        else{
+            if(txtMinPrice.getText().length()<=0){
+                int id = Integer.parseInt(txtCod.getText());
+                Combo c = SalesManager.queryComboById(id);
+                clist.add(c);
+                comboModel.productList =  clist;
+            }
+            else{
+                double minPrice, maxPrice;
+                minPrice = Double.parseDouble(txtMinPrice.getText());
+                maxPrice = Double.parseDouble(txtMaxPrice.getText());
+                ArrayList<Combo> combList = SalesManager.queryComboByPrice(minPrice, maxPrice);
+                int id = Integer.parseInt(txtCod.getText());
+                Combo c = SalesManager.queryComboById(id);
+                combList.retainAll(clist);
+                comboModel.productList = combList;
+            }
+        }
+        tblCombos.setModel(comboModel);
+        comboModel.fireTableChanged(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tblCombosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCombosMouseClicked
+        // llenar la otra pestaña y mostrarla
+        if(evt.getClickCount() == 2){
+            int row = tblCombos.getSelectedRow();
+            int cod = comboModel.productList.get(row).getId();
+            Combo c = SalesManager.queryComboById(cod);
+            ctxtCod.setText(""+c.getId());
+            ctxtDescription.setText(c.getDescription());
+            ctxtPrice.setText("" + c.getBasePrice());
+            productModel.productList = c.getProductList();
+            tblPRoductos.setModel(productModel);
+            productModel.fireTableChanged(null);
+            jTabbedPane1.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_tblCombosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -441,8 +542,21 @@ public class MantenerCombos extends javax.swing.JFrame {
         pn = jPanel1;
         return jPanel1;
     }
-
+    
+    public void addProduct(int idProd){
+        Product p = SalesManager.queryProductById(idProd);
+        if(productModel.productList == null) productModel.productList = new ArrayList<Product>();
+        productModel.productList.add(p);
+        tblPRoductos.setModel(productModel);
+        productModel.fireTableChanged(null);
+    }
+    
+    private MyTableModel2 productModel;
+    private MyTableModel comboModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ctxtCod;
+    private javax.swing.JTextPane ctxtDescription;
+    private javax.swing.JTextField ctxtPrice;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -476,14 +590,11 @@ public class MantenerCombos extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTable tblCombos;
     private javax.swing.JTable tblPRoductos;
     private javax.swing.JTextField text_idCampaña1;
-    private javax.swing.JTextPane txtDescription;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtCod;
+    private javax.swing.JTextField txtMaxPrice;
+    private javax.swing.JTextField txtMinPrice;
     // End of variables declaration//GEN-END:variables
 }

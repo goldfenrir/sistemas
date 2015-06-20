@@ -23,11 +23,91 @@ public class SQLServerDAOCombo implements DAOCombo{
 
     @Override
     public void add(Combo c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "INSERT INTO Producto "
+					+ "(IdProducto, IdTipo, IdMoneda, Nombre, Descripcion,Precio_Base,Marca,Stock,Estado,FechaIngreso,FechaDescontinuacion)"
+					+ "VALUES (?,?,?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setInt(1, p.getId());
+			pstmt.setInt(1, c.getId());
+			pstmt.setInt(2, c.getTipoProducto().getId());
+			pstmt.setInt(3, c.getMoneda().getId());
+			pstmt.setString(4, c.getNombre());
+			pstmt.setString(5, c.getDescription());
+			pstmt.setDouble(6, c.getBasePrice());
+			pstmt.setString(7, c.getMarca());
+			pstmt.setInt(8, c.getStock());
+			pstmt.setString(9, c.getEstado());
+			//pstmt.setDate(10, java.sql.Date.valueOf(p.getFechaIngreso()));
+			//pstmt.setDate(11, java.sql.Date.valueOf(p.getFechaDescontinuacion()));
+			//Paso 4: Ejecutar la sentencia
+			pstmt.executeUpdate();
+                        for(int i = 0; i<c.getProductList().size();i++){
+                            sql = "INSERT INTO Combo (idCombo, idProducto) values ("
+                                + c.getId() + ", " + c.getProductList().get(i).getId() + ")";
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.executeUpdate();
+                        }
+			//Paso 5(opc.): Procesar los resultados			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
     }
 
     @Override
     public int update(Combo c) {
+        if(queryById(c.getId())==null){
+            //se debe agregar combo
+            add(c);
+        }
+        else{
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+                        for(int i = 0; i<c.getProductList().size();i++){
+                            String sql = "DELETE FROM Combo Where idCombo = "
+                                + c.getId() + " and idProducto " + c.getProductList().get(i).getId() + ")";
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.executeUpdate();
+                            sql = "INSERT INTO Combo (idCombo, idProducto) values ("
+                                    + c.getId() + ", " + c.getProductList().get(i).getId() + ")";
+                        }
+			//Paso 5(opc.): Procesar los resultados			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+        }
         return 0; //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -147,7 +227,91 @@ public class SQLServerDAOCombo implements DAOCombo{
                                     c.setMoneda(p2.getMoneda());
                                     c.setNombre(p2.getNombre());
                                     c.setTipoProducto(p2.getTipoProducto());
+                                  
                                     c.setId(p2.getId());
+                                    plist.add(p);
+                                }
+                                else{
+                                    int idProd = rs.getInt("idProducto");
+                                    p = daop.queryById(idProd);
+                                    plist.add(p);
+                                }
+			}
+                        if(c!= null){
+                                        System.out.println("ñaslkdjf");
+                                        c.setProductList(plist);
+                                        c.setCantidadProductos(plist.size());
+                                        clist.add(c);
+                                        plist = new ArrayList<Product>();
+                                        
+                                    }
+                        pstmt.close();
+                        conn.close();
+                        return clist;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return null;
+    }
+    
+    @Override
+    public ArrayList<Combo> queryAll(){
+        ArrayList<Combo> clist = new ArrayList<Combo>();
+        ArrayList<Product> plist = new ArrayList<Product>();
+        int codAnt = 0;
+            Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Product p = null;
+                Combo c = null;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "select c.idCombo, c.idProducto from Combo c inner join producto p "
+                                + "on p.idTipo = 13 and c.idCombo = p.IdProducto";
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setInt(1, idProduct);
+                        SQLServerDAOProduct daop = new SQLServerDAOProduct();
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+			while (rs.next()){
+				int codCombo = rs.getInt("idCombo");
+                                //System.out.println("si entra monsefilo");
+                                if(codCombo!=codAnt){
+                                    if(c!= null){
+                                        System.out.println("ñaslkdjf");
+                                        c.setProductList(plist);
+                                        c.setCantidadProductos(plist.size());
+                                        clist.add(c);
+                                        plist = new ArrayList<Product>();
+                                        
+                                    }
+                                    int idProd = rs.getInt("idProducto");
+                                    p = daop.queryById(idProd);
+                                    codAnt = codCombo;
+                                    Product p2;
+                                    p2 = daop.queryById(codCombo);
+                                    c = new Combo();
+                                    c.setBasePrice(p2.getBasePrice());
+                                    c.setDescription(p2.getDescription());
+                                    c.setMarca(p2.getMarca());
+                                    c.setMoneda(p2.getMoneda());
+                                    c.setNombre(p2.getNombre());
+                                    c.setTipoProducto(p2.getTipoProducto());
+                                    c.setId(codCombo);
                                     plist.add(p);
                                 }
                                 else{

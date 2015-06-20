@@ -210,11 +210,11 @@ public class ReporteVentas extends javax.swing.JFrame {
                 //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
                 if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
                     Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
-                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
+                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf", "");
                 }else if(jCheckBox3.isSelected()){
                     Utils.writeXLSXFile(jTable1,pathSave+"\\reporteVenta.xlsx");
                 }else if(jCheckBox1.isSelected()){
-                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf");
+                    Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\grafico.pdf", "");
                 }
 
             } catch (IOException ex) {

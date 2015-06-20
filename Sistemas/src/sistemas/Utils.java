@@ -180,7 +180,7 @@ public class Utils {
     wb.write(new FileOutputStream(path.toString()));//Save the file     
     }*/
 
-    static void imageToPDF(BufferedImage img,String path){
+    static void imageToPDF(BufferedImage img,String path, String title){
         try{
             Document document = new Document();
 
@@ -190,7 +190,10 @@ public class Utils {
 
         PdfContentByte pdfCB = new PdfContentByte(writer);
         Image image = Image.getInstance(pdfCB, img, 1);
-        document.add(new Paragraph("Gráfico de ventas:\n"));
+        if(title.isEmpty())
+            document.add(new Paragraph("Gráfico de ventas:\n"));
+        else
+            document.add(new Paragraph(title + ":\n"));
         document.add(image);
         
         // step 5
@@ -375,7 +378,7 @@ public class Utils {
         //final IntervalXYDataset data0 = coll1;
         //final XYItemRenderer renderer0 = new XYLineAndShapeRenderer();
     // change "new XYBarRenderer(0.20)" to "StandardXYItemRenderer()" if you want to change  type of graph
-      final JFreeChart chart = ChartFactory.createXYLineChart("Line Chart demo 6", "dia", "ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
+      final JFreeChart chart = ChartFactory.createXYLineChart("Proyección de Ventas", "Días", "Ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
       chart.setBackgroundPaint(Color.white);
       final XYPlot plot = chart.getXYPlot();
       plot.setBackgroundPaint(Color.white);
