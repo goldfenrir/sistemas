@@ -106,7 +106,29 @@ public class SQLServerDAOReunion implements DAOReunion{
 		
 			//Paso 4: Ejecutar la sentencia
 			pstmt.executeUpdate();
-			//Paso 5(opc.): Procesar los resultados			
+			//Paso 5(opc.): Procesar los resultados	
+                        
+                        
+                        String sql2="DELETE from  Acuerdos_de_reunion where idReunion=?";
+                        pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, p.getIdReunion());			
+			pstmt.executeUpdate();
+                        //ACUERDOS
+                        for (int i=0;i<p.getAcuerdos().size();i++){
+                            Acuerdo acu=p.getAcuerdos().get(i);
+                            sql2="INSERT INTO Acuerdos_de_reunion"
+                                    + " values(?,?,?,?)";
+                            pstmt = conn.prepareStatement(sql2);
+                            pstmt.setInt(1, acu.getIdAcuerdo());
+                            pstmt.setString(2, acu.getDescripcion());
+                            pstmt.setInt(3, p.getIdReunion());
+                            pstmt.setInt(4, p.getCampanha());
+                            pstmt.executeUpdate();
+                        }
+                            
+                        //FINACUERDOS
+                        
+                        
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
