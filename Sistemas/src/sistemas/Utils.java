@@ -66,7 +66,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class Utils {
     
-    public static void chartExcel(ArrayList<Object> actuales, ArrayList<Object>futuros) throws Exception {
+    public static void chartExcel(ArrayList<Object> actuales, ArrayList<Object>futuros, String path) throws Exception {
         Workbook wb = new XSSFWorkbook();
         Sheet sheet = wb.createSheet("linechart");
         final int NUM_OF_ROWS = 30;
@@ -96,15 +96,6 @@ public class Utils {
             cell = row.createCell(4);
             cell.setCellValue((Double)futuros.get(i));
         }
-        System.out.println("llego aca");
-        /*
-        for (int rowIndex = 0; rowIndex < NUM_OF_ROWS; rowIndex++) {
-            row = sheet.createRow((short) rowIndex);
-            for (int colIndex = 0; colIndex < NUM_OF_COLUMNS; colIndex++) {
-                cell = row.createCell((short) colIndex);
-                cell.setCellValue((colIndex+1) * (rowIndex + 1));
-            }
-        }*/
 
         Drawing drawing = sheet.createDrawingPatriarch();
         ClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 35, 10, 45);
@@ -131,7 +122,7 @@ public class Utils {
         chart.plot(data, bottomAxis, leftAxis);
 
         // Write the output to a file
-        FileOutputStream fileOut = new FileOutputStream("ooxml-line-chart.xlsx");
+        FileOutputStream fileOut = new FileOutputStream(path);
         wb.write(fileOut);
         fileOut.close();
     }
@@ -274,19 +265,19 @@ public class Utils {
                 
                 int num = (Integer)cants.get(i);
                 if(num>0){
-                System.out.println("ese numero" + num);
+                ///System.out.println("ese numero" + num);
                 sumatXlnY += (Math.log(num)*(i+1));
-                System.out.println("ese numero xlny" + sumatXlnY);
+                //System.out.println("ese numero xlny" + sumatXlnY);
                 sumatLnY += Math.log(num);
                 }
             }
         }
-        System.out.println("resultados de b, sumatxlny: "+ sumatXlnY);
-        System.out.println("resultados de b, sumatlny: "+ sumatLnY);
+        //System.out.println("resultados de b, sumatxlny: "+ sumatXlnY);
+        //System.out.println("resultados de b, sumatlny: "+ sumatLnY);
         promLnY = (sumatLnY*1.0)/15;
         promX = (sumatX)/15;
-        System.out.println("sumatoria x " + sumatX + " promedio x: "+promX);
-        System.out.println("promedio lny: " +promLnY);
+        //System.out.println("sumatoria x " + sumatX + " promedio x: "+promX);
+        //System.out.println("promedio lny: " +promLnY);
         double b = (sumatXlnY - (promLnY*sumatX))/(sumatX2 -( promX*sumatX));
         return b;
     }
@@ -345,7 +336,7 @@ public class Utils {
         //final IntervalXYDataset data0 = coll1;
         //final XYItemRenderer renderer0 = new XYLineAndShapeRenderer();
     // change "new XYBarRenderer(0.20)" to "StandardXYItemRenderer()" if you want to change  type of graph
-      final JFreeChart chart = ChartFactory.createXYLineChart("Line Chart demo 6", "dia", "ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
+      final JFreeChart chart = ChartFactory.createXYLineChart("Proyección de ventas", "Días", "Ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
       chart.setBackgroundPaint(Color.white);
       final XYPlot plot = chart.getXYPlot();
       plot.setBackgroundPaint(Color.white);
