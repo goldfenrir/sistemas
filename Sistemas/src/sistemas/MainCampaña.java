@@ -812,6 +812,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     public void agregarPaginaCatalogo(){
         barra();
+        detPag.setParent(cat);
         detPag.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(detPag.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -855,6 +856,20 @@ public class MainCampaña extends javax.swing.JFrame {
                 new MainCampaña().setVisible(true);
             }
         });
+    }
+    
+    public void desapilar(){
+        System.out.println("gg");
+        getContentPane().removeAll();
+        pack();
+        panelStack.pop();
+        barra();
+        
+        javax.swing.JPanel pn = panelStack.peek();
+        pn.add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+        getContentPane().add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
+        pack();
+        //jToolBar99.setVisible(false);
     }
      private void regresarActionPerformed(java.awt.event.ActionEvent evt) { 
         

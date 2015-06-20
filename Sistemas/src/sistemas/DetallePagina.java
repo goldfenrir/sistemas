@@ -9,6 +9,7 @@ import Model.*;
 import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -173,15 +174,18 @@ public class DetallePagina extends javax.swing.JFrame {
         // TODO add your handling code here:
         for(int i=0;i<productList.size();i++){
             DefaultTableModel model = (DefaultTableModel) table_prods.getModel();
-            int niv=Integer.parseInt((String)model.getValueAt(i, 2));
-            nivel.add(niv);
+            //String num = (String)model.getValueAt(i,2);
+            //num.replaceAll("\\s", "");
+            //int niv=Integer.parseInt(num);
+            nivel.add((Integer)model.getValueAt(i,2));
         }
         SalesManager.AddPagina(1, 2, 1, productList,nivel);
         if(parent!= null){
+            //System.out.println("bla2");
             MantenerCatalogo m= (MantenerCatalogo) parent;
             m.setCant(Integer.parseInt(text_cant.getText()));
         }
-        JOptionPane.showMessageDialog(null," Se agrego correctamente la pagina");
+        //JOptionPane.showMessageDialog(null," Se agrego correctamente la pagina");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 public void setParent(JFrame parent){
