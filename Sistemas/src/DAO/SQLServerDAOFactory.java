@@ -12,6 +12,11 @@ public class SQLServerDAOFactory extends DAOFactory {
         return new SQLServerDAOSales();//To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public DAOCombo getDAOCombo() {
+        return new SQLServerDAOCombo(); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
 
 

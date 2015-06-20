@@ -5,8 +5,14 @@
  */
 package sistemas;
 
+import Model.Product;
+import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -18,7 +24,9 @@ public class BuscaProd extends javax.swing.JFrame {
      * Creates new form Template
      */
     public int prodSel;
+    private JFrame parent = null;
     public BuscaProd() {
+        productModel = new MyTableModel();
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
@@ -102,33 +110,18 @@ public class BuscaProd extends javax.swing.JFrame {
 
         tbl_prod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"101", "Labial rojo intenso", "labial", "10.0", "Si"},
-                {"102", "Labial rojo carmesí", "labial", "11.0", "Si"},
-                {"103", "Polvos compacto coral", "Polvos", "20.0", "No"},
-                {"104", "Polvos compacto rosa", "Polvos", "20.0", "No"},
-                {"105", "Labial rosa intenso", "Labial", "11.0", "No"},
-                {"106", "Labial rosa palido", "Labial", "15.0", "Si"},
-                {"107", "Rímel volumania", "Rímel", "20.1", "No"}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Código", "Nombre ", "Tipo de Producto", "Precio Base", "Prom. Activa"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbl_prod.getTableHeader().setResizingAllowed(false);
         tbl_prod.getTableHeader().setReorderingAllowed(false);
         tbl_prod.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,6 +147,19 @@ public class BuscaProd extends javax.swing.JFrame {
     private void tbl_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_prodMouseClicked
      // TODO add your handling code here:
        if (evt.getClickCount() == 2) {
+           if(parent != null && parent instanceof Proyecciones){
+               Proyecciones pr = (Proyecciones)parent;
+               int row = tbl_prod.getSelectedRow();
+               String cod = (String)productModel.getValueAt(row, 0);
+               pr.setCod(cod);
+           }
+           if(parent != null && parent instanceof DetallePagina){
+               DetallePagina pr = (DetallePagina)parent;
+               int row = tbl_prod.getSelectedRow();
+               int cod = Integer.parseInt((String)productModel.getValueAt(row, 0));
+               String nom= (String)productModel.getValueAt(row, 1);
+               pr.setProd(cod,nom);
+           }
            setVisible(false);
            //int selRow = tbl_prod.getSelectedRow();
            //int prodId = Integer.parseInt(
@@ -163,7 +169,60 @@ public class BuscaProd extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_prodMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //buscar
+       int indMarca = jComboBox1.getSelectedIndex();
+       int indTipo = jComboBox2.getSelectedIndex();
+       if(indMarca > 0){
+           String brand = "";
+           switch(indMarca){
+               case 1: brand = "lbel"; break;
+               case 2: brand = "esika"; break;
+               case 3: brand = "cyzone"; break;
+           }
+           double minPrice;
+           if(!jTextField1.getText().isEmpty()){
+           try{
+           minPrice = Double.parseDouble(jTextField1.getText());
+           double maxPrice = Double.parseDouble(jTextField2.getText());
+           if(maxPrice<minPrice){
+               JOptionPane.showMessageDialog(null, "introduzca bien el rango de precios");
+           }
+           else{
+               productModel.productsLst = SalesManager.queryProductByPrice(minPrice, maxPrice, brand, indTipo);
+           }
+           } catch(NumberFormatException num){
+               JOptionPane.showMessageDialog(null, "introduzca bien los números de precios");
+           }
+           } 
+           else
+                productModel.productsLst = SalesManager.queryProductByBrand(brand, indTipo);
+           
+       }
+       else{
+           if(indTipo>0){
+               if(!jTextField1.getText().isEmpty()){
+                   double minPrice;
+                    try{
+                        minPrice = Double.parseDouble(jTextField1.getText());
+                        double maxPrice = Double.parseDouble(jTextField2.getText());
+                        if(maxPrice<minPrice){
+                                    JOptionPane.showMessageDialog(null, "introduzca bien el rango de precios");
+                        }
+                        else{
+                            productModel.productsLst = SalesManager.queryProductByPrice(minPrice, maxPrice, "", indTipo);
+                        }
+                    } catch(NumberFormatException num){
+                            JOptionPane.showMessageDialog(null, "introduzca bien los números de precios");
+                    }
+                } 
+                else
+                     productModel.productsLst = SalesManager.queryProductByType(indTipo);
+           }
+           else
+               productModel.productsLst = SalesManager.queryAllProducts();
+       }
+       tbl_prod.setModel(productModel);
+           productModel.fireTableChanged(null);
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
@@ -204,6 +263,49 @@ public class BuscaProd extends javax.swing.JFrame {
 public javax.swing.JPanel getPanel(){
         return jPanel1;
     }
+
+public void setParent(JFrame parent){
+    this.parent = parent;
+}
+
+public JFrame getParent(){
+    return parent;
+}
+
+    class MyTableModel extends AbstractTableModel{
+		      ArrayList<Product> productsLst; 
+		String [] titles = {"Código", "Nombre", "Tipo de producto", "Precio","Prom Activa"};
+		@Override
+		public int getColumnCount() {
+			// TODO Auto-generated method stub
+			return titles.length;
+		}
+
+		@Override
+		public int getRowCount() {
+			// TODO Auto-generated method stub
+			return productsLst.size();
+		}
+
+		@Override
+		public Object getValueAt(int row, int col) {
+			String value = "";
+			switch(col){
+				case 0:  value = "" + productsLst.get(row).getId(); break;
+				case 1:  value = productsLst.get(row).getNombre(); break;
+                                case 2:  value = "" + productsLst.get(row).getTipoProducto().getNombre(); break;
+				case 3:  value = "" + productsLst.get(row).getBasePrice(); break;
+				case 4:  value = "" + "si"; break;				
+			}
+			return value;
+		}
+		
+		public String getColumnName(int col){
+			return titles[col];
+		}
+		
+	}
+    private MyTableModel productModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;

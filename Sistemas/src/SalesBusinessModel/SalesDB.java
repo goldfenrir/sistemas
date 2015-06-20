@@ -54,4 +54,5 @@ public class SalesDB {
          public ArrayList<Object> queryAll(int month, int year, int measure){
              return daoSales.queryAll(month, year, measure);
          }
+         
 }

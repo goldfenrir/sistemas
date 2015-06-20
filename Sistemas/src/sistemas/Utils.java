@@ -29,6 +29,24 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Chart;
+import org.apache.poi.ss.usermodel.ClientAnchor;
+import org.apache.poi.ss.usermodel.Drawing;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.charts.AxisCrosses;
+import org.apache.poi.ss.usermodel.charts.AxisPosition;
+import org.apache.poi.ss.usermodel.charts.ChartAxis;
+import org.apache.poi.ss.usermodel.charts.ChartDataSource;
+import org.apache.poi.ss.usermodel.charts.ChartLegend;
+import org.apache.poi.ss.usermodel.charts.DataSources;
+import org.apache.poi.ss.usermodel.charts.LegendPosition;
+import org.apache.poi.ss.usermodel.charts.LineChartData;
+import org.apache.poi.ss.usermodel.charts.ValueAxis;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -37,7 +55,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
-import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.DatasetRenderingOrder;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYBarRenderer;
@@ -48,6 +65,76 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 public class Utils {
+    
+    public static void chartExcel(ArrayList<Object> actuales, ArrayList<Object>futuros) throws Exception {
+        Workbook wb = new XSSFWorkbook();
+        Sheet sheet = wb.createSheet("linechart");
+        final int NUM_OF_ROWS = 30;
+        final int NUM_OF_COLUMNS = 5;
+
+        // Create a row and put some cells in it. Rows are 0 based.
+        Row row;
+        Cell cell;
+        for(int i = 0; i<15; i++){
+            row = sheet.createRow((short) i);
+            cell = row.createCell((short) 0);
+            cell.setCellValue(i+1);
+            cell = row.createCell((short) 1);
+            if(actuales.get(i) instanceof Integer)
+            cell.setCellValue((Integer)actuales.get(i));
+            else
+                cell.setCellValue((Double)actuales.get(i));
+            cell = row.createCell((short) 3);
+            cell.setCellValue(i+1);
+            cell = row.createCell((short) 4);
+            cell.setCellValue((Double)futuros.get(i));
+        }
+        for(int i =15; i<30;i++){
+            row = sheet.createRow((short)i);
+            cell = row.createCell(3);
+            cell.setCellValue(i+1);
+            cell = row.createCell(4);
+            cell.setCellValue((Double)futuros.get(i));
+        }
+        System.out.println("llego aca");
+        /*
+        for (int rowIndex = 0; rowIndex < NUM_OF_ROWS; rowIndex++) {
+            row = sheet.createRow((short) rowIndex);
+            for (int colIndex = 0; colIndex < NUM_OF_COLUMNS; colIndex++) {
+                cell = row.createCell((short) colIndex);
+                cell.setCellValue((colIndex+1) * (rowIndex + 1));
+            }
+        }*/
+
+        Drawing drawing = sheet.createDrawingPatriarch();
+        ClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 35, 10, 45);
+
+        Chart chart = drawing.createChart(anchor);
+        ChartLegend legend = chart.getOrCreateLegend();
+        legend.setPosition(LegendPosition.TOP_RIGHT);
+
+        LineChartData data = chart.getChartDataFactory().createLineChartData();
+
+        // Use a category axis for the bottom axis.
+        ChartAxis bottomAxis = chart.getChartAxisFactory().createCategoryAxis(AxisPosition.BOTTOM);
+        ValueAxis leftAxis = chart.getChartAxisFactory().createValueAxis(AxisPosition.LEFT);
+        leftAxis.setCrosses(AxisCrosses.AUTO_ZERO);
+
+        ChartDataSource<Number> xs = DataSources.fromNumericCellRange(sheet, new CellRangeAddress(0, 29, 3, 3));
+        ChartDataSource<Number> ys1 = DataSources.fromNumericCellRange(sheet, new CellRangeAddress(0, 29, 1, 1));
+        ChartDataSource<Number> ys2 = DataSources.fromNumericCellRange(sheet, new CellRangeAddress(0, 29, 4, 4));
+
+
+        data.addSeries(xs, ys1);
+        data.addSeries(xs, ys2);
+
+        chart.plot(data, bottomAxis, leftAxis);
+
+        // Write the output to a file
+        FileOutputStream fileOut = new FileOutputStream("ooxml-line-chart.xlsx");
+        wb.write(fileOut);
+        fileOut.close();
+    }
     
     public static void writeXLSXFile(JTable table,String path) throws IOException {
 		TableModel model = table.getModel(); //Table model
@@ -128,7 +215,7 @@ public class Utils {
     public static double getM(ArrayList<Object> cants){
         double pendiente;
         double sumaProd = 0, sumaX = 0, sumaY = 0, sumaX2=0;
-        for(int i = 0; i<cants.size();i++){
+        for(int i = 0; i<15;i++){
             sumaX += (i+1);
             sumaX2 += (i+1)*(i+1);
             if(cants.get(i) instanceof Integer){
@@ -141,7 +228,7 @@ public class Utils {
             }
         }
         
-        int n = cants.size();
+        int n = cants.size()/2;
         pendiente = ((n*sumaProd)-(sumaX*sumaY))/((n*sumaX2)-(sumaX*sumaX));
         return pendiente;
     }
@@ -149,7 +236,7 @@ public class Utils {
     public static double getConstant(ArrayList<Object> cants, double pend){
         double constante;
         double sumaY = 0, sumaX = 0;
-        for(int i = 0; i<cants.size();i++){
+        for(int i = 0; i<15;i++){
             sumaX += (i+1);
             if(cants.get(i) instanceof Integer){
                 sumaY += (Integer)cants.get(i);
@@ -157,7 +244,7 @@ public class Utils {
             else
                 sumaY += (Double)cants.get(i);
         }
-        constante = (sumaY - (pend * sumaX))/cants.size();
+        constante = (sumaY - (pend * sumaX))/cants.size()/2;
         return constante;
     }
     
@@ -170,10 +257,113 @@ public class Utils {
         return lista;
     }
     
-    public static JFreeChart JTableToLinearChart(JTable table, double constant, double pend, int type){
-         final XYSeries series1 = new XYSeries("Graph1");
-         final XYSeries series2 = new XYSeries("Graph2");
+    public static double calculateExpB(ArrayList<Object>cants){
+        double sumatXlnY =0, sumatX = 0, sumatX2 = 0, sumatLnY = 0;
+        double promLnY = 0, promX = 0;
+        for(int i = 0; i<15; i++){
+            sumatX += (i+1);
+            sumatX2 += (i+1)*(i+1);
+            if(cants.get(i) instanceof Double){
+                double num = (Double)(cants.get(i));
+                if(num>0){
+                sumatXlnY += (Math.log(num)*(i+1));
+                sumatLnY += Math.log(num);
+                }
+            }
+            if(cants.get(i) instanceof Integer){
+                
+                int num = (Integer)cants.get(i);
+                if(num>0){
+                System.out.println("ese numero" + num);
+                sumatXlnY += (Math.log(num)*(i+1));
+                System.out.println("ese numero xlny" + sumatXlnY);
+                sumatLnY += Math.log(num);
+                }
+            }
+        }
+        System.out.println("resultados de b, sumatxlny: "+ sumatXlnY);
+        System.out.println("resultados de b, sumatlny: "+ sumatLnY);
+        promLnY = (sumatLnY*1.0)/15;
+        promX = (sumatX)/15;
+        System.out.println("sumatoria x " + sumatX + " promedio x: "+promX);
+        System.out.println("promedio lny: " +promLnY);
+        double b = (sumatXlnY - (promLnY*sumatX))/(sumatX2 -( promX*sumatX));
+        return b;
+    }
+    
+    public static ArrayList<Double> generarValoresExp(double a, double b){
+        ArrayList<Double> list = new ArrayList<Double>();
+        for(int i = 1; i<=30 ;i++){
+            double num = a*Math.exp(b*i);
+            list.add(num);
+        }
+        return list;
+    }
+    
+    public static double calculateExpA(ArrayList<Object> cants, double b){
+        double sumatLnY = 0, sumatX = 0, promX, promLnY;
+        for(int i = 0; i<15;i++){
+            sumatX += (i+1);
+            if(cants.get(i) instanceof Double){
+                double num = (Double)cants.get(i);
+                if(num>0)
+                sumatLnY += Math.log(num);
+            }
+            else{
+                int num = (Integer)cants.get(i);
+                if(num>0)
+                sumatLnY += Math.log(num);
+            }
+        }
+        promX = (sumatX *1.0)/ 15;
+        promLnY = (sumatLnY * 1.0)/15;
+        double a = Math.exp(promLnY - (b*promX));
+        return a;
+    }
+    
+    public static JFreeChart JTableToExpChart(JTable table, double a, double b, int type){
+        final XYSeries series1 = new XYSeries("Valores Actuales");
+         final XYSeries series2 = new XYSeries("Valores proyectados");
          for(int i = 0; i + 1 < table.getModel().getRowCount() - 1; i++){
+             String st = (String)table.getModel().getValueAt(i,2);
+             st.replaceAll("\\s", "");
+             if(st != null && st != "")
+                if(type == 1) series1.add((i+1)*1.0, (Integer.parseInt(st))*1.0);
+                else series1.add((i+1), Double.parseDouble(st));
+         }
+         ArrayList<Double> values = generarValoresExp(a, b);
+         for(int i = 0; i<values.size();i++){
+             series2.add(i+1,values.get(i));
+         }
+        //final NumberAxis domainAxis = new NumberAxis("Dias ");
+        //final ValueAxis rangeAxis = new NumberAxis("Cant Ventas ");
+
+    // create plot ...
+        final XYSeriesCollection coll1 = new XYSeriesCollection();
+        coll1.addSeries(series1);
+        coll1.addSeries(series2);
+        //final IntervalXYDataset data0 = coll1;
+        //final XYItemRenderer renderer0 = new XYLineAndShapeRenderer();
+    // change "new XYBarRenderer(0.20)" to "StandardXYItemRenderer()" if you want to change  type of graph
+      final JFreeChart chart = ChartFactory.createXYLineChart("Line Chart demo 6", "dia", "ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
+      chart.setBackgroundPaint(Color.white);
+      final XYPlot plot = chart.getXYPlot();
+      plot.setBackgroundPaint(Color.white);
+      plot.setDomainGridlinePaint(Color.white);
+      plot.setRangeGridlinePaint(Color.white);
+      final XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+      renderer.setSeriesLinesVisible(0, true);
+      renderer.setSeriesShapesVisible(1, false);
+      plot.setRenderer(renderer);
+      final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+      rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+      return chart;
+    }
+    
+    public static JFreeChart JTableToLinearChart(JTable table, double constant, double pend, int type){
+         final XYSeries series1 = new XYSeries("Valores Actuales");
+         final XYSeries series2 = new XYSeries("Valores Proyectados");
+         for(int i = 0; i < table.getModel().getRowCount() ; i++){
              String st = (String)table.getModel().getValueAt(i,2);
              st.replaceAll("\\s", "");
              if(st != null && st != "")

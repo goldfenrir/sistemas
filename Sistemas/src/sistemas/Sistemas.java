@@ -33,6 +33,7 @@ public class Sistemas {
         }
         Login  prin = new Login();
         prin.setVisible(true);
+        //try { Utils.chartExcel(); } catch (Exception e){}
         /*ArrayList<Object> list = SalesManager.queryDailySalesByProduct(6, 9, 2015, 1);
        for(int i = 0; i<list.size();i++)
            System.out.println("cantidad de producto " + i + " :" + (Integer)list.get(i));*/

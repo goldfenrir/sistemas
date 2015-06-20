@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JToolBar;
 import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 
@@ -34,7 +35,8 @@ public class MainCampaña extends javax.swing.JFrame {
         
         panelStack.push(jPanel1);
     }
-    public void barra(String info){
+    public void barra(){
+        
         jToolBar99 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -52,6 +54,11 @@ public class MainCampaña extends javax.swing.JFrame {
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //btnSaveActionPerformed(evt);
+                if(ValorVentana==1){//1 es combos
+                    comb.agregarCombo();
+                    
+                    
+                }
             }
         });
         jToolBar99.add(btnSave);
@@ -111,6 +118,7 @@ public class MainCampaña extends javax.swing.JFrame {
         
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValorVentana=0;//Para que el valor regresos a cero y se descative la botoneria
                 regresarActionPerformed(evt);
             }
         });
@@ -674,10 +682,8 @@ public class MainCampaña extends javax.swing.JFrame {
         getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));        
         pack();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        barra("");
+    public void enlace(){
+        barra();
         cat.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(cat.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -685,13 +691,28 @@ public class MainCampaña extends javax.swing.JFrame {
         getContentPane().removeAll();
         pack();
         getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));        
-        pack();
+        pack();        
+    }
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+//        barra();
+//        cat.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
+//        getContentPane().add(cat.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
+//        pack();
+//        panelStack.push(cat.getPanel());
+//        getContentPane().removeAll();
+//        pack();
+//        getContentPane().add(panelStack.peek(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));        
+//        pack();
+        MantCats m= new MantCats(this);
+        m.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         //Mantener combos
-        barra("");
+        barra();
+        ValorVentana=1;
         comb.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(comb.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -938,4 +959,5 @@ public class MainCampaña extends javax.swing.JFrame {
     private ReporteVentas rep = new ReporteVentas();
     private Proyecciones proy = new Proyecciones();
 
+    private int ValorVentana=0;//Cer4o no referencia a ninguna ventana
 }

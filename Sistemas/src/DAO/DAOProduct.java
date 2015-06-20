@@ -12,5 +12,6 @@ public interface DAOProduct {
         ArrayList<Product> queryByBrand(String brand, int prodType);
         ArrayList<Product> queryByType(int prodType);
         ArrayList<Product> queryByName(String name);
+        ArrayList<Product> queryByPrice(double minPrice, double maxPrice, String brand, int prodType);
         
 }

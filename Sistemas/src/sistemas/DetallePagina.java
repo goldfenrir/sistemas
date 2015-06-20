@@ -5,19 +5,27 @@
  */
 package sistemas;
 
+import Model.*;
+import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author alulab14
  */
 public class DetallePagina extends javax.swing.JFrame {
-
+    private BuscaProd appBus;
+    private ArrayList<Integer> productList=new  ArrayList<Integer>();
+    private int idCamp=1; // dia de la madre
     /**
      * Creates new form Template
      */
     public DetallePagina() {
+        appBus = new BuscaProd();
+        appBus.setParent(this);
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
@@ -40,14 +48,15 @@ public class DetallePagina extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        text_cant = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table_prods = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,61 +68,79 @@ public class DetallePagina extends javax.swing.JFrame {
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 47, 700, 10));
 
         jLabel6.setText("Número de página:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jTextField4.setEditable(false);
         jTextField4.setText("3");
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 40, -1));
+        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 50, -1));
 
         jLabel7.setText("<html>Cantidad de productos<br /> en la página:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
-        jTextField1.setText("4");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 40, -1));
+        text_cant.setEditable(false);
+        text_cant.setText("0");
+        jPanel2.add(text_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 50, -1));
 
         jLabel1.setText("<html>Porcentaje disponible <br />del total de la pagina");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
 
         jTextField15.setEditable(false);
         jTextField15.setText("85%");
-        jPanel2.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 30, -1));
+        jPanel2.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 50, -1));
 
-        jButton1.setText("+");
+        jButton1.setLabel("Agregar producto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
-        jButton2.setText("-");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, -1, -1));
+        jButton2.setLabel("Retirar producto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table_prods.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"101", "Labial rojo intenso", "2", "0", "103"},
-                {"102", "Labial rojo carmesí", "3", "0", "-"},
-                {"201", "Polvos compactos coral", "1", "0", "-"},
-                {"203", "Rímel Volumanía", "4", "0", "101"}
+
             },
             new String [] {
-                "Codigo", "Nombre", "Nivel Exp.", "Discover", "Cod. Prom"
+                "Codigo", "Nombre", "Nivel Exp.", "Discover"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(table_prods);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 640, 90));
 
         jLabel2.setText("Lista de Productos:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+
+        jButton3.setText("Agregar Pagina");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 120, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 610));
 
@@ -123,9 +150,26 @@ public class DetallePagina extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        BuscaProd prod = new BuscaProd();
-        prod.setVisible(true);
+        //BuscaProd prod = new BuscaProd();
+        //prod.setVisible(true);
+        appBus.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) table_prods.getModel();
+        int i=table_prods.getSelectedRow();
+        model.removeRow(i);
+        productList.remove(i);
+        text_cant.setText(""+productList.size());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        for(int i=0;i<productList.size();i++){
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public javax.swing.JPanel getPanel(){
         return jPanel1;
@@ -165,10 +209,19 @@ public class DetallePagina extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setProd(int cod,String nombre){
+
+        DefaultTableModel model = (DefaultTableModel) table_prods.getModel();
+        model.addRow(new Object[]{cod, nombre});
+        productList.add(cod);
+        text_cant.setText(""+productList.size());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -179,9 +232,9 @@ public class DetallePagina extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable table_prods;
+    private javax.swing.JTextField text_cant;
     // End of variables declaration//GEN-END:variables
 }

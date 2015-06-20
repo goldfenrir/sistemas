@@ -334,15 +334,6 @@ public class SQLServerDAOSales implements DAOSales{
                                         cants.set(dia-1,cantidad);
                                     else
                                         subs.set(dia-1,subtotal);
-                                    //LocalDate date = rs.getDate("FechaDia").toLocalDate();
-                                    SalesDetail det = new SalesDetail();
-                                    det.setProduct(daop.queryById(prodId));
-                                    det.setQuantity(cantidad);
-                                    det.setSubTotal(subtotal);
-                                    det.setSale(null);
-                                   //Falta campaña y moneda
-                                    salesList.add(det);
-				//arr.add(p);
 			}
                         pstmt.close();
                                     conn.close();
