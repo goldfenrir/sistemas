@@ -35,6 +35,7 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator2 = new javax.swing.JSeparator();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
@@ -43,8 +44,16 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jRadioButton3 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,47 +72,61 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"50", "Workshop", "22/03/2014"},
-                {"51", "Feedback workshop", "23/03/2014"},
-                {"52", "presentación pxp", "24/03/2014"},
-                {"53", "feedback pxp", "25/03/2014"},
-                {"54", "Presentación publicidad", "26/03/2014"},
-                {"55", "revisión bocetos 1", "29/03/2014"},
-                {"56", "revisión bocetos 2", "29/03/2014"},
-                {"57", "revisión bocetos 3", "31/03/2014"},
-                {"58", "proyecciones de ventas", "01/04/2014"},
-                {"59", "Reunión Branding", "02/04/2014"}
+                {"50", null, "Workshop", "22/03/2014"},
+                {"51", null, "Feedback workshop", "23/03/2014"},
+                {"52", null, "presentación pxp", "24/03/2014"},
+                {"53", null, "feedback pxp", "25/03/2014"},
+                {"54", null, "Presentación publicidad", "26/03/2014"},
+                {"55", null, "revisión bocetos 1", "29/03/2014"},
+                {"56", null, "revisión bocetos 2", "29/03/2014"},
+                {"57", null, "revisión bocetos 3", "31/03/2014"},
+                {"58", null, "proyecciones de ventas", "01/04/2014"},
+                {"59", null, "Reunión Branding", "02/04/2014"}
             },
             new String [] {
-                "Codigo", "Tema", "Fecha"
+                "Codigo", "Áreas Participantes", "Tema", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 670, 210));
 
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Acuerdos"));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Listar reuniones pasadas");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"70", "Revisar página 10 del catálogo Esika"},
-                {"71", "Revisar páginas 20-30 del catálogo cyºzone"},
-                {"72", "Revisar página 15 del cátalogo de L'Bel"},
-                {"73", "Revisar niveles de exposición de cremas"},
-                {"74", "Revisar descuentos en labiales"},
-                {"75", "Revisar promociones de cyºzone"},
-                {"76", "Nueva reunión con publicidad del 23/03/2014"},
-                {"77", "Revisar lineamientos de marca L'Bel"},
-                {"78", "Reunión con Legal País para 01/04/2014"},
-                {"79", null}
-            },
-            new String [] {
-                "Codigo", "Descripcion"
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Listar reuniones próximas");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        });
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 406, 670, 210));
+        jButton1.setText("Exportar");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+
+        jCheckBox1.setText("Excel (.xlsx)");
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
+
+        jCheckBox2.setText("PDF (.pdf)");
+        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
+
+        jButton2.setText("Agregar");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 90, -1));
+
+        jButton3.setText("Cancelar");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+
+        jButton4.setText("Modificar");
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, -1, -1));
+
+        jCheckBox3.setText("Incluir Acuerdos");
+        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
+
+        jRadioButton3.setText("Reuniones diarias");
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,11 +136,15 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,16 +183,25 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

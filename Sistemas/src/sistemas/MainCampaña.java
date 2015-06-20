@@ -7,12 +7,14 @@ package sistemas;
 
 import com.jgoodies.looks.plastic.PlasticLookAndFeel;
 import com.jgoodies.looks.plastic.theme.DesertBlue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 /**
  *
@@ -32,7 +34,7 @@ public class MainCampaña extends javax.swing.JFrame {
         
         panelStack.push(jPanel1);
     }
-    public void barra(){
+    public void barra(String info){
         jToolBar99 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -93,6 +95,12 @@ public class MainCampaña extends javax.swing.JFrame {
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar99.add(btnInfo);
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //javax.swing.UIManager.put("OptionPane.font", new FontUIResource(new Font("Verdana", Font.PLAIN, 11))); 
+                JOptionPane.showMessageDialog(new JFrame("Información"), info);
+            }
+        });
         
         regresar = new javax.swing.JButton();
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back.png"))); // NOI18N
@@ -620,7 +628,10 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         barra();
+        barra("-Mejora de la alineación de objetivos: Comunique los objetivos estratégicos y tácticos de la organización y proporcione mayor visibilidad a lo largo y a lo ancho de la empresa.\n" +
+"-Incremento de la responsabilidad: Asigne a los empleados objetivos concretos, articulados con claridad y visibles para los demás.\n" +
+"-Seguimiento de los objetivos: A fin de poder tomar medidas con rapidez, concéntrese en áreas específicas en las que su empresa corre el riesgo de no alcanzar los objetivos.\n" +
+"-Fomento de la participación de los empleados: Comunique a los empleados con mayor claridad de qué manera su trabajo diario contribuye a la consecución de los objetivos a largo plazo de la empresa y, en consecuencia, al éxito de la misma.");
         objetivos.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(objetivos.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -640,7 +651,7 @@ public class MainCampaña extends javax.swing.JFrame {
     }   
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
        //proyecciones
-        barra();
+        barra("");
         proy.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(proy.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -653,7 +664,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        barra();
+        barra("");
         cat.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(cat.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -666,7 +677,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        barra();
+        barra("");
         cat.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(cat.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -680,7 +691,7 @@ public class MainCampaña extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         //Mantener combos
-        barra();
+        barra("");
         comb.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(comb.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -694,7 +705,7 @@ public class MainCampaña extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         // mantener promocion
-        barra();
+        barra("");
         prom.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(prom.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -707,7 +718,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-        barra();
+        barra("");
         rep.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
         getContentPane().add(rep.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 520));
         pack();
@@ -720,7 +731,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         barra();
+         barra("");
         buscaProd.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(buscaProd.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -733,7 +744,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-         barra();
+         barra("");
         diagnostico.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(diagnostico.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -746,7 +757,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         barra();
+         barra("");
         acuerdos.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(acuerdos.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -760,7 +771,7 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-         barra();
+         barra("");
         lineamientos.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(lineamientos.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -773,7 +784,7 @@ public class MainCampaña extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     public void agregarPaginaCatalogo(){
-        barra();
+        barra("");
         detPag.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(detPag.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -823,7 +834,7 @@ public class MainCampaña extends javax.swing.JFrame {
         getContentPane().removeAll();
         pack();
         panelStack.pop();
-        barra();
+        barra("");
         
         javax.swing.JPanel pn = panelStack.peek();
         pn.add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));

@@ -98,6 +98,11 @@ public class Template extends javax.swing.JFrame {
         btnInfo.setFocusable(false);
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnInfo);
 
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
@@ -119,6 +124,16 @@ public class Template extends javax.swing.JFrame {
 				
 			}
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+        int res = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro?");
+			if (res == JOptionPane.OK_OPTION) {
+				
+			}
+        
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnInfoActionPerformed
 
     /**
      * @param args the command line arguments

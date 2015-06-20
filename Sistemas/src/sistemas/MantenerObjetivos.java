@@ -128,7 +128,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
                 text_valorKeyTyped(evt);
             }
         });
-        jPanel3.add(text_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 190, -1));
+        jPanel3.add(text_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 190, -1));
 
         combo_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Incremento respecto a campaña", "Por producto", "Por tipo de producto", "Por marca" }));
         combo_tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +217,7 @@ public class MantenerObjetivos extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, -1));
+        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 190, -1));
 
         lblProd.setText("Producto");
         jPanel3.add(lblProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
