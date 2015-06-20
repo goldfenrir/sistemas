@@ -42,4 +42,8 @@ public class ComboDB {
         return daoCombo.queryById(id);
     }
     
+    public ArrayList<Combo> queryAll(){
+        return daoCombo.queryAll();
+    }
+    
 }

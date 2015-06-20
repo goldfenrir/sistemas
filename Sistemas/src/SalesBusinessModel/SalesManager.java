@@ -110,4 +110,8 @@ public class SalesManager {
     public static ArrayList<Combo> queryComboByPrice(double minPrice, double maxPrice){
         return comboDB.queryByPrice(minPrice, maxPrice);
     }
+    
+    public static ArrayList<Combo> queryAllCombos(){
+        return comboDB.queryAll();
+    }
 }

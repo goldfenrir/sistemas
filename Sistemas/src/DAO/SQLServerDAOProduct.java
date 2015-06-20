@@ -255,6 +255,7 @@ public class SQLServerDAOProduct implements DAOProduct{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+                ResultSet rs2 = null;
 		Product p = null;
 		try {
 			//Paso 1: Registrar el Driver
@@ -290,11 +291,22 @@ public class SQLServerDAOProduct implements DAOProduct{
                                 p.setEstado(estado);
                                 //p.setFechaDescontinuacion(fechaDescontinuacion);
                                 //p.setFechaIngreso(fechaIngreso);
-                                p.setId(idTipo);
+                                p.setId(idProduct);
                                 p.setMarca(marca);
                                 //p.setMoneda(null);
                                 p.setNombre(nombre);
                                 p.setStock(stock);
+                                String sql2 = "Select * from tipo_de_producto where IdTipo = " + idTipo;
+                                pstmt = conn.prepareStatement(sql2);
+			//Paso 4: Ejecutar la sentencia
+                                rs2 = pstmt.executeQuery();
+                                if(rs2.next()){
+                                    TipoProducto tprod = new TipoProducto();
+                                    tprod.setId(idTipo);
+                                    tprod.setNombre(rs2.getString("Nombre"));
+                                    tprod.setDescricpion(rs2.getString("Descripcion"));
+                                    p.setTipoProducto(tprod);
+                                }
                                 //p.setTipoProducto(null);
                                 
 			}
