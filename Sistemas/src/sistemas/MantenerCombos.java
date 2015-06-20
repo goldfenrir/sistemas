@@ -25,6 +25,7 @@ public class MantenerCombos extends javax.swing.JFrame {
      */
     public MantenerCombos() {
         comboModel = new MyTableModel();
+        productModel = new MyTableModel2();
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
@@ -55,7 +56,7 @@ public class MantenerCombos extends javax.swing.JFrame {
                         return productList.get(row).getNombre();
                     }
                     if(col == 2){
-                        return productList.get(row).getTipoProducto().getNombre();
+                        return "Combo";
                     }
                     if(col == 3){
                         return " "+productList.get(row).getBasePrice();
@@ -68,14 +69,52 @@ public class MantenerCombos extends javax.swing.JFrame {
             }
 		
 	} 
+    class MyTableModel2 extends AbstractTableModel{
+            ArrayList<Product> productList=new ArrayList<Product>();
+            String[]  titles= {"Codigo", "Nombre", "Tipo Producto","Precio Base"} ;
+            @Override
+            public int getColumnCount() {
+                    // TODO Auto-generated method stub
+                    return titles.length;
+            }
+
+            @Override
+            public int getRowCount() {
+                    // TODO Auto-generated method stub
+                    //eturn productsLst.size();
+                    return productList.size();
+            }
+
+            @Override
+            public Object getValueAt(int row, int col) {
+                    if(col == 0){
+                        return " " +productList.get(row).getId();
+                    }
+                    if(col == 1){
+                        return productList.get(row).getNombre();
+                    }
+                    if(col == 2){
+                        return "Combo";
+                    }
+                    if(col == 3){
+                        return " "+productList.get(row).getBasePrice();
+                    }
+                    return " ";
+            }
+		
+            public String getColumnName(int col){
+                    return titles[col];
+            }
+		
+	}
     
     
     public void agregarCombo(){
 //        JOptionPane.showMessageDialog(null, "Funciono");
         Combo c=new Combo();
-        c.setId(Integer.parseInt(txtId.getText()));
-        c.setDescription(txtDescription.getText());
-        c.setBasePrice(Double.parseDouble(txtPrice.getText()));
+        c.setId(Integer.parseInt(ctxtCod.getText()));
+        c.setDescription(ctxtDescription.getText());
+        c.setBasePrice(Double.parseDouble(ctxtPrice.getText()));
         c.setProductList(null);
         int valor=SalesManager.updateCombo(c);
         if(valor==0){
@@ -104,14 +143,14 @@ public class MantenerCombos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblPRoductos = new javax.swing.JTable();
-        txtId = new javax.swing.JTextField();
-        txtPrice = new javax.swing.JTextField();
+        ctxtCod = new javax.swing.JTextField();
+        ctxtPrice = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextPane();
+        ctxtDescription = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -162,14 +201,14 @@ public class MantenerCombos extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 247, 534, 180));
 
-        txtId.setEditable(false);
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        ctxtCod.setEditable(false);
+        ctxtCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                ctxtCodActionPerformed(evt);
             }
         });
-        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 32, 180, -1));
-        jPanel2.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 173, 180, -1));
+        jPanel2.add(ctxtCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 32, 180, -1));
+        jPanel2.add(ctxtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 173, 180, -1));
 
         jTextField4.setEditable(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +232,7 @@ public class MantenerCombos extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 77, -1, -1));
 
-        jScrollPane1.setViewportView(txtDescription);
+        jScrollPane1.setViewportView(ctxtDescription);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 77, 180, 78));
 
@@ -258,6 +297,11 @@ public class MantenerCombos extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblCombos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCombosMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblCombos);
@@ -363,9 +407,9 @@ public class MantenerCombos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void ctxtCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxtCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_ctxtCodActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
@@ -420,6 +464,22 @@ public class MantenerCombos extends javax.swing.JFrame {
         comboModel.fireTableChanged(null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void tblCombosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCombosMouseClicked
+        // llenar la otra pestaña y mostrarla
+        if(evt.getClickCount() == 2){
+            int row = tblCombos.getSelectedRow();
+            int cod = comboModel.productList.get(row).getId();
+            Combo c = SalesManager.queryComboById(cod);
+            ctxtCod.setText(""+c.getId());
+            ctxtDescription.setText(c.getDescription());
+            ctxtPrice.setText("" + c.getBasePrice());
+            productModel.productList = c.getProductList();
+            tblPRoductos.setModel(productModel);
+            productModel.fireTableChanged(null);
+            jTabbedPane1.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_tblCombosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -461,8 +521,13 @@ public class MantenerCombos extends javax.swing.JFrame {
         pn = jPanel1;
         return jPanel1;
     }
+    
+    private MyTableModel2 productModel;
     private MyTableModel comboModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ctxtCod;
+    private javax.swing.JTextPane ctxtDescription;
+    private javax.swing.JTextField ctxtPrice;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -502,8 +567,5 @@ public class MantenerCombos extends javax.swing.JFrame {
     private javax.swing.JTable tblCombos;
     private javax.swing.JTable tblPRoductos;
     private javax.swing.JTextField text_idCampaña1;
-    private javax.swing.JTextPane txtDescription;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 }
