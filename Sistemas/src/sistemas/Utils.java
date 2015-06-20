@@ -66,7 +66,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class Utils {
     
-    public static void chartExcel(ArrayList<Object> actuales, ArrayList<Object>futuros) throws Exception {
+    public static void chartExcel(ArrayList<Object> actuales, ArrayList<Object>futuros, String path) throws Exception {
         Workbook wb = new XSSFWorkbook();
         Sheet sheet = wb.createSheet("linechart");
         final int NUM_OF_ROWS = 30;
@@ -96,15 +96,6 @@ public class Utils {
             cell = row.createCell(4);
             cell.setCellValue((Double)futuros.get(i));
         }
-        System.out.println("llego aca");
-        /*
-        for (int rowIndex = 0; rowIndex < NUM_OF_ROWS; rowIndex++) {
-            row = sheet.createRow((short) rowIndex);
-            for (int colIndex = 0; colIndex < NUM_OF_COLUMNS; colIndex++) {
-                cell = row.createCell((short) colIndex);
-                cell.setCellValue((colIndex+1) * (rowIndex + 1));
-            }
-        }*/
 
         Drawing drawing = sheet.createDrawingPatriarch();
         ClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 35, 10, 45);
@@ -131,7 +122,7 @@ public class Utils {
         chart.plot(data, bottomAxis, leftAxis);
 
         // Write the output to a file
-        FileOutputStream fileOut = new FileOutputStream("ooxml-line-chart.xlsx");
+        FileOutputStream fileOut = new FileOutputStream(path);
         wb.write(fileOut);
         fileOut.close();
     }

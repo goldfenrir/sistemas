@@ -413,11 +413,11 @@ public class Proyecciones extends javax.swing.JFrame {
                 //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
                 //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
                 if (jCheckBox3.isSelected() && jCheckBox1.isSelected()){
-                    Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
+                    try {Utils.chartExcel(salesModel.cants, futureSales.cants, pathSave + "\\proyeccionMes.xlsx"); } catch (Exception e){System.out.println("no se pudo excel");}
                     Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\graficoProyeccion.pdf");
                 }else if(jCheckBox3.isSelected()){
                     //Utils.writeXLSXFile(jTable1,pathSave+"\\proyeccionMes.xlsx");
-                    try {Utils.chartExcel(salesModel.cants, futureSales.cants); } catch (Exception e){System.out.println("no se pudo excel");}
+                    try {Utils.chartExcel(salesModel.cants, futureSales.cants, pathSave + "\\proyeccionMes.xlsx"); } catch (Exception e){System.out.println("no se pudo excel");}
                 }else if(jCheckBox1.isSelected()){
                     Utils.imageToPDF(ImageIO.read(new File(pathAct)),pathSave+"\\graficoProyeccion.pdf");
                 }
