@@ -7,6 +7,7 @@ package sistemas;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,11 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author alulab14
  */
 public class MantenerCatalogo extends javax.swing.JFrame {
+
+    private BuscaProd appBus;
     JOptionPane jop = new JOptionPane();
+    ArrayList<Integer> colores= new ArrayList<Integer>();
     /**
      * Creates new form Template
      */
     public MantenerCatalogo(MainCampaña p) {
+        appBus = new BuscaProd();
+        appBus.setParent(this);
         prin = p;
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
@@ -86,7 +92,7 @@ public class MantenerCatalogo extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 30, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 110, -1));
 
         jTextField3.setText("90");
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 40, -1));
@@ -142,7 +148,7 @@ public class MantenerCatalogo extends javax.swing.JFrame {
 
         jTextField2.setEditable(false);
         jTextField2.setText("12");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 30, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 110, -1));
 
         jButton2.setText("+");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +184,11 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 90, -1));
 
         jButton5.setText("Eliminar color");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
 
         table_colors.setModel(new javax.swing.table.DefaultTableModel(
@@ -217,6 +228,7 @@ public class MantenerCatalogo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         prin.agregarPaginaCatalogo();
+        //appBus.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -225,11 +237,20 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         String a=but_colors.getItemAt(ind).toString();
         DefaultTableModel model = (DefaultTableModel) table_colors.getModel();
         model.addRow(new Object[]{""+ind, a});
+        colores.add(ind);
         //table_colors.
         //table_colors.getModel().
         //table_colors.add((Component)a);
         //table_colors.
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) table_colors.getModel();
+        int i=table_colors.getSelectedRow();
+        model.removeRow(i);
+        colores.remove(i);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

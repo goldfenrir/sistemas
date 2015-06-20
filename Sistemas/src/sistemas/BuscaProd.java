@@ -153,6 +153,13 @@ public class BuscaProd extends javax.swing.JFrame {
                String cod = (String)productModel.getValueAt(row, 0);
                pr.setCod(cod);
            }
+           if(parent != null && parent instanceof DetallePagina){
+               DetallePagina pr = (DetallePagina)parent;
+               int row = tbl_prod.getSelectedRow();
+               int cod = Integer.parseInt((String)productModel.getValueAt(row, 0));
+               String nom= (String)productModel.getValueAt(row, 1);
+               pr.setProd(cod,nom);
+           }
            setVisible(false);
            //int selRow = tbl_prod.getSelectedRow();
            //int prodId = Integer.parseInt(
