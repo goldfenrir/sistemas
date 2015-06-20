@@ -201,6 +201,7 @@ public class MantenerCombos extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 247, 534, 180));
 
+        ctxtCod.setEditable(false);
         ctxtCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ctxtCodActionPerformed(evt);
@@ -431,7 +432,9 @@ public class MantenerCombos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new BuscaProd().setVisible(true);
+        BuscaProd busca = new BuscaProd();
+        busca.setParent(this);
+        busca.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void text_idCampaña1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_idCampaña1ActionPerformed
@@ -538,6 +541,14 @@ public class MantenerCombos extends javax.swing.JFrame {
         javax.swing.JPanel pn = new javax.swing.JPanel();
         pn = jPanel1;
         return jPanel1;
+    }
+    
+    public void addProduct(int idProd){
+        Product p = SalesManager.queryProductById(idProd);
+        if(productModel.productList == null) productModel.productList = new ArrayList<Product>();
+        productModel.productList.add(p);
+        tblPRoductos.setModel(productModel);
+        productModel.fireTableChanged(null);
     }
     
     private MyTableModel2 productModel;
