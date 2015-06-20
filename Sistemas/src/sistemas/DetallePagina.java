@@ -10,6 +10,8 @@ import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,7 +21,9 @@ import javax.swing.table.DefaultTableModel;
 public class DetallePagina extends javax.swing.JFrame {
     private BuscaProd appBus;
     private ArrayList<Integer> productList=new  ArrayList<Integer>();
+    private ArrayList<Integer> nivel=new  ArrayList<Integer>();
     private int idCamp=1; // dia de la madre
+    private JFrame parent = null;
     /**
      * Creates new form Template
      */
@@ -79,6 +83,7 @@ public class DetallePagina extends javax.swing.JFrame {
 
         text_cant.setEditable(false);
         text_cant.setText("0");
+        text_cant.setName("text_cant"); // NOI18N
         jPanel2.add(text_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 50, -1));
 
         jLabel1.setText("<html>Porcentaje disponible <br />del total de la pagina");
@@ -113,7 +118,7 @@ public class DetallePagina extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, true, true
@@ -167,10 +172,25 @@ public class DetallePagina extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         for(int i=0;i<productList.size();i++){
-            
+            DefaultTableModel model = (DefaultTableModel) table_prods.getModel();
+            int niv=Integer.parseInt((String)model.getValueAt(i, 2));
+            nivel.add(niv);
         }
+        SalesManager.AddPagina(1, 2, 1, productList,nivel);
+        if(parent!= null){
+            MantenerCatalogo m= (MantenerCatalogo) parent;
+            m.setCant(Integer.parseInt(text_cant.getText()));
+        }
+        JOptionPane.showMessageDialog(null," Se agrego correctamente la pagina");
+        
     }//GEN-LAST:event_jButton3ActionPerformed
+public void setParent(JFrame parent){
+    this.parent = parent;
+}
 
+public JFrame getParent(){
+    return parent;
+}
     public javax.swing.JPanel getPanel(){
         return jPanel1;
     }

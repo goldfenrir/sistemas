@@ -100,6 +100,7 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="0"/>
+                <Property name="name" type="java.lang.String" value="text_cant" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -169,7 +170,7 @@
                       <Table columnCount="4" rowCount="0">
                         <Column editable="false" title="Codigo" type="java.lang.Integer"/>
                         <Column editable="false" title="Nombre" type="java.lang.String"/>
-                        <Column editable="true" title="Nivel Exp." type="java.lang.Object"/>
+                        <Column editable="true" title="Nivel Exp." type="java.lang.Integer"/>
                         <Column editable="true" title="Discover" type="java.lang.Boolean"/>
                       </Table>
                     </Property>

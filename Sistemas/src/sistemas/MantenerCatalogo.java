@@ -5,9 +5,15 @@
  */
 package sistemas;
 
+import Model.Catalogo;
+import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,15 +23,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MantenerCatalogo extends javax.swing.JFrame {
 
-    private BuscaProd appBus;
+    private DetallePagina appDet;
     JOptionPane jop = new JOptionPane();
     ArrayList<Integer> colores= new ArrayList<Integer>();
+    ArrayList<Integer> paginas= new ArrayList<Integer>();
     /**
      * Creates new form Template
      */
     public MantenerCatalogo(MainCampaña p) {
-        appBus = new BuscaProd();
-        appBus.setParent(this);
+        appDet = new DetallePagina();
+        appDet.setParent(this);
         prin = p;
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
@@ -49,12 +56,12 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        text_paginas = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        table_paginas = new javax.swing.JTable();
+        fecha = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -94,8 +101,9 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 110, -1));
 
-        jTextField3.setText("90");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 40, -1));
+        text_paginas.setEditable(false);
+        text_paginas.setText("0");
+        jPanel1.add(text_paginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 40, -1));
 
         jTextField4.setEditable(false);
         jTextField4.setText("Día de la Madre");
@@ -104,24 +112,9 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         jLabel6.setText("Lista de páginas del catálogo");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table_paginas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "1", "21/03/2014"},
-                {"2", "3", "21/03/2014"},
-                {"3", "4", "22/03/2014"},
-                {"4", "5", "23/03/2014"},
-                {"5", "2", "21/03/2014"},
-                {"6", "3", "22/03/2014"},
-                {"7", "4", "21/03/2014"},
-                {"8", "1", "21/03/2014"},
-                {"9", "1", "23/03/2014"},
-                {"10", "2", "23/03/2014"},
-                {"11", "2", "24/03/2014"},
-                {"12", "3", "24/03/2014"},
-                {"13", "4", "25/03/2014"},
-                {"14", "4", "22/03/2014"},
-                {"15", "4", "24/03/2014"},
-                {"16", "2", "22/03/2014"}
+
             },
             new String [] {
                 "Nº pag", "Cantidad de Productos", "Fecha última modificacion"
@@ -130,18 +123,25 @@ public class MantenerCatalogo extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        jTable2.setMinimumSize(new java.awt.Dimension(100, 200));
-        jTable2.getTableHeader().setResizingAllowed(false);
-        jScrollPane2.setViewportView(jTable2);
+        table_paginas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        table_paginas.setMinimumSize(new java.awt.Dimension(100, 200));
+        table_paginas.getTableHeader().setResizingAllowed(false);
+        jScrollPane2.setViewportView(table_paginas);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 580, 250));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 110, -1));
+        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 110, -1));
 
         jLabel7.setText("Código de la campaña:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
@@ -227,7 +227,25 @@ public class MantenerCatalogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(paginas.size()==0){
+            int dia= fecha.getDate().getDate();
+            int mes= fecha.getDate().getMonth()+1;
+            int anho=fecha.getDate().getYear()+1900;
+                DateTimeFormatter germanFormatter = DateTimeFormatter.ofLocalizedDate(
+                FormatStyle.MEDIUM).withLocale(Locale.GERMAN);
+            String fecha=""+dia+"."+mes+"."+anho;
+            //LocalDate ld=LocalDate.parse(fecha, germanFormatter);
+            int cant=Integer.parseInt(text_paginas.getText());
+            
+            Catalogo c= new Catalogo(1,1,null,cant);
+            SalesManager.addCatalogo(c);
+            for(int i=0;i<colores.size();i++){
+                SalesManager.AddColors(2,1, colores.get(i));
+            }
+        }
+        paginas.add(0);
         prin.agregarPaginaCatalogo();
+
         //appBus.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -237,7 +255,7 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         String a=but_colors.getItemAt(ind).toString();
         DefaultTableModel model = (DefaultTableModel) table_colors.getModel();
         model.addRow(new Object[]{""+ind, a});
-        colores.add(ind);
+        colores.add(ind+1);
         //table_colors.
         //table_colors.getModel().
         //table_colors.add((Component)a);
@@ -291,15 +309,21 @@ public class MantenerCatalogo extends javax.swing.JFrame {
     public javax.swing.JPanel getPanel(){
         return jPanel1;
     }
+    
+    public void setCant(int cant){
+        paginas.set(paginas.size()-1, cant);
+        DefaultTableModel model = (DefaultTableModel) table_paginas.getModel();
+        model.addRow(new Object[]{""+paginas.size(), cant,LocalDate.now()});
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox but_colors;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -312,12 +336,12 @@ public class MantenerCatalogo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable table_colors;
+    private javax.swing.JTable table_paginas;
+    private javax.swing.JTextField text_paginas;
     // End of variables declaration//GEN-END:variables
     private static MainCampaña prin;
 }
