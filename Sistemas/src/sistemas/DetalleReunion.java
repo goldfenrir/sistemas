@@ -13,6 +13,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 
@@ -165,6 +170,10 @@ public class DetalleReunion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddAcuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAcuActionPerformed
+        if (txtDesc.getText().compareTo("")==0){
+            JOptionPane.showMessageDialog(new JFrame(), "Coloca la descripcion del acuerdo");
+            return ;
+        }
         int aux=Integer.parseInt(txtIdAcuerdo.getText())+1;    
         txtIdAcuerdo.setText(""+aux);
         Acuerdo acu=new Acuerdo();
@@ -178,25 +187,53 @@ public class DetalleReunion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddAcuActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        
-        Reunion reunion=new Reunion();
-        reunion.setIdReunion(Integer.parseInt(txtIdReu.getText()));
-        reunion.setAcuerdos(model.acuerdosLst);
-        reunion.setAreaInvolucrada(cmbArea.getSelectedItem().toString());
-        reunion.setCampanha(1);
-        reunion.setDuracion("2 días");
-        Date dat=jDateChooser.getDate();
-        LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(dat) );
-        reunion.setFecha(localDate);
-        reunion.setTema(jTextTema.getText());
-        GenerarAcuerdos.addReu(reunion);
-        int idR=Integer.parseInt(txtIdReu.getText())+1;
-        txtIdReu.setText(""+idR);
-        jTextTema.setText("");
-        this.setVisible(false);
-        SalesManager.addReunion(reunion);
-        
+        try {
+            if (jDateChooser.getDate()==null){
+                JOptionPane.showMessageDialog(new JFrame(), "Completa la fecha");
+                return ;
+            }
+            if (jTextTema.getText().compareTo("")==0){
+                JOptionPane.showMessageDialog(new JFrame(), "Completa la temática");
+                return ;
+            }
+            if (model.acuerdosLst.size()==0){
+                JOptionPane.showMessageDialog(new JFrame(), "Coloca los acuerdos");
+                return ;
+            }
+            Reunion reunion=new Reunion();
+            reunion.setIdReunion(Integer.parseInt(txtIdReu.getText()));
+            reunion.setAcuerdos(model.acuerdosLst);
+            reunion.setAreaInvolucrada(cmbArea.getSelectedItem().toString());
+            reunion.setCampanha(1);
+            reunion.setDuracion("2 días");
+            Date dat=jDateChooser.getDate();
+            LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(dat) );
+            reunion.setFecha(localDate);
+            reunion.setTema(jTextTema.getText());
+            GenerarAcuerdos.addReu(reunion);
+            int idR=Integer.parseInt(txtIdReu.getText())+1;
+            txtIdReu.setText(""+idR);
+            jTextTema.setText("");
+            this.setVisible(false);
+            SalesManager.addReunion(reunion);
+            
+            
+            //mail
+            String msg="Buenos días:\n"
+                    + "Se ha creado una nueva reunión, \n\t Código: "+ (idR-1)+"\n"
+                    + "\t Campaña: " + jComboBox1.getSelectedItem().toString()+"\n"
+                     + "\t Fecha: " + localDate.toString()+"\n\n"
+                    + "Los acuerdos han sido los siguientes:\n";
+            for (int i =0; i< model.acuerdosLst.size();i++){
+                msg=msg+"- "+ model.acuerdosLst.get(i).getDescripcion()+"\n";
+            }
+            
+            GoogleMail.Send("jdbustamante@pucp.pe", "Nueva Reunión", msg);
+            model.acuerdosLst.clear();
 // TODO add your handling code here:
+        } catch (MessagingException ex) {
+            Logger.getLogger(DetalleReunion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnOKActionPerformed
 
     /**
@@ -245,6 +282,9 @@ public class DetalleReunion extends javax.swing.JFrame {
         model.fireTableDataChanged();
         txtIdAcuerdo.setText(""+SalesManager.lastAcu());
         
+    }
+    public void clear(){
+        model.acuerdosLst.clear();;
     }
     class MyTableModel extends AbstractTableModel{
                 public ArrayList<Acuerdo> acuerdosLst = null; //SalesManager.queryAllProducts(); 

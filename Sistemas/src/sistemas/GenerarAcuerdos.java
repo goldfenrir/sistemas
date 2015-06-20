@@ -9,7 +9,18 @@ import Model.Reunion;
 import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -65,17 +76,16 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btn1 = new javax.swing.JRadioButton();
+        btn2 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jCheckBox3 = new javax.swing.JCheckBox();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton5 = new javax.swing.JButton();
+        btn3 = new javax.swing.JRadioButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,27 +123,29 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 670, 210));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Listar reuniones pasadas");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
+        buttonGroup1.add(btn1);
+        btn1.setText("Listar reuniones pasadas");
+        jPanel1.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Listar reuniones próximas");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btn2);
+        btn2.setText("Listar reuniones próximas");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                btn2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
+        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
 
         jButton1.setText("Exportar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
 
-        jCheckBox1.setText("Excel (.xlsx)");
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
-
-        jCheckBox2.setText("PDF (.pdf)");
-        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
+        jCheckBox2.setText("Excel (.xlsx)");
+        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
 
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -162,17 +174,17 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jCheckBox3.setText("Incluir Acuerdos");
         jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Reunión de hoy");
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        buttonGroup1.add(btn3);
+        btn3.setText("Reunión de hoy");
+        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
-        jButton5.setText("Ver Acuerdos");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setText("Filtrar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 293, -1, 130));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,17 +200,27 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
+    }//GEN-LAST:event_btn2ActionPerformed
+    public void agregar(){
+        det.clear();
+        det.setVisible(true);
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        det.clear();
         det.setVisible(true);
         
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public void modificar(){
+        int selRow = jTable1.getSelectedRow();
+        
+        Reunion r=model.reunionLst.get(selRow);
+        det.setValues(r);
+        det.setVisible(true);
+    }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int selRow = jTable1.getSelectedRow();
         
@@ -208,7 +230,17 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    public void cancelar(){
+        if (jTable1.getSelectedRow()==-1){
+            JOptionPane.showMessageDialog(new JFrame(), "Selecciona la reunión a elminar");
+            return;
+        }
+        int selRow = jTable1.getSelectedRow();
+        int id=model.reunionLst.get(selRow).getIdReunion();
+        SalesManager.deleteReunion(id);
+        model.reunionLst=SalesManager.queryAllReunion();;
+        model.fireTableDataChanged();
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int selRow = jTable1.getSelectedRow();
         int id=model.reunionLst.get(selRow).getIdReunion();
@@ -218,16 +250,96 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int selRow = jTable1.getSelectedRow();
+    
+    private void acortarFech(LocalDate min, LocalDate max){
         
-        Reunion r=model.reunionLst.get(selRow);
-        det.setValues(r);
-        det.setVisible(true);
+        ArrayList<Reunion> aux=new ArrayList<Reunion>();
+        for (int i =0; i<model.reunionLst.size();i++){
+            if (model.reunionLst.get(i).getFecha().compareTo(max)<=0 
+                    &&model.reunionLst.get(i).getFecha().compareTo(min)>0 ){
+                aux.add(model.reunionLst.get(i));
+            }
+        }
+        model.reunionLst=aux;
+        model.fireTableDataChanged();
+    }
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if (jDateChooser1.getDate()==null && 
+               buttonGroup1.isSelected(btn1.getModel())==false &&
+                buttonGroup1.isSelected(btn2.getModel())==false && 
+                buttonGroup1.isSelected(btn3.getModel())==false){
+            JOptionPane.showMessageDialog(new JFrame(), "Llena por lo menos un criterio");
+            return ;
+        }
+        if (jDateChooser1.getDate()==null && jDateChooser2.getDate()==null){
+            JOptionPane.showMessageDialog(new JFrame(), "Llena el rango completo de fechas");
+            return ;
+        }
+        
+        if (buttonGroup1.isSelected(btn1.getModel())){
+           acortarFech(LocalDate.MIN,LocalDate.now());
+        }
+        if (buttonGroup1.isSelected(btn2.getModel())){
+           acortarFech(LocalDate.now(),LocalDate.MAX); 
+        }
+        if (buttonGroup1.isSelected(btn3.getModel())){
+            acortarFech(LocalDate.now(),LocalDate.now());
+        }
+        if (jDateChooser1.getDate()!=null && jDateChooser2!=null){
+            Date dat=jDateChooser1.getDate();            
+            LocalDate ld1 = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(dat) );
+            Date dat2=jDateChooser1.getDate();
+            LocalDate ld2 = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(dat) );
+            acortarFech(ld1,ld2);
+        }
+        
         
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (model.reunionLst.size()==0){
+            JOptionPane.showMessageDialog(new JFrame(), "No existe datos a exportar");
+            return;
+        }
+        if (!jCheckBox3.isSelected() && !jCheckBox2.isSelected()){
+            JOptionPane.showMessageDialog(new JFrame(), "Seleccione algún formato de salida");
+            return;
+        }
+        String pathSave=null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Specify a file to save");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int userSelection = fileChooser.showSaveDialog(this);
+        File fileToSave=null;
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            fileToSave = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            pathSave=fileToSave.getAbsolutePath();
+        }else if (userSelection == JFileChooser.CANCEL_OPTION){
+            pathSave=null;
+        }
+
+        if (pathSave!=null){
+            try {
+                // TODO add your handling code here:
+                //   Utils.writeToExcell(jTable1,Paths.get("C:\\Temp"));
+                //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seasonalpie.gif"))); // NOI18N
+                if (jCheckBox2.isSelected() && jCheckBox3.isSelected()==false){
+                    Utils.writeXLSXFile(jTable1,pathSave+"\\reuniones.xlsx");
+                   
+                }else if(jCheckBox2.isSelected() && jCheckBox3.isSelected()){
+                    Utils.writeXLSXFile(jTable1,pathSave+"\\reuniones.xlsx");
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,9 +380,14 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     private void initComponents2() {
         model = new MyTableModel();
         jTable1.setModel(model);
+        jButton2.setVisible(false);
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
+        jCheckBox3.setVisible(false);
     }
     class MyTableModel extends AbstractTableModel{
         public ArrayList<Reunion> reunionLst = SalesManager.queryAllReunion(); //SalesManager.queryAllProducts(); 
+        
 		String [] titles = {"Código", "Área participante", "Tema","Fecha"};
 		@Override
 		public int getColumnCount() {
@@ -301,13 +418,15 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 		}
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton btn1;
+    private javax.swing.JRadioButton btn2;
+    private javax.swing.JRadioButton btn3;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -315,9 +434,6 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -325,4 +441,5 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private static MyTableModel model;
     private DetalleReunion det=new DetalleReunion(jTable1);
+    private boolean first=false;
 }

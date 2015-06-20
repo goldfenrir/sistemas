@@ -58,6 +58,8 @@ public class MainCampaña extends javax.swing.JFrame {
                     comb.agregarCombo();
                     
                     
+                }else if(ValorVentana==2){
+                    acuerdos.modificar();
                 }
             }
         });
@@ -68,6 +70,16 @@ public class MainCampaña extends javax.swing.JFrame {
         btnAdd.setFocusable(false);
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //btnSaveActionPerformed(evt);
+                if(ValorVentana==2){//1 es combos
+                    acuerdos.agregar();
+                    
+                    
+                }
+            }
+        });
         jToolBar99.add(btnAdd);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x-mark-3-32.png"))); // NOI18N
@@ -645,7 +657,9 @@ public class MainCampaña extends javax.swing.JFrame {
         // TODO add your handling code here:
         int res = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro?");
 			if (res == JOptionPane.OK_OPTION) {
-				
+				if (ValorVentana==2){
+                                    acuerdos.cancelar();
+                                }
 			}
     }   
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -769,7 +783,8 @@ public class MainCampaña extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         barra();
+        barra();
+        ValorVentana=2;
         acuerdos.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(acuerdos.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
