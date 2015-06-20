@@ -265,19 +265,19 @@ public class Utils {
                 
                 int num = (Integer)cants.get(i);
                 if(num>0){
-                System.out.println("ese numero" + num);
+                ///System.out.println("ese numero" + num);
                 sumatXlnY += (Math.log(num)*(i+1));
-                System.out.println("ese numero xlny" + sumatXlnY);
+                //System.out.println("ese numero xlny" + sumatXlnY);
                 sumatLnY += Math.log(num);
                 }
             }
         }
-        System.out.println("resultados de b, sumatxlny: "+ sumatXlnY);
-        System.out.println("resultados de b, sumatlny: "+ sumatLnY);
+        //System.out.println("resultados de b, sumatxlny: "+ sumatXlnY);
+        //System.out.println("resultados de b, sumatlny: "+ sumatLnY);
         promLnY = (sumatLnY*1.0)/15;
         promX = (sumatX)/15;
-        System.out.println("sumatoria x " + sumatX + " promedio x: "+promX);
-        System.out.println("promedio lny: " +promLnY);
+        //System.out.println("sumatoria x " + sumatX + " promedio x: "+promX);
+        //System.out.println("promedio lny: " +promLnY);
         double b = (sumatXlnY - (promLnY*sumatX))/(sumatX2 -( promX*sumatX));
         return b;
     }
@@ -336,7 +336,7 @@ public class Utils {
         //final IntervalXYDataset data0 = coll1;
         //final XYItemRenderer renderer0 = new XYLineAndShapeRenderer();
     // change "new XYBarRenderer(0.20)" to "StandardXYItemRenderer()" if you want to change  type of graph
-      final JFreeChart chart = ChartFactory.createXYLineChart("Line Chart demo 6", "dia", "ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
+      final JFreeChart chart = ChartFactory.createXYLineChart("Proyección de ventas", "Días", "Ventas", coll1, PlotOrientation.VERTICAL, true, true, false);
       chart.setBackgroundPaint(Color.white);
       final XYPlot plot = chart.getXYPlot();
       plot.setBackgroundPaint(Color.white);

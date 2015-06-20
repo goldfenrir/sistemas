@@ -6,6 +6,7 @@
 package DAO;
 
 import Model.Combo;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,5 +16,7 @@ public interface DAOCombo {
     void add(Combo c);
     int update(Combo c);
     void delete(int idCombo);
+    Combo queryById(int idCombo);
+    ArrayList<Combo> queryByPrice(double minP, double maxP);
     
 }
