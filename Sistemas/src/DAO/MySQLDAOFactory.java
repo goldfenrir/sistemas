@@ -14,4 +14,9 @@ public class MySQLDAOFactory extends DAOFactory{
 		return null;
 	}
 
+    @Override
+    public DAOCombo getDAOCombo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

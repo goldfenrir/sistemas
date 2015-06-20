@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JToolBar;
 import javax.swing.UIManager;
 
 /**
@@ -33,6 +34,7 @@ public class MainCampaña extends javax.swing.JFrame {
         panelStack.push(jPanel1);
     }
     public void barra(){
+        
         jToolBar99 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -50,6 +52,11 @@ public class MainCampaña extends javax.swing.JFrame {
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //btnSaveActionPerformed(evt);
+                if(ValorVentana==1){//1 es combos
+                    comb.agregarCombo();
+                    
+                    
+                }
             }
         });
         jToolBar99.add(btnSave);
@@ -103,6 +110,7 @@ public class MainCampaña extends javax.swing.JFrame {
         
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValorVentana=0;//Para que el valor regresos a cero y se descative la botoneria
                 regresarActionPerformed(evt);
             }
         });
@@ -681,6 +689,7 @@ public class MainCampaña extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Mantener combos
         barra();
+        ValorVentana=1;
         comb.getPanel().add(jToolBar99, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
         getContentPane().add(comb.getPanel(), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 620));
         pack();
@@ -927,4 +936,5 @@ public class MainCampaña extends javax.swing.JFrame {
     private ReporteVentas rep = new ReporteVentas();
     private Proyecciones proy = new Proyecciones();
 
+    private int ValorVentana=0;//Cer4o no referencia a ninguna ventana
 }
