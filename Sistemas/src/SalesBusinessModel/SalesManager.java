@@ -115,7 +115,7 @@ public class SalesManager {
     public static ArrayList<Combo> queryAllCombos(){
         return comboDB.queryAll();
     
-    
+    }
     
     //REUNIONES
     public static void addReunion(Reunion p){
@@ -132,5 +132,11 @@ public class SalesManager {
     }
     public static Reunion queryReunionById(int idReunion){
         return reunionDB.queryById(idReunion);
+    }
+    public static int lastReu(){
+        return reunionDB.reu();
+    }
+    public static int lastAcu(){
+        return reunionDB.acu();
     }
 }

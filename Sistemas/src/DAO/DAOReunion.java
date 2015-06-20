@@ -19,4 +19,6 @@ public interface DAOReunion {
     void delete (int idReunion);
     ArrayList<Reunion> queryAll();
     Reunion queryById(int idReunion);
+    int idReunion();
+    int idAcuerdo();
 }

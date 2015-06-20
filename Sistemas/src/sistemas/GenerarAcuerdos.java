@@ -17,11 +17,27 @@ import javax.swing.table.AbstractTableModel;
  * @author alulab14
  */
 public class GenerarAcuerdos extends javax.swing.JFrame {
+    
+    static void addReu(Reunion reunion) {
+        if (model.reunionLst.size()==0){
+            model.reunionLst.add(reunion); 
+        }
+        for (int i=0;i<model.reunionLst.size();i++){
+            if (model.reunionLst.get(i).getIdReunion()==reunion.getIdReunion()){
+                model.reunionLst.set(i, reunion);
+            }else{
+               model.reunionLst.add(reunion); 
+            }
+        }
+        
+        model.fireTableDataChanged();
+    }
 
     /**
      * Creates new form Template
      */
     public GenerarAcuerdos() {
+        
         initComponents();
         initComponents2();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
@@ -128,9 +144,19 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 90, -1));
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         jButton4.setText("Modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, -1, -1));
 
         jCheckBox3.setText("Incluir Acuerdos");
@@ -141,7 +167,12 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         jButton5.setText("Ver Acuerdos");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 293, -1, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,8 +193,41 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        det.setVisible(true);
+        
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int selRow = jTable1.getSelectedRow();
+        
+        Reunion r=model.reunionLst.get(selRow);
+        det.setValues(r);
+        det.setVisible(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int selRow = jTable1.getSelectedRow();
+        int id=model.reunionLst.get(selRow).getIdReunion();
+        SalesManager.deleteReunion(id);
+        model.reunionLst=SalesManager.queryAllReunion();;
+        model.fireTableDataChanged();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int selRow = jTable1.getSelectedRow();
+        
+        Reunion r=model.reunionLst.get(selRow);
+        det.setValues(r);
+        det.setVisible(true);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +270,7 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jTable1.setModel(model);
     }
     class MyTableModel extends AbstractTableModel{
-        ArrayList<Reunion> reunionLst = SalesManager.queryAllReunion(); //SalesManager.queryAllProducts(); 
+        public ArrayList<Reunion> reunionLst = SalesManager.queryAllReunion(); //SalesManager.queryAllProducts(); 
 		String [] titles = {"Código", "Área participante", "Tema","Fecha"};
 		@Override
 		public int getColumnCount() {
@@ -259,5 +323,6 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-    private MyTableModel model;
+    private static MyTableModel model;
+    private DetalleReunion det=new DetalleReunion(jTable1);
 }

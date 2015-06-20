@@ -49,11 +49,14 @@ public class SQLServerDAOReunion implements DAOReunion{
 			pstmt.setInt(6, p.getCampanha());
                         
                         
+                        
+			//Paso 4: Ejecutar la sentencia
+			pstmt.executeUpdate();
                         //ACUERDOS
                         for (int i=0;i<p.getAcuerdos().size();i++){
                             Acuerdo acu=p.getAcuerdos().get(i);
                             String sql2="INSERT INTO Acuerdos_de_reunion"
-                                    + "values(?,?,?,?)";
+                                    + " values(?,?,?,?)";
                             pstmt2 = conn.prepareStatement(sql2);
                             pstmt2.setInt(1, acu.getIdAcuerdo());
                             pstmt2.setString(2, acu.getDescripcion());
@@ -63,8 +66,6 @@ public class SQLServerDAOReunion implements DAOReunion{
                         }
                             
                         //FINACUERDOS
-			//Paso 4: Ejecutar la sentencia
-			pstmt.executeUpdate();
 			//Paso 5(opc.): Procesar los resultados			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -131,9 +132,15 @@ public class SQLServerDAOReunion implements DAOReunion{
 								DBConnection.user,
 								DBConnection.password);
 			//Paso 3: Preparar la sentencia
-			String sql = "DELETE * from  reunion  set "
-					+ "where"
-                                + "idReunion=?";
+                        String sql2="DELETE from  Acuerdos_de_reunion where idReunion=?";
+                        pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, idReunion);
+			
+			pstmt.executeUpdate();
+                        
+			String sql = "DELETE  from  reunion   "
+					+ " where "
+                                + " idReunion=?";
 			pstmt = conn.prepareStatement(sql);
 			//pstmt.setInt(1, p.getId());
 			pstmt.setInt(1, idReunion);
@@ -197,8 +204,8 @@ public class SQLServerDAOReunion implements DAOReunion{
                                 p.setTema(tema);
                                 //ACUERDOS
                                 
-                                    String sql2="select * from Acuerdos_de_reunion"
-                                            + "where idReunion=? and idCampanha=?";
+                                    String sql2="select * from Acuerdos_de_reunion  "
+                                            +   "  where idReunion=? and idCampanha=?";
                                     
                                     pstmt2 = conn.prepareStatement(sql2);
                                     pstmt2.setInt(1, idReunion);
@@ -235,6 +242,7 @@ public class SQLServerDAOReunion implements DAOReunion{
     public Reunion queryById(int idReunion) {
             Connection conn = null;
 		PreparedStatement pstmt = null;
+                PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
                 ResultSet rs2 = null;
 		ArrayList<Reunion> arr = new ArrayList<Reunion>();
@@ -269,9 +277,29 @@ public class SQLServerDAOReunion implements DAOReunion{
                                 p.setCampanha(idCampanha);
                                 p.setDuracion(duracion);
                                 p.setFecha(fecha);
-                                 p.setIdReunion(idReunion);
-                               p.setTema(tema);
-                               
+                                p.setIdReunion(idReunion);
+                                p.setTema(tema);
+                               //ACUERDOS
+                                
+                                    String sql2="select * from Acuerdos_de_reunion  "
+                                            + "   where idReunion=? and idCampanha=?  ";
+                                    
+                                    pstmt2 = conn.prepareStatement(sql2);
+                                    pstmt2.setInt(1, idReunion);
+                                    pstmt2.setInt(2, idCampanha);                                    
+                                    rs2 = pstmt2.executeQuery();
+                                    
+                                    while (rs2.next()){
+                                        Acuerdo newAcu=new Acuerdo();
+                                        newAcu.setIdAcuerdo(rs2.getInt("idAcuerdo"));
+                                        newAcu.setDescripcion(rs2.getString("descripcion"));
+                                        p.getAcuerdos().add(newAcu);
+                                    }
+                                    
+                                   
+                                
+                            
+                        //FINACUERDOS
 				arr.add(p);
 			}
 		} catch (SQLException e) {
@@ -284,7 +312,91 @@ public class SQLServerDAOReunion implements DAOReunion{
 			try { if (conn!= null) conn.close();} 
 				catch (Exception e){e.printStackTrace();};						
 		}
-		return arr.get(0);
+                if (arr.size()>0){
+                   return arr.get(0); 
+                }
+                return null;
+		
+    }
+
+    @Override
+    public int idReunion(){
+        Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+                ResultSet rs2 = null;
+		int   reu=0;;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "select top 1 *  from reunion order by idReunion desc";
+			pstmt = conn.prepareStatement(sql);
+                        
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+                      
+			while (rs.next()){
+                            reu=rs.getInt("idReunion");
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return reu;
+    }
+
+    @Override
+    public int idAcuerdo() {
+        Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+                ResultSet rs2 = null;
+		int   reu=0;;
+		try {
+			//Paso 1: Registrar el Driver
+			DriverManager.registerDriver(new SQLServerDriver());
+			//Paso 2: Obtener la conexi�n
+			conn = DriverManager.getConnection(DBConnection.URL_JDBC_SQLServer,
+								DBConnection.user,
+								DBConnection.password);
+			//Paso 3: Preparar la sentencia
+			String sql = "select top 1 *  from Acuerdos_de_reunion order by idAcuerdo desc";
+			pstmt = conn.prepareStatement(sql);
+                        
+			//Paso 4: Ejecutar la sentencia
+			rs = pstmt.executeQuery();
+			//Paso 5(opc.): Procesar los resultados
+                      
+			while (rs.next()){
+                            reu=rs.getInt("idAcuerdo");
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//Paso 6(OJO): Cerrar la conexi�n
+			try { if (pstmt!= null) pstmt.close();} 
+				catch (Exception e){e.printStackTrace();};
+			try { if (conn!= null) conn.close();} 
+				catch (Exception e){e.printStackTrace();};						
+		}
+		return reu;
     }
     
 }

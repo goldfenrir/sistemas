@@ -38,4 +38,12 @@ public class ReunionDB {
      public Reunion queryById(int idReunion){
         return daoReunion.queryById(idReunion);
     }
+     public int reu(){
+         //return 1;
+         return daoReunion.idReunion();
+     }
+     public int acu(){
+         //return 2;
+         return daoReunion.idAcuerdo();
+     }
 }
