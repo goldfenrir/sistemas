@@ -5,8 +5,12 @@
  */
 package sistemas;
 
+import Model.Reunion;
+import SalesBusinessModel.SalesManager;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -19,6 +23,7 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
      */
     public GenerarAcuerdos() {
         initComponents();
+        initComponents2();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo_SP.png"));
         setIconImage(icon);
     }
@@ -54,6 +59,7 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jCheckBox3 = new javax.swing.JCheckBox();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,19 +78,19 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"50", null, "Workshop", "22/03/2014"},
-                {"51", null, "Feedback workshop", "23/03/2014"},
-                {"52", null, "presentación pxp", "24/03/2014"},
-                {"53", null, "feedback pxp", "25/03/2014"},
-                {"54", null, "Presentación publicidad", "26/03/2014"},
-                {"55", null, "revisión bocetos 1", "29/03/2014"},
-                {"56", null, "revisión bocetos 2", "29/03/2014"},
-                {"57", null, "revisión bocetos 3", "31/03/2014"},
-                {"58", null, "proyecciones de ventas", "01/04/2014"},
-                {"59", null, "Reunión Branding", "02/04/2014"}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Codigo", "Áreas Participantes", "Tema", "Fecha"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -114,6 +120,11 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
 
         jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 90, -1));
 
         jButton3.setText("Cancelar");
@@ -125,8 +136,12 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         jCheckBox3.setText("Incluir Acuerdos");
         jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
 
-        jRadioButton3.setText("Reuniones diarias");
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setText("Reunión de hoy");
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+
+        jButton5.setText("Ver Acuerdos");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +160,10 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,12 +201,48 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
         });
     }
 
+    private void initComponents2() {
+        model = new MyTableModel();
+        jTable1.setModel(model);
+    }
+    class MyTableModel extends AbstractTableModel{
+        ArrayList<Reunion> reunionLst = SalesManager.queryAllReunion(); //SalesManager.queryAllProducts(); 
+		String [] titles = {"Código", "Área participante", "Tema","Fecha"};
+		@Override
+		public int getColumnCount() {
+			// TODO Auto-generated method stub
+			return 4;
+		}
+
+		@Override
+		public int getRowCount() {
+			// TODO Auto-generated method stub
+			return reunionLst.size();
+		}
+
+		@Override
+		public Object getValueAt(int row, int col) {
+			String value = "";
+			switch(col){
+				case 0:  value = "" + reunionLst.get(row).getIdReunion(); break;
+				case 1:  value = reunionLst.get(row).getAreaInvolucrada(); break;
+				case 2:  value = "" + reunionLst.get(row).getTema(); break;
+				case 3:  value = "" + reunionLst.get(row).getFecha(); break;				
+			}
+			return value;
+		}
+		
+		public String getColumnName(int col){
+			return titles[col];
+		}
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -204,4 +259,5 @@ public class GenerarAcuerdos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+    private MyTableModel model;
 }

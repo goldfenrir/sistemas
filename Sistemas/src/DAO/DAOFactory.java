@@ -16,5 +16,5 @@ public abstract class DAOFactory {
 	public abstract DAOSales getDAOSales();
         
         public abstract DAOCombo getDAOCombo();
-	
+	public abstract DAOReunion getDAOReunion();
 }

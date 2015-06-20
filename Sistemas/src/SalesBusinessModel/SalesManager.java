@@ -2,6 +2,7 @@ package SalesBusinessModel;
 
 import Model.Combo;
 import Model.Product;
+import Model.Reunion;
 import Model.Sales;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class SalesManager {
     private static ProductDB productDB = new ProductDB();
     private static SalesDB salesDB=new SalesDB();
     private static ComboDB comboDB=new ComboDB();
-    
+    private static ReunionDB reunionDB=new ReunionDB();
     //Combos
     public static void addCombo(Combo c){
         comboDB.add(c);
@@ -101,5 +102,25 @@ public class SalesManager {
     public static ArrayList<Product> queryProductByPrice(double minPrice, double maxPrice, 
             String brand, int type){
         return productDB.queryByPrice(minPrice, maxPrice, brand, type);
+    }
+    
+    
+    
+    
+    //REUNIONES
+    public static void addReunion(Reunion p){
+        reunionDB.add(p);
+    }
+    public static void deleteReunion(int id){
+        reunionDB.delete(id);
+    }
+    public static void updateReunion(Reunion p){
+        reunionDB.update(p);
+    }
+    public static ArrayList<Reunion> queryAllReunion(){
+        return reunionDB.queryAll();
+    }
+    public static Reunion queryReunionById(int idReunion){
+        return reunionDB.queryById(idReunion);
     }
 }
