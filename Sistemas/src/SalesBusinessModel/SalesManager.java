@@ -1,5 +1,6 @@
 package SalesBusinessModel;
 
+import Model.Combo;
 import Model.Product;
 import Model.Sales;
 import java.util.ArrayList;
@@ -7,7 +8,24 @@ import java.util.ArrayList;
 public class SalesManager {
     private static ProductDB productDB = new ProductDB();
     private static SalesDB salesDB=new SalesDB();
+    private static ComboDB comboDB=new ComboDB();
     
+    //Combos
+    public static void addCombo(Combo c){
+        comboDB.add(c);
+    }
+    
+    public static int updateCombo(Combo c){
+        return comboDB.update(c);
+    }
+    
+    public static void deleteCombo(int idCombo){
+        comboDB.delete(idCombo);
+    }
+    
+    
+    
+    ///////////
     public static int ventaMarca(String marca, int mes, int anho, int unidad){//1 unidades 2 usd
         return salesDB.ventaMarca(marca, mes, anho, unidad);
     }
