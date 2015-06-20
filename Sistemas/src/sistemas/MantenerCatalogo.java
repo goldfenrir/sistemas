@@ -315,6 +315,8 @@ public class MantenerCatalogo extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) table_paginas.getModel();
         model.addRow(new Object[]{""+paginas.size(), cant,LocalDate.now()});
         model.fireTableChanged(null);
+        int pags=Integer.parseInt(text_paginas.getText())+1;
+        text_paginas.setText(""+pags);
         prin.desapilar();
     }
 

@@ -37,7 +37,7 @@ public class MantCats extends javax.swing.JFrame {
 
         jLabel1.setText("Catalogos de campaña:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Catalogo 1", "Catalogo 2" }));
 
         jButton1.setText("Nuevo catalogo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
