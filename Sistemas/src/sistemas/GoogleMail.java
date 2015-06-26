@@ -39,7 +39,7 @@ public class GoogleMail {
      * @throws MessagingException if the connection is dead or not in the connected state or if the message is not a MimeMessage
      */
     public static void Send(String recipientEmail, String title, String message) throws AddressException, MessagingException {
-        GoogleMail.Send("jdbustamante@pucp.pe", "neversay89", recipientEmail, "", title, message);
+        GoogleMail.Send("jdbustamante@pucp.pe", "password", recipientEmail, "", title, message);
     }
     public static void Send(final String username, final String password, String recipientEmail, String title, String message) throws AddressException, MessagingException {
         GoogleMail.Send(username, password, recipientEmail, "", title, message);
