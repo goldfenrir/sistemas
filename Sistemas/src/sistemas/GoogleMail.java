@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
 public class GoogleMail {
     public static void main(String args[]) {
         try {
-            GoogleMail.Send("jdbustamante@pucp.pe", "neversay89", "jdbustamante@pucp.pe", "Prueba", "Texto");
+            GoogleMail.Send("jdbustamante@pucp.pe", "password", "jdbustamante@pucp.pe", "Prueba", "Texto");
         } catch (MessagingException ex) {
             Logger.getLogger(GoogleMail.class.getName()).log(Level.SEVERE, null, ex);
         }
